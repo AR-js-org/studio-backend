@@ -1,0 +1,10 @@
+{
+  "name": "studio-backend",
+  "version": "1.0.0",
+  "description": "Backend for arjs-studio project",
+  "main": "index.js",
+  "repository": "git@github.com:AR-js-org/studio-backend.git",
+  "author": "nicolocarpignoli@gmail.com",
+  "license": "MIT",
+  "private": false
+}
