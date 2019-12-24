@@ -6,5 +6,13 @@
   "repository": "git@github.com:AR-js-org/studio-backend.git",
   "author": "nicolocarpignoli@gmail.com",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "test": "npx mocha --require esm test"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "mocha": "^6.2.2"
+  }
 }
