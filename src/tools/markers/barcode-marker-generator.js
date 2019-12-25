@@ -46,47 +46,47 @@ const BARCODE_MATRIX_TYPES = [
 ];
 
 export class BarcodeMarkerGenerator {
-  static encodeValue(matrixTypeId, value) {
-    const typeDesc = BARCODE_MATRIX_TYPES.find(x => x.id === matrixTypeId);
-    if (!typeDesc)
+  constructor(matrixTypeId, value) {
+    this.typeDesc = BARCODE_MATRIX_TYPES.find(x => x.id === matrixTypeId);
+    if (!this.typeDesc)
       throw new Error('unknown barcode matrix type id: ' + matrixTypeId);
     if (!Number.isInteger(value))
       throw new Error('barcode value is not an integer: ' + value);
-    if (value < 0 || value >= typeDesc.maxNumMarkers)
+    if (value < 0 || value >= this.typeDesc.maxNumMarkers)
       throw new Error('barcode value out of range: ' + value);
-    return [typeDesc, typeDesc.encoder(value)];
+
+    this.value = value;
+    this.valueEncoded = this.typeDesc.encoder(value);
   }
 
-  static getMatrixTypes() {
-    return BARCODE_MATRIX_TYPES;
-  }
-
-  static getMarkerSVG(matrixTypeId, value) {
-    const [typeDesc, enc] = BarcodeMarkerGenerator.encodeValue(
-      matrixTypeId,
-      value,
-    );
-
+  asSVG() {
     let svgStr =
       '<?xml version="1.0" encoding="utf-8"?>' +
       '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100" height="100">' +
       '<rect x="0" y="0" width="100" height="100" fill="black" />';
 
-    const pixelSize = 50.0 / typeDesc.matrixSize;
-    for (let y = 0; y < typeDesc.matrixSize; ++y)
-      for (let x = 0; x < typeDesc.matrixSize; ++x)
-        if (!enc[y * typeDesc.matrixSize + x])
+    const pixelSize = 50.0 / this.typeDesc.matrixSize;
+    for (let y = 0; y < this.typeDesc.matrixSize; ++y)
+      for (let x = 0; x < this.typeDesc.matrixSize; ++x)
+        if (!this.valueEncoded[y * this.typeDesc.matrixSize + x])
           svgStr += `<rect x="${25 + x * pixelSize}" y="${25 +
             y *
               pixelSize}" width="${pixelSize}" height="${pixelSize}" fill="white" />`;
 
     svgStr += '</svg>';
+    return svgStr;
+  }
 
+  asSVGDataURI() {
     return (
       'data:image/svg+xml,' +
-      encodeURIComponent(svgStr)
+      encodeURIComponent(this.asSVG())
         .replace(/'/g, '%27')
         .replace(/"/g, '%22')
     );
+  }
+
+  static getMatrixTypes() {
+    return BARCODE_MATRIX_TYPES;
   }
 }

@@ -2,7 +2,7 @@ import {BarcodeMarkerGenerator} from './src/tools/markers/barcode-marker-generat
 import {PatternMarkerGenerator} from './src/tools/markers/pattern-marker-generator';
 
 export class StudioBackend {
-  static getBarcodeMarkerSVG(matrixTypeId, value) {
-    return BarcodeMarkerGenerator.getMarkerSVG(matrixTypeId, value);
+  static getBarcodeMarkerSVGDataURI(matrixTypeId, value) {
+    return new BarcodeMarkerGenerator(matrixTypeId, value).asSVGDataURI();
   }
 }
