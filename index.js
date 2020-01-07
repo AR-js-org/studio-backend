@@ -5,4 +5,8 @@ export class StudioBackend {
   static getBarcodeMarkerSVGDataURI(matrixTypeId, value) {
     return new BarcodeMarkerGenerator(matrixTypeId, value).asSVGDataURI();
   }
+
+  static async getMarkerPattern(dataURI) {
+    return await new PatternMarkerGenerator(dataURI).toPattern();
+  }
 }
