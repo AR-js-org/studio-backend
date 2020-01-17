@@ -1,8 +1,17 @@
-import {BarcodeMarkerGenerator} from './src/tools/markers/barcode-marker-generator';
-import {PatternMarkerGenerator} from './src/tools/markers/pattern-marker-generator';
+import MODULES from './config';
 
-export class StudioBackend {
-  static getBarcodeMarkerSVGDataURI(matrixTypeId, value) {
-    return new BarcodeMarkerGenerator(matrixTypeId, value).asSVGDataURI();
-  }
-}
+const promises = [];
+
+Object.keys(MODULES).forEach((module) => {
+    if (MODULES[module]) {
+        promises.push(import(MODULES[module]));
+    }
+});
+
+Promise.all(promises)
+    .then(() => {
+        console.log('All AR Modules have been loaded');
+    })
+    .catch((err) => {
+        console.error('Error in loading AR Modules', err);
+});

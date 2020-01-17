@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import * as encoders from '../../src/tools/markers/matrix-encoders';
+import * as encoders from '../../src/modules/marker/tools/matrix-encoders';
 import codewords from './codewords.json';
 
 function bitStringToBitArray(str) {
