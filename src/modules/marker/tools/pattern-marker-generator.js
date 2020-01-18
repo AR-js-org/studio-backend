@@ -50,6 +50,7 @@ export class PatternMarkerGenerator {
     }
 
     async toFullMarker(ratio, size, color) {
+        const image = await loadImage(this.dataURI);
         const whiteMargin = 0.1;
         const blackMargin = (1 - 2 * whiteMargin) * ((1 - ratio) / 2);
         const innerMargin = whiteMargin + blackMargin;
@@ -68,36 +69,24 @@ export class PatternMarkerGenerator {
             canvas.height * (1 - 2 * whiteMargin)
         );
 
-        // fill image with white
+        // fill inner marker with white (for transparent images)
         context.fillStyle = 'white';
         context.fillRect(
             innerMargin * canvas.width,
             innerMargin * canvas.height,
-            canvas.width * (1-2*innerMargin),
-            canvas.height * (1-2*innerMargin)
+            canvas.width * (1 - 2 * innerMargin),
+            canvas.height * (1 - 2 * innerMargin)
         );
 
-        // create full marker image
-        const fullMarker = document.createElement('img');
-        const p = new Promise((resolve, reject) => {
-            fullMarker.addEventListener('load', () => {
-                context.drawImage(
-                    fullMarker,
-                    innerMargin * canvas.width,
-                    innerMargin * canvas.height,
-                    canvas.width * (1-2*innerMargin),
-                    canvas.height * (1-2*innerMargin)
-                );
+        // draw inner image
+        context.drawImage(
+            image,
+            innerMargin * canvas.width,
+            innerMargin * canvas.height,
+            canvas.width * (1 - 2 * innerMargin),
+            canvas.height * (1 - 2 * innerMargin)
+        );
 
-                resolve(canvas.toDataURL());
-            });
-
-            fullMarker.addEventListener('error', () => {
-                reject('Error loading image');
-            });
-        });
-
-        fullMarker.src = this.dataURI;
-        return await p;
+        return canvas.toDataURL();
     }
 }
