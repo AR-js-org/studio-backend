@@ -7,7 +7,7 @@ export function loadImage(dataURI) {
 
         image.addEventListener('error', () => {
             reject('Error loading image');
-        })
+        });
     });
 
     image.src = dataURI;

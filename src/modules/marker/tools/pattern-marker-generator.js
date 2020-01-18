@@ -48,4 +48,56 @@ export class PatternMarkerGenerator {
 
         return patternString;
     }
+
+    async toFullMarker(ratio, size, color) {
+        const whiteMargin = 0.1;
+        const blackMargin = (1 - 2 * whiteMargin) * ((1 - ratio) / 2);
+        const innerMargin = whiteMargin + blackMargin;
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = canvas.height = size;
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        // draw marker border
+        context.fillStyle = color;
+        context.fillRect(
+            whiteMargin * canvas.width,
+            whiteMargin * canvas.height,
+            canvas.width * (1 - 2 * whiteMargin),
+            canvas.height * (1 - 2 * whiteMargin)
+        );
+
+        // fill image with white
+        context.fillStyle = 'white';
+        context.fillRect(
+            innerMargin * canvas.width,
+            innerMargin * canvas.height,
+            canvas.width * (1-2*innerMargin),
+            canvas.height * (1-2*innerMargin)
+        );
+
+        // create full marker image
+        const fullMarker = document.createElement('img');
+        const p = new Promise((resolve, reject) => {
+            fullMarker.addEventListener('load', () => {
+                context.drawImage(
+                    fullMarker,
+                    innerMargin * canvas.width,
+                    innerMargin * canvas.height,
+                    canvas.width * (1-2*innerMargin),
+                    canvas.height * (1-2*innerMargin)
+                );
+
+                resolve(canvas.toDataURL());
+            });
+
+            fullMarker.addEventListener('error', () => {
+                reject('Error loading image');
+            });
+        });
+
+        fullMarker.src = this.dataURI;
+        return await p;
+    }
 }
