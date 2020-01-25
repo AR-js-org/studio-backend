@@ -14,5 +14,8 @@
     "chai": "^4.2.0",
     "esm": "^3.2.25",
     "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.38.2"
   }
 }

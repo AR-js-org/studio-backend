@@ -1,10 +1,15 @@
-import MODULES from './config';
+import CONFIG from './config';
 
 const promises = [];
 
-Object.keys(MODULES).forEach((module) => {
-    if (MODULES[module]) {
-        promises.push(import(MODULES[module]));
+Object.keys(CONFIG.MODULES).forEach((module) => {
+    if (CONFIG.MODULES[module]) {
+        promises.push(import(CONFIG.MODULES[module]));
+    }
+});
+Object.keys(CONFIG.PROVIDERS).forEach((provider) => {
+    if (CONFIG.PROVIDERS[provider]) {
+        promises.push(import(CONFIG.PROVIDERS[provider]));
     }
 });
 

@@ -5,4 +5,7 @@ export default {
         MARKER: process.env.MARKER && './src/modules/marker/index.js',
         LOCATION: process.env.LOCATION && './src/modules/location/index.js',
     },
+    PROVIDERS: {
+        GITHUB: process.env.GITHUB && './src/providers/github.js',
+    },
 };
