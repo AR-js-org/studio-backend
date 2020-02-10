@@ -2,14 +2,13 @@
   "name": "studio-backend",
   "version": "1.0.0",
   "description": "Backend for arjs-studio project",
-  "main": "src/index.js",
+  "main": "dist/arjs-studio-backend.min.js",
   "repository": "git@github.com:AR-js-org/studio-backend.git",
   "author": "nicolocarpignoli@gmail.com",
   "license": "MIT",
   "private": false,
   "scripts": {
     "test": "npx mocha --require esm test",
-    "serve": "webpack-dev-server --color --progress --env.development --config webpack.config.js",
     "build": "webpack --env.production --config webpack.config.js"
   },
   "devDependencies": {
@@ -17,18 +16,12 @@
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
-    "copy-webpack-plugin": "^5.0.4",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "mocha": "^6.2.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "uglifyjs-webpack-plugin": "^2.1.3",
+    "terser-webpack-plugin": "^2.3.4",
     "webpack": "^4.38.0",
-    "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "@octokit/rest": "^16.38.2",

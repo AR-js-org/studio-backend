@@ -18,45 +18,81 @@ run `yarn install && yarn serve`
 
 ## Usage
 
-### Providers
+## Providers
 
-1. create a Personal Access Token from [GitHub Developer Settings](https://github.com/settings/tokens)
-    with scope `repo:publis_repo` and store it in your local `.env` file.
+Providers are used to gather together the project assets and serve them in different formats.
+A base `Provider` class can be found in `src/providers/Provider.js`, you can extend directly from it or use
+others this library provides.
 
-1. import and create an instance of your preferred provider:
+### Base
 
-   ```js
-   import { GithubProvider, ENC_BASE64 } from 'studio-backend';
-   
-   const token = process.env.GITHUB_TOKEN; // store this
-   const github = new GithubProvider({
-       token,
-       repo: null,
-       branch: null,
-       owner: null
-   });
-   ```
+**new Provider(config)**
 
-1. add files to be published:
-   ```js
-   github.addFile('index.html', 'Hello World!');
-   github.addFile('img/example.jpg', 'base64 encoded image ...', ENC_BASE64);
-   ```
+The constructor accepts a configuration object.
 
-1. publish them with a message:
-   ```js
-   const pagesUrl = await github.publishFiles({
-       message: 'my awesome AR experience',
-       repo: null,
-       branch: null,
-       owner: null
-   });
-   const branchName = github.branch; // store this
-   ```
+**addFile(path, content, encoding)**
 
-The package will use the PAT to create the repo, the branch, set up Pages, commit all the files and
-trigger a Pages build.
+To add a file you need to provide its path in the file hierarchy, content and encoding.
+Accepted encodings are `utf-8` for textual files and `base64` for text representing images.
 
-**NOTE**: this is still WIP, see `src/index.js` commented code for a working example
+**clearFiles()**
+
+Helper method to clear stored files.
+
+**serveFiles(config)**
+
+This method processes the files and serves them depending on the Provider implementation.
+
+### GitHub Pages
+
+**new Provider(config)**
+
+Accepts the following configuration:
+
+```js
+new GithubProvider({
+    token: 'authorization token', // required, can be a PAT or OAuth token
+    owner: 'username', // automatically retrieved by default
+    repo: 'name of the repository', // defaults to 'arjs-studio-NUMBERS'
+    branch: 'gh-pages' // automatically deploy to Pages by default
+})
+```
+
+**serveFiles(config)**
+
+Commits files to the user's repository and returns a `Promise<string>` with the URL of the deployed Pages.
+
+```js
+provider.serveFiles({
+    message: 'custom commit message',
+    owner: 'custom owner',
+    repo: 'custom repo',
+    branch: 'custom branch'
+})
+```
+
+**Example**
+
+First, create a Personal Access Token from [GitHub Developer Settings](https://github.com/settings/tokens)
+with scope `repo:publis_repo`
+
+Then use it to serve the project:
+
+```js
+import { GithubProvider, ENC_BASE64 } from 'arjs-studio-backend';
+
+const github = new GithubProvider({
+   token: 'YOUR-TOKEN'
+});
+github.addFile('index.html', 'Hello World!');
+github.addFile('img/example.jpg', 'base64 encoded image ...', ENC_BASE64);
+const pagesUrl = await github.serveFiles({
+   message: 'my awesome AR experience'
+});
+const branchName = github.branch; // store this
+```
+
+The package will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
+a Pages build.
 
 **TODO**: storage service for saving token, repo and branch name

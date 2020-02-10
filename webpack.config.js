@@ -1,17 +1,11 @@
 'use strict';
 
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { DefinePlugin } = require('webpack');
-const dotenv = require('dotenv');
-dotenv.config();
-
-const production = process.env.production;
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = function (env, argv) {
+    const production = env.production;
+
     return {
         mode: production
             ? 'production'
@@ -26,66 +20,28 @@ module.exports = function (env, argv) {
         },
 
         output: {
-            path: path.resolve(__dirname, '../dist'),
+            path: path.resolve(__dirname, './dist'),
             filename: production
-                ? 'app.min.js'
-                : 'app.js'
+                ? 'arjs-studio-backend.min.js'
+                : 'arjs-studio-backend.js',
+            library: 'ARjsStudioBackend',
+            libraryTarget: 'umd'
         },
 
         optimization: production
             ? {
+                minimize: true,
                 minimizer: [
-                    new UglifyJsPlugin({
-                        cache: true,
-                        parallel: true,
+                    new TerserPlugin({
                         sourceMap: true,
-                        uglifyOptions: {
-                            toplevel: true, //
-                            compress: {
-                                passes: 2, // better for mangle
-                                toplevel: true // better for mangle
-                            },
-                            output: {
-                                beautify: false
-                            },
-                            mangle: {
-                                toplevel: true
-                            }
-                        }
-                    }),
-                    new OptimizeCssAssetsPlugin({})
+                        extractComments: false
+                        /*terserOptions: {
+                            module: true
+                        }*/
+                    })
                 ]
             }
             : {},
-
-        plugins: production
-            ? [
-                new HtmlWebpackPlugin({
-                    template: 'index.html',
-                    filename: 'index.html',
-                    minify: {
-                        removeComments: true,
-                        collapseWhitespace: true,
-                        collapseInlineTagWhitespace: true,
-                        removeAttributeQuotes: true,
-                        removeRedundantAttributes: true
-                    }
-                }),
-                new CopyWebpackPlugin([{
-                    from: path.resolve(__dirname, '../static'),
-                    to: 'static'
-                }])
-            ]
-            : [
-                new HtmlWebpackPlugin({
-                    template: 'index.html',
-                    filename: 'index.html',
-                    minify: false
-                }),
-                new DefinePlugin({
-                    "process.env": JSON.stringify(dotenv.config().parsed)
-                })
-            ],
 
         module: {
             rules: [
@@ -100,13 +56,6 @@ module.exports = function (env, argv) {
                             ]
                         }
                     }
-                },
-                {
-                    test: /\.html$/,
-                    exclude: /node_modules/,
-                    use: [
-                        'html-loader'
-                    ]
                 }
             ]
         },
@@ -115,20 +64,6 @@ module.exports = function (env, argv) {
             colors: true,
             chunks: false,
             modules: false
-        },
-
-        devServer: production
-            ? {
-                compress: true,
-                contentBase: path.join(__dirname, 'dist'),
-                open: false,
-                stats: {
-                    colors: true,
-                    chunks: false,
-                    modules: false
-                },
-                watchContentBase: true
-            }
-            : {}
+        }
     };
 };

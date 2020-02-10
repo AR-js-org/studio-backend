@@ -1,20 +1,17 @@
-import Octokit from '@octokit/rest';
-import { Provider as BaseProvider } from './provider';
+import { Octokit } from '@octokit/rest';
+import { Provider as BaseProvider, ENC_UTF8 } from './provider';
 
-export const MODE_FILE = '100644';
-export const MODE_EXEC = '100755';
-export const MODE_SUBDIR = '040000';
-export const MODE_SUBMOD = '160000';
-export const MODE_SYMLINK = '120000';
+const MODE_FILE = '100644';
+const MODE_EXEC = '100755';
+const MODE_SUBDIR = '040000';
+const MODE_SUBMOD = '160000';
+const MODE_SYMLINK = '120000';
 
-export const TYPE_BLOB = 'blob';
-export const TYPE_TREE = 'tree';
-export const TYPE_COMMIT = 'commit';
+const TYPE_BLOB = 'blob';
+const TYPE_TREE = 'tree';
+const TYPE_COMMIT = 'commit';
 
-export const ENC_UTF8 = 'utf-8';
-export const ENC_BASE64 = 'base64';
-
-export const DEFAULT_PAGE_BRANCH = 'gh-pages';
+const DEFAULT_PAGE_BRANCH = 'gh-pages';
 
 const rndRepoName = () => {
     const max = 999999;
@@ -72,7 +69,7 @@ export class GithubProvider extends BaseProvider {
      * @param {string|null} [owner] owner login name (automatically retrieved if null)
      * @return {Promise<string|null>} Pages URL for this repository
      */
-    async publishFiles ({ message, repo = null, branch = null, owner = null }) {
+    async serveFiles ({ message, repo = null, branch = null, owner = null }) {
         if (this.files.length === 0) {
             console.warn('No files to publish');
             return null;
