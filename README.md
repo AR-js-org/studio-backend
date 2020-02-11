@@ -10,15 +10,24 @@ independent from the concrete frontend implementation.
 
 The following static methods are available for the frontend side:
 
-[x] Barcode Marker Generator, given matrix type and value (number)
-[ ] Pattern Marker Generator (marker image + .patt file), given input image and default parameters
-[ ] Pattern Marker Generator (marker image + .patt file), given input image and custom parameters
-[ ] Creation and Output for `a-scene` element of Marker Based app, with default parameters
-[ ] Creation and Output for `a-scene` element of Location Based app, with default parameters
-[ ] Creation and Output for `a-scene` element of NFT Based app, with default parameters
-[ ] Creation and Output of `a-marker` element, with custom parameters (pattern, barcode markers)
-[ ] Creation and Output of `gps-entity-place` element, with custom parameters
-[ ] Creation and Output of `a-nft` element, with custom parameters
+- [x] Barcode Marker Generator, given matrix type and value (number)
+
+- [ ] Pattern Marker Generator (marker image + .patt file), given input image and default parameters
+
+- [ ] Pattern Marker Generator (marker image + .patt file), given input image and custom parameters
+
+- [ ] Creation and Output for `a-scene` element of Marker Based app, with default parameters
+
+- [ ] Creation and Output for `a-scene` element of Location Based app, with default parameters
+
+- [ ] Creation and Output for `a-scene` element of NFT Based app, with default parameters
+
+- [ ] Creation and Output of `a-marker` element, with custom parameters (pattern, barcode markers)
+
+- [ ] Creation and Output of `gps-entity-place` element, with custom parameters
+
+- [ ] Creation and Output of `a-nft` element, with custom parameters
+
 more to add
 
 ## Developing
