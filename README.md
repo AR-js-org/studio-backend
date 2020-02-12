@@ -12,9 +12,9 @@ The following static methods are available for the frontend side:
 
 - [x] Barcode Marker Generator, given matrix type and value (number)
 
-- [ ] Pattern Marker Generator (marker image + .patt file), given input image and default parameters
+- [x] Pattern Marker Generator (marker image + .patt file), given input image and default parameters
 
-- [ ] Pattern Marker Generator (marker image + .patt file), given input image and custom parameters
+- [x] Pattern Marker Generator (marker image + .patt file), given input image and custom parameters
 
 - [ ] Creation and Output for `a-scene` element of Marker Based app, with default parameters
 
@@ -121,4 +121,7 @@ const branchName = github.branch; // store this
 The provider will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
 a Pages build.
 
-**TODO**: storage service for saving token, repo and branch name
+## TODO
+
+- storage service
+    - [github provider] save token, repo and branch name
