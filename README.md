@@ -50,28 +50,9 @@ Providers are used to gather together the project assets and serve them in diffe
 A base `Provider` class can be found in `src/providers/Provider.js`, you can extend directly from it or use
 others this library provides.
 
-### Base
-
-**new Provider()**
-
-The constructor.
-
-**addFile(path, content, encoding)**
-
-To add a file you need to provide its path in the file hierarchy, content and encoding.
-Accepted encodings are `utf-8` for textual files and `base64` for text representing images.
-
-**clearFiles()**
-
-Helper method to clear stored files.
-
-**serveFiles()**
-
-This method processes the files and serves them depending on the Provider implementation.
-
 ### GitHub Pages
 
-**new Provider(config)**
+**new GithubProvider(config)**
 
 Accepts the following configuration:
 
@@ -81,12 +62,18 @@ new GithubProvider({
     owner: 'username', // automatically retrieved by default
     repo: 'name of the repository', // defaults to 'arjs-studio-NUMBERS'
     branch: 'gh-pages' // automatically deploy to Pages by default
-})
+});
 ```
+
+**addFile(path, content, encoding)**
+
+To add a file you need to provide its path in the repository, content and encoding.
+Accepted encodings are `utf-8` for textual files and `base64` for encoded images.
 
 **serveFiles(config)**
 
-Commits files to the user's repository and returns a `Promise<string>` with the URL of the deployed Pages.
+Commits files to the user's repository and returns a `Promise` that resolves to the URL
+of the deployed Pages.
 
 ```js
 provider.serveFiles({
@@ -94,7 +81,7 @@ provider.serveFiles({
     owner: 'custom owner',
     repo: 'custom repo',
     branch: 'custom branch'
-})
+});
 ```
 
 **Example**
@@ -120,6 +107,46 @@ const branchName = github.branch; // store this
 
 The provider will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
 a Pages build.
+
+### Zip file
+
+**new ZipProvider()**
+
+The constructor.
+
+**addFile(path, content, encoding)**
+
+To add a file you need to provider its path in the ZIP, content and encoding.
+Accepted encodings are `utf-8` for textual files, `base64` for encoded images and `binary` if data
+should be treated as raw content.
+
+**serveFiles(config)**
+
+Generates the ZIP file returning a `Promise` that resolves to the requested format.
+
+```js
+provider.serveFiles({
+    type: 'output format', // see ZIP_* constants, defaults to base64
+    compress: 6 // set to 0 to disable compression, defaults to 0
+});
+```
+
+**Example**
+
+```js
+const image = 'base64 encoded image';
+const {
+    ZipProvider,
+    ENC_BASE64
+} = ARjsStudioBackend;
+
+const zip = new ZipProvider();
+zip.addFile('readme.txt', 'Hello world!');
+zip.addFile('images/img.jpg', image, ENC_BASE64);
+const base64 = await zip.serveFiles({ compress: 9 });
+// trigger download
+window.location = `data:application/zip;base64,${base64}`
+```
 
 ## TODO
 

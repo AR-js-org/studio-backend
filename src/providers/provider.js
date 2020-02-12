@@ -27,7 +27,8 @@ export class Provider {
     }
 
     async serveFiles() {
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(this.files));
+        if (this.files.length === 0) {
+            throw new Error('No files to serve');
+        }
     }
 }
