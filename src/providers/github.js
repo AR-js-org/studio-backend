@@ -1,6 +1,7 @@
 import { Octokit } from '@octokit/rest';
 import { Provider as BaseProvider, ENC_UTF8 } from './provider';
 
+/* eslint-disable no-unused-vars */
 const MODE_FILE = '100644';
 const MODE_EXEC = '100755';
 const MODE_SUBDIR = '040000';
@@ -17,11 +18,11 @@ const rndRepoName = () => {
     const max = 999999;
     const min = 100000;
 
-    return `arjs-studio-${ Math.floor(Math.random() * (max - min)) + min }`;
+    return `arjs-studio-${Math.floor(Math.random() * (max - min)) + min}`;
 };
 
 export class GithubProvider extends BaseProvider {
-    constructor ({ token, repo = null, branch = null, owner = null } = {}) {
+    constructor({ token, repo = null, branch = null, owner = null } = {}) {
         super();
 
         if (!token) {
@@ -32,18 +33,18 @@ export class GithubProvider extends BaseProvider {
         this.repo = repo || rndRepoName();
         this.branch = branch || DEFAULT_PAGE_BRANCH;
         this.client = new Octokit({
-            auth: token
+            auth: token,
         });
     }
 
-    setOwnerName (owner) {
+    setOwnerName(owner) {
         this.owner = owner;
     }
 
     /**
      * @return {Promise<Octokit.UsersGetAuthenticatedResponse>}
      */
-    getOwner () {
+    getOwner() {
         return this.client.users.getAuthenticated()
             .then(({ data }) => data);
     }
@@ -55,13 +56,13 @@ export class GithubProvider extends BaseProvider {
      * @param {string} content
      * @param {string} [encoding] utf-8 or base64
      */
-    addFile (path, content, encoding = ENC_UTF8) {
+    addFile(path, content, encoding = ENC_UTF8) {
         this.files.push({
             content,
             encoding,
             path,
             mode: MODE_FILE,
-            type: TYPE_BLOB
+            type: TYPE_BLOB,
         });
     }
 
@@ -74,9 +75,9 @@ export class GithubProvider extends BaseProvider {
      * @param {string|null} [owner] owner login name (automatically retrieved if null)
      * @return {Promise<string|null>} Pages URL for this repository
      */
-    async serveFiles ({ message, repo = null, branch = null, owner = null }) {
+    async serveFiles({ message, repo = null, branch = null, owner = null }) {
         if (this.files.length === 0) {
-            console.warn('No files to publish');
+            // console.warn('No files to publish');
             return null;
         }
 
@@ -92,17 +93,13 @@ export class GithubProvider extends BaseProvider {
         await this.getOrCreateRepo(this.repo);
         const ghBranch = await this.getOrCreateBranch(this.branch);
         const blobFiles = await Promise.all(
-            this.files.map((file) => {
-                return this.createBlob(file.content, file.encoding)
-                .then((data) => {
-                    return {
-                        path: file.path,
-                        sha: data.sha,
-                        mode: file.mode,
-                        type: file.type
-                    };
-                });
-            })
+            this.files.map((file) => this.createBlob(file.content, file.encoding)
+                .then((data) => ({
+                    path: file.path,
+                    sha: data.sha,
+                    mode: file.mode,
+                    type: file.type,
+                })))
         );
         const tree = await this.createTree(blobFiles);
         const commit = await this.createCommit(message, tree.sha, [ghBranch.commit.sha]);
@@ -117,20 +114,20 @@ export class GithubProvider extends BaseProvider {
         return await this.getPagesUrl();
     }
 
-    async getOrCreateRepo (name) {
+    async getOrCreateRepo(name) {
         try {
             return await this.getRepo(name);
         } catch (e) {
-            console.warn('repo not found, creating');
+            // console.warn('repo not found, creating');
             return await this.createRepo(name);
         }
     }
 
-    async getOrCreateBranch (name) {
+    async getOrCreateBranch(name) {
         try {
             return await this.getBranch(name);
         } catch (e) {
-            console.warn('branch not found, creating');
+            // console.warn('branch not found, creating');
             const masterRef = await this.getRef('master');
             await this.createBranch(masterRef.object.sha, name);
             return await this.getBranch(name);
@@ -145,14 +142,14 @@ export class GithubProvider extends BaseProvider {
      * @param {string} name repository name
      * @return {Promise<Octokit.ReposCreateForAuthenticatedUserResponse>}
      */
-    createRepo (name) {
+    createRepo(name) {
         return this.client.repos.createForAuthenticatedUser({
             name,
-            auto_init: true // first commit
+            auto_init: true, // first commit
         }).then(({ data }) => data);
     }
 
-    setRepoName (repo) {
+    setRepoName(repo) {
         this.repo = repo;
     }
 
@@ -160,10 +157,10 @@ export class GithubProvider extends BaseProvider {
      * @param {string} name repository name
      * @return {Promise<Octokit.ReposGetResponse>}
      */
-    getRepo (name) {
+    getRepo(name) {
         return this.client.repos.get({
             owner: this.owner,
-            repo: name
+            repo: name,
         }).then(({ data }) => data);
     }
 
@@ -174,12 +171,12 @@ export class GithubProvider extends BaseProvider {
      * @param {string} [branch] new branch name (default to Pages branch)
      * @return {Promise<Octokit.GitCreateRefResponse>}
      */
-    createBranch (sha, branch = DEFAULT_PAGE_BRANCH) {
+    createBranch(sha, branch = DEFAULT_PAGE_BRANCH) {
         return this.client.git.createRef({
             owner: this.owner,
             repo: this.repo,
-            ref: `refs/heads/${ branch }`,
-            sha // original reference
+            ref: `refs/heads/${branch}`,
+            sha, // original reference
         }).then(({ data }) => data);
     }
 
@@ -189,15 +186,15 @@ export class GithubProvider extends BaseProvider {
      * @param name
      * @return {Promise<Octokit.ReposGetBranchResponse>}
      */
-    getBranch (name) {
+    getBranch(name) {
         return this.client.repos.getBranch({
             owner: this.owner,
             repo: this.repo,
-            branch: name
+            branch: name,
         }).then(({ data }) => data);
     }
 
-    setBranchName (branch) {
+    setBranchName(branch) {
         this.branch = branch;
     }
 
@@ -210,11 +207,11 @@ export class GithubProvider extends BaseProvider {
      * @param {string} [branch] branch name (default to master)
      * @return {Promise<Octokit.GitGetRefResponse>}
      */
-    getRef (branch = 'master') {
+    getRef(branch = 'master') {
         return this.client.git.getRef({
             owner: this.owner,
             repo: this.repo,
-            ref: `heads/${ branch }`
+            ref: `heads/${branch}`,
         }).then(({ data }) => data);
     }
 
@@ -222,13 +219,13 @@ export class GithubProvider extends BaseProvider {
      * @param {string} [branch] branch on which to enable Pages (default to Pages branch)
      * @return {Promise<Octokit.Response<Octokit.ReposEnablePagesSiteResponse>>}
      */
-    enablePages (branch = this.branch) {
+    enablePages(branch = this.branch) {
         return this.client.repos.enablePagesSite({
             owner: this.owner,
             repo: this.repo,
             source: {
-                branch
-            }
+                branch,
+            },
         });
     }
 
@@ -237,20 +234,20 @@ export class GithubProvider extends BaseProvider {
      *
      * @return {Promise<Octokit.ReposRequestPageBuildResponse>}
      */
-    rebuildPages () {
+    rebuildPages() {
         return this.client.repos.requestPageBuild({
             owner: this.owner,
-            repo: this.repo
+            repo: this.repo,
         }).then(({ data }) => data);
     }
 
     /**
      * @return {Promise<string>}
      */
-    getPagesUrl () {
+    getPagesUrl() {
         return this.client.repos.getPages({
             owner: this.owner,
-            repo: this.repo
+            repo: this.repo,
         }).then(({ data }) => data.html_url);
     }
 
@@ -263,14 +260,14 @@ export class GithubProvider extends BaseProvider {
      * @param {string} [branch] branch to commit to (default to Pages branch)
      * @return {Promise<Octokit.ReposCreateOrUpdateFileResponse>}
      */
-    commitFile (content, path, message, branch = this.branch) {
+    commitFile(content, path, message, branch = this.branch) {
         return this.client.repos.createOrUpdateFile({
             owner: this.owner,
             repo: this.repo,
             path,
             message,
             content, // base64
-            branch
+            branch,
         }).then(({ data }) => data);
     }
 
@@ -283,7 +280,7 @@ export class GithubProvider extends BaseProvider {
      * @param {GitFile[]} files list of blobs
      * @return {Promise<Octokit.GitCreateTreeResponse>}
      */
-    createTree (files) {
+    createTree(files) {
         /**
          * @typedef GitFile
          * @property {string} path repository path
@@ -296,7 +293,7 @@ export class GithubProvider extends BaseProvider {
         return this.client.git.createTree({
             owner: this.owner,
             repo: this.repo,
-            tree: files
+            tree: files,
         }).then(({ data }) => data);
     }
 
@@ -309,12 +306,12 @@ export class GithubProvider extends BaseProvider {
      * @param [encoding] blob encoding, either 'utf-8' or 'base64' (default to 'utf-8')
      * @return {Promise<Octokit.GitCreateBlobResponse>}
      */
-    createBlob (content, encoding = ENC_UTF8) {
+    createBlob(content, encoding = ENC_UTF8) {
         return this.client.git.createBlob({
             owner: this.owner,
             repo: this.repo,
             content,
-            encoding // either 'utf-8' or 'base64'
+            encoding, // either 'utf-8' or 'base64'
         }).then(({ data }) => data);
     }
 
@@ -329,13 +326,13 @@ export class GithubProvider extends BaseProvider {
      * @param {string[]} [parents] array of parent commit SHA strings
      * @return {Promise<Octokit.GitCreateCommitResponse>}
      */
-    createCommit (message, tree, parents = []) {
+    createCommit(message, tree, parents = []) {
         return this.client.git.createCommit({
             owner: this.owner,
             repo: this.repo,
             message,
             tree, // SHA
-            parents
+            parents,
         }).then(({ data }) => data);
     }
 
@@ -349,13 +346,13 @@ export class GithubProvider extends BaseProvider {
      * @param {string} [branch] branch to update (default to Pages branch)
      * @return {Promise<Octokit.GitUpdateRefResponse>}
      */
-    updateRef (sha, branch = this.branch) {
+    updateRef(sha, branch = this.branch) {
         return this.client.git.updateRef({
             owner: this.owner,
             repo: this.repo,
-            ref: `heads/${ branch }`,
+            ref: `heads/${branch}`,
             sha,
-            force: true // ignore errors
+            force: true, // ignore errors
         }).then(({ data }) => data);
     }
 }

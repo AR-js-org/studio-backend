@@ -49,11 +49,11 @@ export class BarcodeMarkerGenerator {
     constructor(matrixTypeId, value) {
         this.typeDesc = BARCODE_MATRIX_TYPES.find(x => x.id === matrixTypeId);
         if (!this.typeDesc)
-            throw new Error('unknown barcode matrix type id: ' + matrixTypeId);
+            throw new Error(`unknown barcode matrix type id: ${matrixTypeId}`);
         if (!Number.isInteger(value))
-            throw new Error('barcode value is not an integer: ' + value);
+            throw new Error(`barcode value is not an integer: ${value}`);
         if (value < 0 || value >= this.typeDesc.maxNumMarkers)
-            throw new Error('barcode value out of range: ' + value);
+            throw new Error(`barcode value out of range: ${value}`);
 
         this.value = value;
         this.valueEncoded = this.typeDesc.encoder(value);
@@ -79,10 +79,10 @@ export class BarcodeMarkerGenerator {
 
     asSVGDataURI() {
         return (
-            'data:image/svg+xml,' +
-            encodeURIComponent(this.asSVG())
-                .replace(/'/g, '%27')
-                .replace(/"/g, '%22')
+            `data:image/svg+xml,${ 
+                encodeURIComponent(this.asSVG())
+                    .replace(/'/g, '%27')
+                    .replace(/"/g, '%22')}`
         );
     }
 

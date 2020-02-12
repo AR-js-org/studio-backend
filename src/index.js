@@ -10,5 +10,5 @@ export {
     MarkerModule,
     NFTModule,
     GithubProvider,
-    ENC_BASE64
+    ENC_BASE64,
 };

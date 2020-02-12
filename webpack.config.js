@@ -51,7 +51,8 @@ module.exports = function (env, argv) {
                         options: {
                             presets: [
                                 [ '@babel/preset-env', { targets: ['> 1%', 'last 2 versions', 'not ie <= 8', 'not dead'] } ]
-                            ]
+                            ],
+                            plugins: ['@babel/plugin-transform-runtime']
                         }
                     }
                 }

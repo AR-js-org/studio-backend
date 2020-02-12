@@ -52,9 +52,9 @@ others this library provides.
 
 ### Base
 
-**new Provider(config)**
+**new Provider()**
 
-The constructor accepts a configuration object.
+The constructor.
 
 **addFile(path, content, encoding)**
 
@@ -65,7 +65,7 @@ Accepted encodings are `utf-8` for textual files and `base64` for text represent
 
 Helper method to clear stored files.
 
-**serveFiles(config)**
+**serveFiles()**
 
 This method processes the files and serves them depending on the Provider implementation.
 

@@ -34,7 +34,7 @@ export class PatternMarkerGenerator {
                 for (let y = 0; y < imageData.height; y++) {
                     for (let x = 0; x < imageData.width; x++) {
                         if (x !== 0)
-                            patternString += ' '
+                            patternString += ' ';
 
                         const offset = (y * imageData.width * 4) + (x * 4) + channelOffset;
                         const value = imageData.data[offset];
