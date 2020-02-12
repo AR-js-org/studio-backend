@@ -15,14 +15,11 @@ To run the internal test suite, execute `npm run test`.
 
 ## Usage
 
-For browser usage, download the library from the `dist` directory and import after required libraries:
+For browser usage, download the library from the `dist` directory and import in your page:
 
 ```html
-<script src="js/octokit-rest.min.js"></script>
 <script src="js/arjs-studio-backend.min.js"></script>
 ```
-
-You can get Octokit REST library from: https://octokit.github.io/rest.js/
 
 ## Providers
 
@@ -98,7 +95,7 @@ const pagesUrl = await github.serveFiles({
 const branchName = github.branch; // store this
 ```
 
-The package will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
+The provider will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
 a Pages build.
 
 **TODO**: storage service for saving token, repo and branch name

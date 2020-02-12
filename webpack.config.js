@@ -26,10 +26,6 @@ module.exports = function (env, argv) {
             libraryTarget: 'umd'
         },
 
-        externals: {
-            '@octokit/rest': 'Octokit'
-        },
-
         optimization: production
             ? {
                 minimize: true,
