@@ -42,15 +42,7 @@ export class GithubProvider extends BaseProvider {
     }
 
     /**
-     * @return {Promise<Octokit.UsersGetAuthenticatedResponse>}
-     */
-    getOwner() {
-        return this.client.users.getAuthenticated()
-            .then(({ data }) => data);
-    }
-
-    /**
-     * Add file to queue.
+     * Add file to bundle.
      *
      * @param {string} path repository path
      * @param {string} content
@@ -61,8 +53,6 @@ export class GithubProvider extends BaseProvider {
             content,
             encoding,
             path,
-            mode: MODE_FILE,
-            type: TYPE_BLOB,
         });
     }
 
@@ -75,11 +65,8 @@ export class GithubProvider extends BaseProvider {
      * @param {string|null} [owner] owner login name (automatically retrieved if null)
      * @return {Promise<string|null>} Pages URL for this repository
      */
-    async serveFiles({ message, repo = null, branch = null, owner = null }) {
-        if (this.files.length === 0) {
-            // console.warn('No files to publish');
-            return null;
-        }
+    async serveFiles({ message, repo = null, branch = null, owner = null } = {}) {
+        super.serveFiles();
 
         this.owner = owner || this.owner;
         this.repo = repo || this.repo || rndRepoName();
@@ -93,12 +80,13 @@ export class GithubProvider extends BaseProvider {
         await this.getOrCreateRepo(this.repo);
         const ghBranch = await this.getOrCreateBranch(this.branch);
         const blobFiles = await Promise.all(
+            /** @type {Array<GitFile>} */
             this.files.map((file) => this.createBlob(file.content, file.encoding)
                 .then((data) => ({
                     path: file.path,
                     sha: data.sha,
-                    mode: file.mode,
-                    type: file.type,
+                    mode: MODE_FILE,
+                    type: TYPE_BLOB,
                 })))
         );
         const tree = await this.createTree(blobFiles);
@@ -112,6 +100,14 @@ export class GithubProvider extends BaseProvider {
 
         await this.rebuildPages();
         return await this.getPagesUrl();
+    }
+
+    /**
+     * @return {Promise<Octokit.UsersGetAuthenticatedResponse>}
+     */
+    getOwner() {
+        return this.client.users.getAuthenticated()
+            .then(({ data }) => data);
     }
 
     async getOrCreateRepo(name) {
