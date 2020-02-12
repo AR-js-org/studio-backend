@@ -21,8 +21,13 @@ const rndRepoName = () => {
 };
 
 export class GithubProvider extends BaseProvider {
-    constructor ({ token, repo = null, branch = null, owner = null }) {
+    constructor ({ token, repo = null, branch = null, owner = null } = {}) {
         super();
+
+        if (!token) {
+            throw new Error('Missing required token parameter');
+        }
+
         this.owner = owner;
         this.repo = repo || rndRepoName();
         this.branch = branch || DEFAULT_PAGE_BRANCH;

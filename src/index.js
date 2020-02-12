@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
 import { MarkerModule } from './modules/marker';
 import { NFTModule } from './modules/nft';

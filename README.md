@@ -13,10 +13,16 @@ installed.
 
 To run the internal test suite, execute `npm run test`.
 
-The project uses Webpack + Babel. For local development, edit the entrypoint file `index.js` and
-run `yarn install && yarn serve`
-
 ## Usage
+
+For browser usage, download the library from the `dist` directory and import after required libraries:
+
+```html
+<script src="js/octokit-rest.min.js"></script>
+<script src="js/arjs-studio-backend.min.js"></script>
+```
+
+You can get Octokit REST library from: https://octokit.github.io/rest.js/
 
 ## Providers
 
@@ -74,12 +80,12 @@ provider.serveFiles({
 **Example**
 
 First, create a Personal Access Token from [GitHub Developer Settings](https://github.com/settings/tokens)
-with scope `repo:publis_repo`
+with scope `repo:publis_repo`.
 
 Then use it to serve the project:
 
 ```js
-import { GithubProvider, ENC_BASE64 } from 'arjs-studio-backend';
+const { GithubProvider, ENC_BASE64 } = ARjsStudioBackend;
 
 const github = new GithubProvider({
    token: 'YOUR-TOKEN'

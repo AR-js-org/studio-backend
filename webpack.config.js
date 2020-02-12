@@ -15,9 +15,7 @@ module.exports = function (env, argv) {
             ? 'source-map'
             : 'cheap-module-eval-source-map',
 
-        entry: {
-            app: './src/index.js'
-        },
+        entry: './src/index.js',
 
         output: {
             path: path.resolve(__dirname, './dist'),
@@ -26,6 +24,10 @@ module.exports = function (env, argv) {
                 : 'arjs-studio-backend.js',
             library: 'ARjsStudioBackend',
             libraryTarget: 'umd'
+        },
+
+        externals: {
+            '@octokit/rest': 'Octokit'
         },
 
         optimization: production
