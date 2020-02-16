@@ -1,43 +1,50 @@
 import * as encoders from './matrix-encoders';
 
+export const MATRIX_3X3_HAMMING_63 = '3x3_hamming_6_3';
+export const MATRIX_3X3_PARITY_65 = '3x3_parity_6_5';
+export const MATRIX_4X4_BCH_1355 = '4x4_bch_13_5_5';
+export const MATRIX_4X4_BCH_1393 = '4x4_bch_13_9_3';
+export const MATRIX_5X5_BCH_2277 = '5x5_bch_22_7_7';
+export const MATRIX_5X5_BCH_22125 = '5x5_bch_22_12_5';
+
 const BARCODE_MATRIX_TYPES = [
     {
-        id: '3x3_hamming_6_3',
+        id: MATRIX_3X3_HAMMING_63,
         maxNumMarkers: 8,
         hamming: 3,
         matrixSize: 3,
         encoder: encoders.encode_3x3_hamming_6_3,
     },
     {
-        id: '3x3_parity_6_5',
+        id: MATRIX_3X3_PARITY_65,
         maxNumMarkers: 32,
         hamming: 1,
         matrixSize: 3,
         encoder: encoders.encode_3x3_parity_6_5,
     },
     {
-        id: '4x4_bch_13_5_5',
+        id: MATRIX_4X4_BCH_1355,
         maxNumMarkers: 32,
         hamming: 5,
         matrixSize: 4,
         encoder: encoders.encode_4x4_bch_13_5_5,
     },
     {
-        id: '4x4_bch_13_9_3',
+        id: MATRIX_4X4_BCH_1393,
         maxNumMarkers: 512,
         hamming: 3,
         matrixSize: 4,
         encoder: encoders.encode_4x4_bch_13_9_3,
     },
     {
-        id: '5x5_bch_22_7_7',
+        id: MATRIX_5X5_BCH_2277,
         maxNumMarkers: 128,
         hamming: 7,
         matrixSize: 5,
         encoder: encoders.encode_5x5_bch_22_7_7,
     },
     {
-        id: '5x5_bch_22_12_5',
+        id: MATRIX_5X5_BCH_22125,
         maxNumMarkers: 4096,
         hamming: 5,
         matrixSize: 5,

@@ -2,6 +2,14 @@ import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
 import { MarkerModule } from './modules/marker';
 import { NFTModule } from './modules/nft';
+import {
+    MATRIX_3X3_HAMMING_63,
+    MATRIX_3X3_PARITY_65,
+    MATRIX_4X4_BCH_1355,
+    MATRIX_4X4_BCH_1393,
+    MATRIX_5X5_BCH_2277,
+    MATRIX_5X5_BCH_22125,
+} from './modules/marker/tools/barcode-marker-generator';
 
 import {
     ENC_UTF8,
@@ -20,6 +28,12 @@ import {
 
 export {
     LocationModule,
+    MATRIX_3X3_HAMMING_63,
+    MATRIX_3X3_PARITY_65,
+    MATRIX_4X4_BCH_1355,
+    MATRIX_4X4_BCH_1393,
+    MATRIX_5X5_BCH_2277,
+    MATRIX_5X5_BCH_22125,
     MarkerModule,
     NFTModule,
     ENC_BASE64,

@@ -44,6 +44,61 @@ For browser usage, download the library from the `dist` directory and import in 
 <script src="js/arjs-studio-backend.min.js"></script>
 ```
 
+## Modules
+
+Modules are used to generate assets like marker files.
+
+### Marker
+
+This module can generate both barcode and pattern markers.
+
+**MarkerModule.getBarcodeMarkerSVGDataURI(matrixTypeId, value)**
+
+This method is used to create a barcode image from a value.
+Accepts a matrix type (see exported `MATRIX_*` constants) and a value and returns a data URI string,
+representing an SVG of the barcode marker.
+
+**MarkerModule.getMarkerPattern(dataURI)**
+
+This method is used to create a `.patt` file from an image.
+Accepts an image as a data URI string and returns a string for the `.patt` file.
+
+**MarkerModule.getFullMarkerImage(dataURI, ratio, size, color)**
+
+This method is used to create the marker image with border from an image.
+Accepts an image as a data URI string, size, ratio and border color for the marker and returns
+a data URI string representing the final marker image.
+
+**Example**
+
+```js
+const { MarkerModule, MATRIX_3X3_HAMMING_63 } = ARjsStudioBackend;
+
+// generate an SVG data URI for the value '8'
+const barcodeMarkerSVG = MarkerModule.getBarcodeMarkerSVGDataURI(MATRIX_3X3_HAMMING_63, 8);
+
+const barcodeImage = new Image();
+barcodeImage.src = barcodeMarkerSVG; // use the image 'load' event to know when image is ready
+
+// ----
+
+// draw the image on an off-screen canvas and use `.toDataURL()` to get a data URI
+const fullMarker = MarkerModule.getFullMarkerImage(imageDataURI, 1.0, 100, 'black');
+const pattFile = MarkerModule.getMarkerPattern(imageDataURI);
+
+const patternImage = new Image();
+patternImage.src = fullMarker; // use the image 'load' event to know when image is ready
+
+const pattFileDownload = document.createElement('a');
+pattFileDownload.href = `data:text/plain;charset=utf-8,${pattFile}`;
+pattFileDownload.download = 'marker.patt'; // filename
+pattFileDownload.click(); // trigger download
+```
+
+### Location (TBI)
+
+### NFT (TBI)
+
 ## Providers
 
 Providers are used to gather together the project assets and serve them in different formats.
@@ -68,7 +123,7 @@ new GithubProvider({
 **addFile(path, content, encoding)**
 
 To add a file you need to provide its path in the repository, content and encoding.
-Accepted encodings are `utf-8` for textual files and `base64` for encoded images.
+Accepted encodings are `utf-8` for textual files and `base64` for encoded images (see exported `ENC_*` constants).
 
 **serveFiles(config)**
 
@@ -118,7 +173,7 @@ The constructor.
 
 To add a file you need to provider its path in the ZIP, content and encoding.
 Accepted encodings are `utf-8` for textual files, `base64` for encoded images and `binary` if data
-should be treated as raw content.
+should be treated as raw content (see exported `ENC_*` constants).
 
 **serveFiles(config)**
 
