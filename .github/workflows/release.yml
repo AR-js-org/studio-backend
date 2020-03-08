@@ -2,14 +2,17 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
+      # TEST
+      - feature/dist-folder
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    #if: "github.event.pull_request.merged && !contains(github.event.commits[0].message, 'skip ci')"
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
@@ -17,20 +20,13 @@ jobs:
       - run: yarn lint
       - run: yarn test
       - run: yarn build
-      - run: |
-          zip --junk-paths arjs-studio-backend.zip dist/*.js
-      - id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./arjs-studio-backend.zip
-          asset_name: arjs-studio-backend.zip
-          asset_content_type: application/zip
+      - name: Commit and tag dist files
+        run: |
+          git config --local user.name "${GITHUB_ACTOR}"
+          git config --local user.email "${GITHUB_ACTOR}@github.com"
+          git add dist/*
+          yarn version --minor --no-git-tag-version
+          TAG="v$(node -p "require('./package.json').version")"
+          git commit -m "- chore: version bump ($TAG)"
+          git tag "$TAG-dev"
+          git push --tags

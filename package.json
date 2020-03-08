@@ -1,6 +1,6 @@
 {
   "name": "studio-backend",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Backend for arjs-studio project",
   "main": "dist/arjs-studio-backend.min.js",
   "repository": "git@github.com:AR-js-org/studio-backend.git",
@@ -36,15 +36,5 @@
     "@octokit/rest": "^16.38.2",
     "jszip": "^3.2.2",
     "regenerator-runtime": "^0.13.3"
-  },
-  "release": {
-    "publish": [
-      {
-        "path": "@semantic-release/github",
-        "assets": [
-          "dist/*.js"
-        ]
-      }
-    ]
   }
 }

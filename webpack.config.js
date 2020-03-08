@@ -3,7 +3,7 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = function (env, argv) {
+module.exports = function(env) {
     const production = env.production;
 
     return {
@@ -15,15 +15,16 @@ module.exports = function (env, argv) {
             ? 'source-map'
             : 'cheap-module-eval-source-map',
 
-        entry: './src/index.js',
+        entry: {
+            'arjs-studio-backend': './src/index.js',
+            'arjs-studio-backend.min': './src/index.js',
+        },
 
         output: {
             path: path.resolve(__dirname, './dist'),
-            filename: production
-                ? 'arjs-studio-backend.min.js'
-                : 'arjs-studio-backend.js',
+            filename: '[name].js',
             library: 'ARjsStudioBackend',
-            libraryTarget: 'umd'
+            libraryTarget: 'umd',
         },
 
         optimization: production
@@ -31,13 +32,14 @@ module.exports = function (env, argv) {
                 minimize: true,
                 minimizer: [
                     new TerserPlugin({
+                        include: /\.min\.js$/,
                         sourceMap: true,
-                        extractComments: false
+                        extractComments: false,
                         /*terserOptions: {
                             module: true
                         }*/
-                    })
-                ]
+                    }),
+                ],
             }
             : {},
 
@@ -50,19 +52,19 @@ module.exports = function (env, argv) {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                [ '@babel/preset-env', { targets: ['> 1%', 'last 2 versions', 'not ie <= 8', 'not dead'] } ]
+                                [ '@babel/preset-env', { targets: ['> 1%', 'last 2 versions', 'not ie <= 8', 'not dead'] } ],
                             ],
-                            plugins: ['@babel/plugin-transform-runtime']
-                        }
-                    }
-                }
-            ]
+                            plugins: ['@babel/plugin-transform-runtime'],
+                        },
+                    },
+                },
+            ],
         },
 
         stats: {
             colors: true,
             chunks: false,
-            modules: false
-        }
+            modules: false,
+        },
     };
 };
