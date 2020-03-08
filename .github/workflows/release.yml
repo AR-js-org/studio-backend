@@ -29,4 +29,4 @@ jobs:
           TAG="v$(node -p "require('./package.json').version")"
           git commit -m "- chore: version bump ($TAG)"
           git tag "$TAG-dev"
-          git push --tags $GITHUB_REF
+          git push --tags origin $GITHUB_REF
