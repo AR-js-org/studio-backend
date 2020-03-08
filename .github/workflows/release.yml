@@ -24,9 +24,9 @@ jobs:
         run: |
           git config --local user.name "${GITHUB_ACTOR}"
           git config --local user.email "${GITHUB_ACTOR}@github.com"
-          git add dist/*
           yarn version --minor --no-git-tag-version
+          git add -A
           TAG="v$(node -p "require('./package.json').version")"
           git commit -m "- chore: version bump ($TAG)"
           git tag "$TAG-dev"
-          git push --tags origin $GITHUB_REF
+          git push --tags origin
