@@ -19,12 +19,19 @@ jobs:
       - run: yarn test
       - run: yarn build
       - name: Commit and tag dist files
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
+          eval "$(ssh-agent -s)"
+          echo "$DEPLOY_KEY" | ssh-add -
+          mkdir -p ~/.ssh/
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --local user.name "${GITHUB_ACTOR}"
           git config --local user.email "${GITHUB_ACTOR}@github.com"
           yarn version --minor --no-git-tag-version
           git add -A
           TAG="v$(node -p "require('./package.json').version")"
-          git commit -m "- chore: version bump ($TAG)"
+          git commit -m "- chore: version bump ($TAG) [skip ci]"
           git tag "$TAG-dev"
           git push --tags origin $GITHUB_REF
+          ssh-agent -k
