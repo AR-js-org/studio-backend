@@ -32,6 +32,7 @@ jobs:
           git add -A
           TAG="v$(node -p "require('./package.json').version")"
           git commit -m "- chore: version bump ($TAG) [skip ci]"
+          git remote set-url origin "$(git config --get remote.origin.url | sed 's#http.*com/#git@github.com:#g')"
           git tag "$TAG"
           git push --tags origin $GITHUB_REF
           ssh-agent -k
