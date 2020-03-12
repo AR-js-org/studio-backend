@@ -32,6 +32,6 @@ jobs:
           git add -A
           TAG="v$(node -p "require('./package.json').version")"
           git commit -m "- chore: version bump ($TAG) [skip ci]"
-          git tag "$TAG-dev"
+          git tag "$TAG"
           git push --tags origin $GITHUB_REF
           ssh-agent -k
