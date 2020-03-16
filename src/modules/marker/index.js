@@ -13,4 +13,16 @@ export class MarkerModule {
     static async getFullMarkerImage(dataURI, ratio, size, color) {
         return await new PatternMarkerGenerator(dataURI).toFullMarker(ratio, size, color);
     }
+
+     generateHtml(matrix_code_type, marker_value, asset_src, path = 'index.html') {
+       const html  = Handlebars.templates.markerBased({
+            matrix_code_type: matrix_code_type,
+            asset_src: asset_src,
+            marker_value: marker_value});
+
+       return {
+         path: path,
+         content: html
+       };
+     }
 }
