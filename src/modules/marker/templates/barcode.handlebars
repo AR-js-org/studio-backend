@@ -10,14 +10,14 @@
 
     <body style='margin : 0px; overflow: hidden;'>
         <a-scene
-            embedded
             vr-mode-ui="enabled: false"
             arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: {{matrixType}};"
+            embedded
         >
             <a-assets>
                 <a-asset-item
                     id="animated-asset"
-                    src="{{assetSrc}}"
+                    src="{{modelSrc}}"
                 ></a-asset-item>
             </a-assets>
 
@@ -27,9 +27,9 @@
                 value="{{markerValue}}"
             >
                 <a-entity
-                    animation-mixer
                     gltf-model="#animated-asset"
                     scale="2 2 2"
+                    animation-mixer
                 ></a-entity>
             </a-marker>
 
