@@ -1,6 +1,12 @@
 import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
-import { MarkerModule } from './modules/marker';
+import {
+    MarkerModule,
+    ASSET_3D,
+    ASSET_IMAGE,
+    ASSET_AUDIO,
+    ASSET_VIDEO,
+} from './modules/marker';
 import { NFTModule } from './modules/nft';
 import {
     MATRIX_3X3_HAMMING_63,
@@ -34,6 +40,10 @@ export {
     MATRIX_4X4_BCH_1393,
     MATRIX_5X5_BCH_2277,
     MATRIX_5X5_BCH_22125,
+    ASSET_3D,
+    ASSET_IMAGE,
+    ASSET_AUDIO,
+    ASSET_VIDEO,
     MarkerModule,
     NFTModule,
     ENC_BASE64,

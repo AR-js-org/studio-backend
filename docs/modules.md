@@ -35,7 +35,7 @@ a data URI string representing the final marker image.
 ```js
 const { MarkerModule, MATRIX_3X3_HAMMING_63 } = ARjsStudioBackend;
 
-// generate an SVG data URI for the value '8'
+// generate an SVG data URI for the value '7'
 const barcodeMarkerSVG = MarkerModule.getBarcodeMarkerSVGDataURI(MATRIX_3X3_HAMMING_63, 7);
 
 const barcodeImage = new Image();

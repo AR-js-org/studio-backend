@@ -1,30 +1,32 @@
-## Marker applications
+## Marker pattern
 
-**MarkerModule.generatePattern3dHtml(pattSrc, modelSrc)**
+**MarkerModule.generatePatternHtml(assetType, pattSrc, assetSrc)**
 
-Generates the `index.html` contents for an AR.js application using a marker pattern and 3d model as AR asset.
-Parameters are the relative paths for `.patt` and `.gltf` files.
-
-**MarkerModule.generatePatternImageHtml(pattSrc, imageSrc)**
-
-Generates the `index.html` contents for an AR.js application using a marker pattern and an image as AR asset.
-Parameters are the relative paths for `.patt` file and the image.
-
-**MarkerModule.generatePatternAudioHtml(pattSrc, audioSrc)**
-
-Generates the `index.html` contents for an AR.js application using a marker pattern and an audio file as AR asset.
-Parameters are the relative paths for `.patt` file and the audio.
-
-**MarkerModule.generatePatternVideoHtml(pattSrc, videoSrc)**
-
-Generates the `index.html` contents for an AR.js application using a marker pattern and a video file as AR asset.
-Parameters are the relative paths for `.patt` file and the video.
+Generate the `index.html` contents for AR.js applications using marker pattern.
+Accepts an asset type (see exported `ASSET_*` constants) and relative paths for `.patt` and asset files.
 
 **Example**
 
 ```js
-const { MarkerModule } = ARjsStudioBackend;
+const { MarkerModule, ASSET_AUDIO } = ARjsStudioBackend;
 
 // generate the index.html for an AR application that uses marker pattern and an audio file as AR asset
-const content = MarkerModule.generatePatternAudioTemplate('/marker.patt', '/assets/audio.mp3');
+const content = MarkerModule.generatePatternHtml(ASSET_AUDIO, '/marker.patt', '/assets/audio.mp3');
+```
+
+## Marker barcode
+
+**MarkerModule.generateBarcodeHtml(matrixType, markerValue, assetSrc)**
+
+Generate the `index.html` contents for AR.js applications using marker barcode.
+Accepts a matrix type (see exported `MATRIX_*` constants), the barcode value represented by the marker and
+asset file.
+
+**Example**
+
+```js
+const { MarkerModule, MATRIX_3X3_HAMMING_63 } = ARjsStudioBackend;
+
+// generate the index.html for an AR application that uses marker barcode and a 3d model file as AR asset
+const content = MarkerModule.generateBarcodeHtml(MATRIX_3X3_HAMMING_63, 7, '/assets/model.gltf');
 ```

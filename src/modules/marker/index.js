@@ -6,6 +6,18 @@ import patternImageTemplate from './templates/pattern.image.handlebars';
 import patternAudioTemplate from './templates/pattern.audio.handlebars';
 import patternVideoTemplate from './templates/pattern.video.handlebars';
 
+export const ASSET_3D = '3d';
+export const ASSET_IMAGE = 'image';
+export const ASSET_AUDIO = 'audio';
+export const ASSET_VIDEO = 'video';
+
+const TEMPLATES = {
+    [ASSET_3D]: pattern3dTemplate,
+    [ASSET_IMAGE]: patternImageTemplate,
+    [ASSET_AUDIO]: patternAudioTemplate,
+    [ASSET_VIDEO]: patternVideoTemplate,
+};
+
 export class MarkerModule {
     static getBarcodeMarkerSVGDataURI(matrixType, value) {
         return new BarcodeMarkerGenerator(matrixType, value).asSVGDataURI();
@@ -19,39 +31,18 @@ export class MarkerModule {
         return await new PatternMarkerGenerator(dataURI).toFullMarker(ratio, size, color);
     }
 
-    static generateBarcodeHtml(matrixType, markerValue, modelSrc) {
+    static generateBarcodeHtml(matrixType, markerValue, assetSrc) {
         return barcodeTemplate({
             matrixType,
             markerValue,
-            modelSrc,
+            assetSrc,
         });
     }
 
-    static generatePattern3dHtml(pattSrc, modelSrc) {
-        return pattern3dTemplate({
+    static generatePatternHtml(assetType, pattSrc, assetSrc) {
+        return TEMPLATES[assetType]({
             pattSrc,
-            modelSrc,
-        });
-    }
-
-    static generatePatternImageHtml(pattSrc, imageSrc) {
-        return patternImageTemplate({
-            pattSrc,
-            imageSrc,
-        });
-    }
-
-    static generatePatternAudioTemplate(pattSrc, audioSrc) {
-        return patternAudioTemplate({
-            pattSrc,
-            audioSrc,
-        });
-    }
-
-    static generatePatternVideoTemplate(pattSrc, videoSrc) {
-        return patternVideoTemplate({
-            pattSrc,
-            videoSrc,
+            assetSrc,
         });
     }
 }
