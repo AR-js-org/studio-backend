@@ -27,6 +27,8 @@
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-mocha-no-only": "^1.1.0",
     "esm": "^3.2.25",
+    "handlebars": "^4.7.3",
+    "handlebars-loader": "^1.7.1",
     "mocha": "^6.2.2",
     "terser-webpack-plugin": "^2.3.4",
     "webpack": "^4.38.0",
@@ -35,8 +37,6 @@
   "dependencies": {
     "@babel/runtime": "^7.8.4",
     "@octokit/rest": "^16.38.2",
-    "file-saver": "^2.0.2",
-    "handlebars": "^4.7.3",
     "jszip": "^3.2.2",
     "regenerator-runtime": "^0.13.3"
   }

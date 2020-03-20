@@ -1,17 +1,11 @@
-import Handlebars from 'handlebars';
+import template from './locationBased.handlebars';
 
 export class LocationModule {
-
-    generateHtml(asset_src, longitude, latitude, path = 'index.html') {
-        const html = Handlebars.templates.locationBased({
-            asset_src,
+    static generateHtml(longitude, latitude, assetSrc) {
+        return template({
             longitude,
             latitude,
+            assetSrc,
         });
-
-        return {
-            path,
-            content: html,
-        };
     }
 }
