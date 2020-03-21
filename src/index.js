@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
+import { Package } from './modules/package/Package'
 import {
     MarkerModule,
     ASSET_3D,
@@ -45,6 +46,7 @@ export {
     ASSET_AUDIO,
     ASSET_VIDEO,
     MarkerModule,
+    Package,
     NFTModule,
     ENC_BASE64,
     ENC_UTF8,
