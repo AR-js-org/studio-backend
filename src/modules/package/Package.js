@@ -43,6 +43,20 @@ export class Package {
 
         const generatedHtml = this.generateHtml();
         provider.addFile('index.html', generatedHtml);
+        // TODO: add AR asset file (could be 3d model, 2d image, audio or video file
+
+        // add files for marker pattern
+        if (this.type === 'pattern') {
+            const { pattFile, markerFile } = this.config;
+            provider.addFile('/assets/marker.patt', pattFile);
+            // TODO: provider expects a base64-encoded image, while MarkerModule.getFullMarkerImage()
+            //  returns a dataURI string
+            provider.addFile('/assets/marker.jpg', markerFile);
+        }
+        if (this.type === 'ntf') {
+            // to be implemented
+            // NTF needs some pre-generated files like 'marker pattern'
+        }
 
         return await provider.serveFiles(serveConfig);
     }
