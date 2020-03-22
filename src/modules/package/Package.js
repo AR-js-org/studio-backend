@@ -24,7 +24,8 @@ export class Package {
         }
     }
 
-    async serveFiles(providerType, providerConfig, serveConfig) {
+    async serveFiles(providerConfig, serveConfig) {
+        const { providerType } = providerConfig;
         let provider = null;
 
         switch (providerType) {
