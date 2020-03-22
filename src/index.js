@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
-import { Package } from './modules/package/Package'
+import { Package } from './modules/package/Package';
 import {
     MarkerModule,
     ASSET_3D,

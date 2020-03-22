@@ -1,12 +1,12 @@
-import {MarkerModule} from '../marker';
+import { MarkerModule } from '../marker';
 
 export class BarcodePackage {
 
-  /**
-   * @param config : object  {matrixType: '', markerValue: '', assetSrc: ''}
-   * @returns generatedHtml(String)
-   */
-  static generateHtml(config) {
-    return  MarkerModule.generateBarcodeHtml(config.matrixType, config.markerValue, config.assetSrc);
-  }
+    /**
+     * @param {{ matrixType: string, markerValue: string, assetSrc: string }} config
+     * @return {string}
+     */
+    static generateHtml(config) {
+        return MarkerModule.generateBarcodeHtml(config.matrixType, config.markerValue, config.assetSrc);
+    }
 }

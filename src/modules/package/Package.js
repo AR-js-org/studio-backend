@@ -1,43 +1,48 @@
-import {PatternPackage} from './PatternPackage';
-import {BarcodePackage} from './BarcodePackage';
+import { PatternPackage } from './PatternPackage';
+import { BarcodePackage } from './BarcodePackage';
+import { ZipProvider, GithubProvider } from '../../providers';
 
 export class Package {
 
-  constructor(type, config) {
-    this.type = type;
-    this.config = config;
-  }
-
-  generateHtml() {
-    if (this.type === 'barcode') {
-      return BarcodePackage.generateHtml(this.config);
+    constructor(type, config) {
+        this.type = type;
+        this.config = config;
     }
-    if (this.type === 'pattern') {
-      return PatternPackage.generateHtml(this.config);
-    }
-    if (this.type === 'location') {
 
+    generateHtml() {
+        if (this.type === 'barcode') {
+            return BarcodePackage.generateHtml(this.config);
+        }
+        if (this.type === 'pattern') {
+            return PatternPackage.generateHtml(this.config);
+        }
+        if (this.type === 'location') {
+            // to be implemented
+        }
+        if (this.type === 'ntf') {
+            // to be implemented
+        }
     }
-  }
 
-  serveFiles(providerType) {
-    const generatedHtml = this.generateHtml();
-    const {
-      ZipProvider,
-      GithubProvider
-    } = ARjsStudioBackend;
+    async serveFiles(providerType, providerConfig, serveConfig) {
+        let provider = null;
 
-    if (providerType === 'zip') {
-      var zipProvider = new ZipProvider();
-      zipProvider.addFile('test.html', generatedHtml);
-      (async () => {
-        const base64 = await zipProvider.serveFiles();
-        // trigger download
-        window.location = `data:application/zip;base64,${base64}`
-      })();
-    } else {
-      const githubProvider = new GithubProvider();
-      //gitHub provider logic
+        switch (providerType) {
+            case 'zip':
+                provider = new ZipProvider();
+                break;
+
+            case 'github':
+                provider = new GithubProvider(providerConfig);
+                break;
+
+            default:
+                throw new Error(`Unknown provider type '${providerType}'`);
+        }
+
+        const generatedHtml = this.generateHtml();
+        provider.addFile('index.html', generatedHtml);
+
+        return await provider.serveFiles(serveConfig);
     }
-  }
 }

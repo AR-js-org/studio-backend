@@ -1,13 +1,12 @@
-import {MarkerModule} from '../marker';
+import { MarkerModule } from '../marker';
 
 export class PatternPackage {
 
-  /**
-   * @param config: object {assetType: '3d/image/audio/video', pattSrc: '',  assetSrc: ''}
-   * @returns generateHtml(String)
-   */
-  static generateHtml(config) {
-    return  MarkerModule.generatePatternHtml(config.assetType, config.pattSrc, config.assetSrc);
-  }
-
+    /**
+     * @param {{ assetType: string, pattSrc: string,  assetSrc: string }} config
+     * @return {string}
+     */
+    static generateHtml(config) {
+        return MarkerModule.generatePatternHtml(config.assetType, config.pattSrc, config.assetSrc);
+    }
 }
