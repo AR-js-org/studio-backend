@@ -1,6 +1,6 @@
 {
   "name": "studio-backend",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Backend for arjs-studio project",
   "main": "dist/arjs-studio-backend.min.js",
   "repository": "git@github.com:AR-js-org/studio-backend.git",
