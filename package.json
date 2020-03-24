@@ -11,7 +11,8 @@
     "test": "npx mocha --require esm test",
     "build": "webpack --env.production --config webpack.config.js",
     "lint": "eslint --ext .js src/",
-    "lint:fix": "eslint --fix --ext .js src/"
+    "lint:fix": "eslint --fix --ext .js src/",
+    "watch": "webpack --env.production --watch --config webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -26,6 +27,8 @@
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-mocha-no-only": "^1.1.0",
     "esm": "^3.2.25",
+    "handlebars": "^4.7.3",
+    "handlebars-loader": "^1.7.1",
     "mocha": "^6.2.2",
     "terser-webpack-plugin": "^2.3.4",
     "webpack": "^4.38.0",

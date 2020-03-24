@@ -58,6 +58,10 @@ module.exports = function(env) {
                         },
                     },
                 },
+                {
+                    test: /\.handlebars$/,
+                    loader: 'handlebars-loader',
+                },
             ],
         },
 
