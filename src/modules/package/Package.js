@@ -60,12 +60,12 @@ export class Package {
                     throw new Error('Barcode-based AR needs a marker value');
                 }
 
-                generatedHtml = MarkerModule.generateBarcodeHtml(this.config.matrixType, this.config.markerValue, `/assets/${this.assetName}`);
+                generatedHtml = MarkerModule.generateBarcodeHtml(this.config.matrixType, this.config.markerValue, `assets/${this.assetName}`);
                 // barcode requires no marker file
                 break;
 
             case AR_PATTERN:
-                generatedHtml = MarkerModule.generatePatternHtml(this.assetType, `/assets/${this.assetName}`);
+                generatedHtml = MarkerModule.generatePatternHtml(this.assetType, `assets/${this.assetName}`);
 
                 if (!this.config.markerPatt) {
                     throw new Error('Pattern-based AR needs a marker.patt file');

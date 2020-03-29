@@ -60,14 +60,9 @@ export class GithubProvider extends BaseProvider {
             auth: token,
         });
 
-        this.owner = owner;
+        this.owner = owner || await this.getOwner();
         this.repo = repo || rndRepoName();
         this.branch = branch || DEFAULT_PAGE_BRANCH;
-
-        if (this.owner === null) {
-            const owner = await this.getOwner();
-            this.owner = owner.login;
-        }
 
         await this.getOrCreateRepo(this.repo);
         const ghBranch = await this.getOrCreateBranch(this.branch);
@@ -95,11 +90,11 @@ export class GithubProvider extends BaseProvider {
     }
 
     /**
-     * @return {Promise<Octokit.UsersGetAuthenticatedResponse>}
+     * @return {Promise<string>}
      */
     getOwner() {
         return this.client.users.getAuthenticated()
-            .then(({ data }) => data);
+            .then(({ data }) => data.login);
     }
 
     async getOrCreateRepo(name) {
