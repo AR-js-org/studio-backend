@@ -16,7 +16,7 @@
             <a-assets>
                 <video
                     id="vid"
-                    src="{{assetSrc}}"
+                    src="{{assetPath}}"
                     preload="auto"
                     response-type="arraybuffer"
                     loop
@@ -31,7 +31,7 @@
             <a-marker
                 type="pattern"
                 preset="custom"
-                url="{{pattSrc}}"
+                url="/assets/marker.patt"
                 videohandler
                 smooth="true"
                 smoothCount="10"

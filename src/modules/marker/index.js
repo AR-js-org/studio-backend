@@ -31,18 +31,17 @@ export class MarkerModule {
         return await new PatternMarkerGenerator(dataURI).toFullMarker(ratio, size, color);
     }
 
-    static generateBarcodeHtml(matrixType, markerValue, assetSrc) {
+    static generateBarcodeHtml(matrixType, markerValue, assetPath) {
         return barcodeTemplate({
             matrixType,
             markerValue,
-            assetSrc,
+            assetPath,
         });
     }
 
-    static generatePatternHtml(assetType, pattSrc, assetSrc) {
+    static generatePatternHtml(assetType, assetPath) {
         return TEMPLATES[assetType]({
-            pattSrc,
-            assetSrc,
+            assetPath,
         });
     }
 }

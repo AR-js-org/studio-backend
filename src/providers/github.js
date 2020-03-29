@@ -13,6 +13,7 @@ const TYPE_TREE = 'tree';
 const TYPE_COMMIT = 'commit';
 
 const DEFAULT_PAGE_BRANCH = 'gh-pages';
+const DEFAULT_COMMIT_MESSAGE = 'built with AR.js Studio';
 
 const rndRepoName = () => {
     const max = 999999;
@@ -22,25 +23,6 @@ const rndRepoName = () => {
 };
 
 export class GithubProvider extends BaseProvider {
-    constructor({ token, repo = null, branch = null, owner = null } = {}) {
-        super();
-
-        if (!token) {
-            throw new Error('Missing required token parameter');
-        }
-
-        this.owner = owner;
-        this.repo = repo || rndRepoName();
-        this.branch = branch || DEFAULT_PAGE_BRANCH;
-        this.client = new Octokit({
-            auth: token,
-        });
-    }
-
-    setOwnerName(owner) {
-        this.owner = owner;
-    }
-
     /**
      * Add file to bundle.
      *
@@ -59,18 +41,28 @@ export class GithubProvider extends BaseProvider {
     /**
      * Publish files creating a commit in a custom branch.
      *
-     * @param {string|null} message commit message
-     * @param {string|null} [repo] repository name (default to random name)
-     * @param {string|null} [branch] branch name (default to 'gh-pages')
-     * @param {string|null} [owner] owner login name (automatically retrieved if null)
-     * @return {Promise<string|null>} Pages URL for this repository
+     * @param {Object} config
+     * @param {string} config.token - GitHub authorization token
+     * @param {string} [config.message] - commit message
+     * @param {string|null} [config.repo] - repository name (default to random name)
+     * @param {string|null} [config.branch] - branch name (default to 'gh-pages')
+     * @param {string|null} [config.owner] - owner login name (automatically retrieved if null)
+     * @return {Promise<string|null>} - Pages URL for this repository
      */
-    async serveFiles({ message, repo = null, branch = null, owner = null } = {}) {
+    async serveFiles({ token, message = DEFAULT_COMMIT_MESSAGE, repo = null, branch = null, owner = null } = {}) {
         super.serveFiles();
 
-        this.owner = owner || this.owner;
-        this.repo = repo || this.repo || rndRepoName();
-        this.branch = branch || this.branch || DEFAULT_PAGE_BRANCH;
+        if (!token) {
+            throw new Error('Missing required token parameter');
+        }
+
+        this.client = new Octokit({
+            auth: token,
+        });
+
+        this.owner = owner;
+        this.repo = repo || rndRepoName();
+        this.branch = branch || DEFAULT_PAGE_BRANCH;
 
         if (this.owner === null) {
             const owner = await this.getOwner();
@@ -99,7 +91,7 @@ export class GithubProvider extends BaseProvider {
         }
 
         await this.rebuildPages();
-        return await this.getPagesUrl();
+        return this.getPagesUrl();
     }
 
     /**
@@ -145,10 +137,6 @@ export class GithubProvider extends BaseProvider {
         }).then(({ data }) => data);
     }
 
-    setRepoName(repo) {
-        this.repo = repo;
-    }
-
     /**
      * @param {string} name repository name
      * @return {Promise<Octokit.ReposGetResponse>}
@@ -188,10 +176,6 @@ export class GithubProvider extends BaseProvider {
             repo: this.repo,
             branch: name,
         }).then(({ data }) => data);
-    }
-
-    setBranchName(branch) {
-        this.branch = branch;
     }
 
     /**
