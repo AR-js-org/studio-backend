@@ -98,6 +98,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(40);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -575,13 +582,6 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
         return data;
     });
 };
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(40);
 
 
 /***/ }),
@@ -1584,7 +1584,7 @@ module.exports = __webpack_require__(81)['default'];
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var support = __webpack_require__(11);
 var nodejsUtils = __webpack_require__(28);
 var GenericWorker = __webpack_require__(6);
@@ -5654,7 +5654,7 @@ module.exports = CompressedObject;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 /**
  * The following functions come from pako, from pako/lib/zlib/crc32.js
@@ -8675,7 +8675,7 @@ function done(stream, er, data) {
 
 "use strict";
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var support = __webpack_require__(11);
 // private property
 var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -8789,7 +8789,7 @@ exports.decode = function(input) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var ConvertWorker = __webpack_require__(158);
 var GenericWorker = __webpack_require__(6);
 var base64 = __webpack_require__(56);
@@ -9027,7 +9027,7 @@ exports.dosPermissions = null;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 
 // the size of the generated chunks
@@ -9150,7 +9150,7 @@ module.exports = DataWorker;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 
 /**
@@ -9188,7 +9188,7 @@ module.exports = DataLengthProbe;
 
 var GenericWorker = __webpack_require__(6);
 var crc32 = __webpack_require__(37);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 /**
  * A worker which calculate the crc32 of the data flowing through.
@@ -9699,7 +9699,7 @@ exports.DATA_DESCRIPTOR = "PK\x07\x08";
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var support = __webpack_require__(11);
 var ArrayReader = __webpack_require__(70);
 var StringReader = __webpack_require__(176);
@@ -9734,7 +9734,7 @@ module.exports = function (data) {
 "use strict";
 
 var DataReader = __webpack_require__(71);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function ArrayReader(data) {
     DataReader.call(this, data);
@@ -9797,7 +9797,7 @@ module.exports = ArrayReader;
 
 "use strict";
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function DataReader(data) {
     this.data = data; // type : see implementation
@@ -9921,7 +9921,7 @@ module.exports = DataReader;
 "use strict";
 
 var ArrayReader = __webpack_require__(70);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function Uint8ArrayReader(data) {
     ArrayReader.call(this, data);
@@ -9970,113 +9970,6 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
 /* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Handlebars = __webpack_require__(16);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "<!doctype html>\n<html>\n    <head>\n        <meta name=\"viewport\" content=\"width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0\">\n    </head>\n\n    <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n    <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js\"></script>\n    <script src=\"https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js\"></script>\n\n    <body style='margin : 0px; overflow: hidden;'>\n        <a-scene\n            loading-screen=\"enabled: false;\"\n            vr-mode-ui=\"enabled: false\"\n            renderer=\"logarithmicDepthBuffer: true;\"\n            arjs=\"sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: "
-    + alias4(((helper = (helper = lookupProperty(helpers,"matrixType") || (depth0 != null ? lookupProperty(depth0,"matrixType") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matrixType","hash":{},"data":data,"loc":{"start":{"line":16,"column":109},"end":{"line":16,"column":123}}}) : helper)))
-    + ";\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"animated-asset\"\n                    src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"assetSrc") || (depth0 != null ? lookupProperty(depth0,"assetSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetSrc","hash":{},"data":data,"loc":{"start":{"line":22,"column":25},"end":{"line":22,"column":37}}}) : helper)))
-    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"barcode\"\n                value=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"markerValue") || (depth0 != null ? lookupProperty(depth0,"markerValue") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"markerValue","hash":{},"data":data,"loc":{"start":{"line":29,"column":23},"end":{"line":29,"column":38}}}) : helper)))
-    + "\"\n            >\n                <a-entity\n                    gltf-model=\"#animated-asset\"\n                    animation-mixer\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
-},"useData":true});
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(16);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n        <script src=\"https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            renderer=\"logarithmicDepthBuffer: true;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"animated-asset\"\n                    src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"assetSrc") || (depth0 != null ? lookupProperty(depth0,"assetSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetSrc","hash":{},"data":data,"loc":{"start":{"line":20,"column":25},"end":{"line":20,"column":37}}}) : helper)))
-    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"pattSrc") || (depth0 != null ? lookupProperty(depth0,"pattSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pattSrc","hash":{},"data":data,"loc":{"start":{"line":28,"column":21},"end":{"line":28,"column":32}}}) : helper)))
-    + "\"\n            >\n                <a-entity\n                    animation-mixer=\"loop: repeat\"\n                    gltf-model=\"#animated-asset\"\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
-},"useData":true});
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(16);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"pattSrc") || (depth0 != null ? lookupProperty(depth0,"pattSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pattSrc","hash":{},"data":data,"loc":{"start":{"line":19,"column":21},"end":{"line":19,"column":32}}}) : helper)))
-    + "\"\n            >\n                <a-image src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"assetSrc") || (depth0 != null ? lookupProperty(depth0,"assetSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetSrc","hash":{},"data":data,"loc":{"start":{"line":21,"column":30},"end":{"line":21,"column":42}}}) : helper)))
-    + "\"></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
-},"useData":true});
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(16);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"sound\"\n                    src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"assetSrc") || (depth0 != null ? lookupProperty(depth0,"assetSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetSrc","hash":{},"data":data,"loc":{"start":{"line":18,"column":25},"end":{"line":18,"column":37}}}) : helper)))
-    + "\"\n                    response-type=\"arraybuffer\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"pattSrc") || (depth0 != null ? lookupProperty(depth0,"pattSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pattSrc","hash":{},"data":data,"loc":{"start":{"line":27,"column":21},"end":{"line":27,"column":32}}}) : helper)))
-    + "\"\n                emitsevent=\"true\"\n            ></a-marker>\n\n            <a-entity\n                id=\"sound-entity\"\n                sound=\"src: #sound\"\n                autoplay=\"false\"\n            ></a-entity>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
-},"useData":true});
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Handlebars = __webpack_require__(16);
-function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style='margin : 0px; overflow: hidden;'>\n        <a-scene\n            vr-mode-ui=\"enabled: false\"\n            loading-screen=\"enabled: false;\"\n            arjs='sourceType: webcam; debugUIEnabled: false;'\n            embedded\n        >\n\n            <a-assets>\n                <video\n                    id=\"vid\"\n                    src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"assetSrc") || (depth0 != null ? lookupProperty(depth0,"assetSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetSrc","hash":{},"data":data,"loc":{"start":{"line":19,"column":25},"end":{"line":19,"column":37}}}) : helper)))
-    + "\"\n                    preload=\"auto\"\n                    response-type=\"arraybuffer\"\n                    loop\n                    crossorigin\n                    webkit-playsinline\n                    autoplay\n                    muted\n                    playsinline\n                ></video>\n            </a-assets>\n\n            <a-marker\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"pattSrc") || (depth0 != null ? lookupProperty(depth0,"pattSrc") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"pattSrc","hash":{},"data":data,"loc":{"start":{"line":34,"column":21},"end":{"line":34,"column":32}}}) : helper)))
-    + "\"\n                videohandler\n                smooth=\"true\"\n                smoothCount=\"10\"\n                smoothTolerance=\"0.01\"\n                smoothThreshold=\"5\"\n            >\n                <a-video\n                    src=\"#vid\"\n                    position=\"0 0.1 0\"\n                    rotation=\"-90 0 0\"\n                ></a-video>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
-},"useData":true});
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
 const { requestLog } = __webpack_require__(100);
 const {
   restEndpointMethods
@@ -10123,7 +10016,7 @@ module.exports = Octokit;
 
 
 /***/ }),
-/* 80 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10150,6 +10043,105 @@ exports.default = global.fetch.bind(global);
 exports.Headers = global.Headers;
 exports.Request = global.Request;
 exports.Response = global.Response;
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(16);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<!doctype html>\n<html>\n    <head>\n        <meta name=\"viewport\" content=\"width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0\">\n    </head>\n\n    <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n    <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js\"></script>\n    <script src=\"https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js\"></script>\n\n    <body style='margin : 0px; overflow: hidden;'>\n        <a-scene\n            loading-screen=\"enabled: false;\"\n            vr-mode-ui=\"enabled: false\"\n            renderer=\"logarithmicDepthBuffer: true;\"\n            arjs=\"sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: "
+    + alias4(((helper = (helper = lookupProperty(helpers,"matrixType") || (depth0 != null ? lookupProperty(depth0,"matrixType") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"matrixType","hash":{},"data":data,"loc":{"start":{"line":16,"column":109},"end":{"line":16,"column":123}}}) : helper)))
+    + ";\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"animated-asset\"\n                    src=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":22,"column":25},"end":{"line":22,"column":38}}}) : helper)))
+    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"barcode\"\n                value=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"markerValue") || (depth0 != null ? lookupProperty(depth0,"markerValue") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"markerValue","hash":{},"data":data,"loc":{"start":{"line":29,"column":23},"end":{"line":29,"column":38}}}) : helper)))
+    + "\"\n            >\n                <a-entity\n                    gltf-model=\"#animated-asset\"\n                    animation-mixer\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+},"useData":true});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(16);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n        <script src=\"https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            renderer=\"logarithmicDepthBuffer: true;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"animated-asset\"\n                    src=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":20,"column":25},"end":{"line":20,"column":38}}}) : helper)))
+    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-entity\n                    animation-mixer=\"loop: repeat\"\n                    gltf-model=\"#animated-asset\"\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+},"useData":true});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(16);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-image src=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":21,"column":30},"end":{"line":21,"column":43}}}) : helper)))
+    + "\"></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+},"useData":true});
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(16);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"sound\"\n                    src=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":18,"column":25},"end":{"line":18,"column":38}}}) : helper)))
+    + "\"\n                    response-type=\"arraybuffer\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n                emitsevent=\"true\"\n            ></a-marker>\n\n            <a-entity\n                id=\"sound-entity\"\n                sound=\"src: #sound\"\n                autoplay=\"false\"\n            ></a-entity>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+},"useData":true});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(16);
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style='margin : 0px; overflow: hidden;'>\n        <a-scene\n            vr-mode-ui=\"enabled: false\"\n            loading-screen=\"enabled: false;\"\n            arjs='sourceType: webcam; debugUIEnabled: false;'\n            embedded\n        >\n\n            <a-assets>\n                <video\n                    id=\"vid\"\n                    src=\""
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":19,"column":25},"end":{"line":19,"column":38}}}) : helper)))
+    + "\"\n                    preload=\"auto\"\n                    response-type=\"arraybuffer\"\n                    loop\n                    crossorigin\n                    webkit-playsinline\n                    autoplay\n                    muted\n                    playsinline\n                ></video>\n            </a-assets>\n\n            <a-marker\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n                videohandler\n                smooth=\"true\"\n                smoothCount=\"10\"\n                smoothTolerance=\"0.01\"\n                smoothThreshold=\"5\"\n            >\n                <a-video\n                    src=\"#vid\"\n                    position=\"0 0.1 0\"\n                    rotation=\"-90 0 0\"\n                ></a-video>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+},"useData":true});
 
 /***/ }),
 /* 81 */
@@ -22167,7 +22159,7 @@ function hasPreviousPage (link) {
 "use strict";
 
 var utf8 = __webpack_require__(17);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 var StreamHelper = __webpack_require__(57);
 var defaults = __webpack_require__(58);
@@ -23833,7 +23825,7 @@ function immediate(task) {
 
 
 var GenericWorker = __webpack_require__(6);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 /**
  * A worker which convert chunks to a specified type.
@@ -23867,7 +23859,7 @@ module.exports = ConvertWorker;
 
 var Readable = __webpack_require__(49).Readable;
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 utils.inherits(NodejsStreamOutputAdapter, Readable);
 
 /**
@@ -24120,7 +24112,7 @@ exports.generateWorker = function (zip, options, comment) {
 var USE_TYPEDARRAY = (typeof Uint8Array !== 'undefined') && (typeof Uint16Array !== 'undefined') && (typeof Uint32Array !== 'undefined');
 
 var pako = __webpack_require__(163);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 
 var ARRAY_TYPE = USE_TYPEDARRAY ? "uint8array" : "array";
@@ -30508,7 +30500,7 @@ module.exports = GZheader;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 var utf8 = __webpack_require__(17);
 var crc32 = __webpack_require__(37);
@@ -31055,7 +31047,7 @@ module.exports = ZipFileWorker;
 "use strict";
 
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var GenericWorker = __webpack_require__(6);
 
 /**
@@ -31135,10 +31127,10 @@ module.exports = NodejsStreamInputAdapter;
 
 "use strict";
 
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var external = __webpack_require__(24);
 var utf8 = __webpack_require__(17);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var ZipEntries = __webpack_require__(175);
 var Crc32Probe = __webpack_require__(61);
 var nodejsUtils = __webpack_require__(28);
@@ -31225,7 +31217,7 @@ module.exports = function(data, options) {
 "use strict";
 
 var readerFor = __webpack_require__(69);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var sig = __webpack_require__(68);
 var ZipEntry = __webpack_require__(178);
 var utf8 = __webpack_require__(17);
@@ -31494,7 +31486,7 @@ module.exports = ZipEntries;
 "use strict";
 
 var DataReader = __webpack_require__(71);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function StringReader(data) {
     DataReader.call(this, data);
@@ -31539,7 +31531,7 @@ module.exports = StringReader;
 "use strict";
 
 var Uint8ArrayReader = __webpack_require__(72);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 
 function NodeBufferReader(data) {
     Uint8ArrayReader.call(this, data);
@@ -31565,7 +31557,7 @@ module.exports = NodeBufferReader;
 "use strict";
 
 var readerFor = __webpack_require__(69);
-var utils = __webpack_require__(0);
+var utils = __webpack_require__(1);
 var CompressedObject = __webpack_require__(36);
 var crc32fn = __webpack_require__(37);
 var utf8 = __webpack_require__(17);
@@ -31878,6 +31870,11 @@ __webpack_require__.d(__webpack_exports__, "ASSET_IMAGE", function() { return /*
 __webpack_require__.d(__webpack_exports__, "ASSET_AUDIO", function() { return /* reexport */ ASSET_AUDIO; });
 __webpack_require__.d(__webpack_exports__, "ASSET_VIDEO", function() { return /* reexport */ ASSET_VIDEO; });
 __webpack_require__.d(__webpack_exports__, "MarkerModule", function() { return /* reexport */ marker_MarkerModule; });
+__webpack_require__.d(__webpack_exports__, "AR_BARCODE", function() { return /* reexport */ AR_BARCODE; });
+__webpack_require__.d(__webpack_exports__, "AR_PATTERN", function() { return /* reexport */ AR_PATTERN; });
+__webpack_require__.d(__webpack_exports__, "AR_LOCATION", function() { return /* reexport */ AR_LOCATION; });
+__webpack_require__.d(__webpack_exports__, "AR_NTF", function() { return /* reexport */ AR_NTF; });
+__webpack_require__.d(__webpack_exports__, "Package", function() { return /* reexport */ Package_Package; });
 __webpack_require__.d(__webpack_exports__, "NFTModule", function() { return /* reexport */ nft_NFTModule; });
 __webpack_require__.d(__webpack_exports__, "ENC_BASE64", function() { return /* reexport */ ENC_BASE64; });
 __webpack_require__.d(__webpack_exports__, "ENC_UTF8", function() { return /* reexport */ ENC_UTF8; });
@@ -31930,16 +31927,845 @@ var location_LocationModule = /*#__PURE__*/function () {
   return LocationModule;
 }();
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(1);
+var regenerator = __webpack_require__(0);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(4);
 var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
 
+// CONCATENATED MODULE: ./src/providers/provider.js
+
+
+
+
+var ENC_UTF8 = 'utf-8';
+var ENC_BASE64 = 'base64';
+/**
+ * @typedef ProviderFile
+ * @property {string} path - file path relative to the container
+ * @property {string} content - file content
+ * @property {string} encoding - content encoding (utf-8, base64)
+ */
+
+var provider_Provider = /*#__PURE__*/function () {
+  function Provider() {
+    classCallCheck_default()(this, Provider);
+
+    /** @type {Array<ProviderFile>} */
+    this.files = [];
+  }
+
+  createClass_default()(Provider, [{
+    key: "addFile",
+    value: function addFile(path, content) {
+      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      this.files.push({
+        path: path,
+        content: content,
+        encoding: encoding
+      });
+    }
+  }, {
+    key: "clearFiles",
+    value: function clearFiles() {
+      this.files = [];
+    }
+  }, {
+    key: "serveFiles",
+    value: function () {
+      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(this.files.length === 0)) {
+                  _context.next = 2;
+                  break;
+                }
+
+                throw new Error('No files to serve');
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function serveFiles() {
+        return _serveFiles.apply(this, arguments);
+      }
+
+      return serveFiles;
+    }()
+  }]);
+
+  return Provider;
+}();
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/get.js
+var get = __webpack_require__(29);
+var get_default = /*#__PURE__*/__webpack_require__.n(get);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(30);
+var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(10);
+var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
+var inherits = __webpack_require__(31);
+var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
+
+// EXTERNAL MODULE: ./node_modules/@octokit/rest/index.js
+var rest = __webpack_require__(74);
+
+// CONCATENATED MODULE: ./src/providers/github.js
+
+
+
+
+
+
+
+
+
+function _createSuper(Derived) { return function () { var Super = getPrototypeOf_default()(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+
+
+/* eslint-disable no-unused-vars */
+
+var MODE_FILE = '100644';
+var MODE_EXEC = '100755';
+var MODE_SUBDIR = '040000';
+var MODE_SUBMOD = '160000';
+var MODE_SYMLINK = '120000';
+var TYPE_BLOB = 'blob';
+var TYPE_TREE = 'tree';
+var TYPE_COMMIT = 'commit';
+var DEFAULT_PAGE_BRANCH = 'gh-pages';
+var DEFAULT_COMMIT_MESSAGE = 'built with AR.js Studio';
+
+var rndRepoName = function rndRepoName() {
+  var max = 999999;
+  var min = 100000;
+  return "arjs-studio-".concat(Math.floor(Math.random() * (max - min)) + min);
+};
+
+var github_GithubProvider = /*#__PURE__*/function (_BaseProvider) {
+  inherits_default()(GithubProvider, _BaseProvider);
+
+  var _super = _createSuper(GithubProvider);
+
+  function GithubProvider() {
+    classCallCheck_default()(this, GithubProvider);
+
+    return _super.apply(this, arguments);
+  }
+
+  createClass_default()(GithubProvider, [{
+    key: "addFile",
+
+    /**
+     * Add file to bundle.
+     *
+     * @param {string} path repository path
+     * @param {string} content
+     * @param {string} [encoding] utf-8 or base64
+     */
+    value: function addFile(path, content) {
+      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ENC_UTF8;
+      this.files.push({
+        content: content,
+        encoding: encoding,
+        path: path
+      });
+    }
+    /**
+     * Publish files creating a commit in a custom branch.
+     *
+     * @param {Object} config
+     * @param {string} config.token - GitHub authorization token
+     * @param {string} [config.message] - commit message
+     * @param {string|null} [config.repo] - repository name (default to random name)
+     * @param {string|null} [config.branch] - branch name (default to 'gh-pages')
+     * @param {string|null} [config.owner] - owner login name (automatically retrieved if null)
+     * @return {Promise<string|null>} - Pages URL for this repository
+     */
+
+  }, {
+    key: "serveFiles",
+    value: function () {
+      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+        var _this = this;
+
+        var _ref,
+            token,
+            _ref$message,
+            message,
+            _ref$repo,
+            repo,
+            _ref$branch,
+            branch,
+            _ref$owner,
+            owner,
+            ghBranch,
+            blobFiles,
+            tree,
+            commit,
+            _args = arguments;
+
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _ref = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, token = _ref.token, _ref$message = _ref.message, message = _ref$message === void 0 ? DEFAULT_COMMIT_MESSAGE : _ref$message, _ref$repo = _ref.repo, repo = _ref$repo === void 0 ? null : _ref$repo, _ref$branch = _ref.branch, branch = _ref$branch === void 0 ? null : _ref$branch, _ref$owner = _ref.owner, owner = _ref$owner === void 0 ? null : _ref$owner;
+
+                get_default()(getPrototypeOf_default()(GithubProvider.prototype), "serveFiles", this).call(this);
+
+                if (token) {
+                  _context.next = 4;
+                  break;
+                }
+
+                throw new Error('Missing required token parameter');
+
+              case 4:
+                this.client = new rest["Octokit"]({
+                  auth: token
+                });
+                _context.t0 = owner;
+
+                if (_context.t0) {
+                  _context.next = 10;
+                  break;
+                }
+
+                _context.next = 9;
+                return this.getOwner();
+
+              case 9:
+                _context.t0 = _context.sent;
+
+              case 10:
+                this.owner = _context.t0;
+                this.repo = repo || rndRepoName();
+                this.branch = branch || DEFAULT_PAGE_BRANCH;
+                _context.next = 15;
+                return this.getOrCreateRepo(this.repo);
+
+              case 15:
+                _context.next = 17;
+                return this.getOrCreateBranch(this.branch);
+
+              case 17:
+                ghBranch = _context.sent;
+                _context.next = 20;
+                return Promise.all(
+                /** @type {Array<GitFile>} */
+                this.files.map(function (file) {
+                  return _this.createBlob(file.content, file.encoding).then(function (data) {
+                    return {
+                      path: file.path,
+                      sha: data.sha,
+                      mode: MODE_FILE,
+                      type: TYPE_BLOB
+                    };
+                  });
+                }));
+
+              case 20:
+                blobFiles = _context.sent;
+                _context.next = 23;
+                return this.createTree(blobFiles);
+
+              case 23:
+                tree = _context.sent;
+                _context.next = 26;
+                return this.createCommit(message, tree.sha, [ghBranch.commit.sha]);
+
+              case 26:
+                commit = _context.sent;
+                _context.next = 29;
+                return this.updateRef(commit.sha, this.branch);
+
+              case 29:
+                if (!(this.branch !== DEFAULT_PAGE_BRANCH)) {
+                  _context.next = 32;
+                  break;
+                }
+
+                _context.next = 32;
+                return this.enablePages(this.branch);
+
+              case 32:
+                _context.next = 34;
+                return this.rebuildPages();
+
+              case 34:
+                return _context.abrupt("return", this.getPagesUrl());
+
+              case 35:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function serveFiles() {
+        return _serveFiles.apply(this, arguments);
+      }
+
+      return serveFiles;
+    }()
+    /**
+     * @return {Promise<string>}
+     */
+
+  }, {
+    key: "getOwner",
+    value: function getOwner() {
+      return this.client.users.getAuthenticated().then(function (_ref2) {
+        var data = _ref2.data;
+        return data.login;
+      });
+    }
+  }, {
+    key: "getOrCreateRepo",
+    value: function () {
+      var _getOrCreateRepo = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee2(name) {
+        return regenerator_default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return this.getRepo(name);
+
+              case 3:
+                return _context2.abrupt("return", _context2.sent);
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
+                _context2.next = 10;
+                return this.createRepo(name);
+
+              case 10:
+                return _context2.abrupt("return", _context2.sent);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 6]]);
+      }));
+
+      function getOrCreateRepo(_x) {
+        return _getOrCreateRepo.apply(this, arguments);
+      }
+
+      return getOrCreateRepo;
+    }()
+  }, {
+    key: "getOrCreateBranch",
+    value: function () {
+      var _getOrCreateBranch = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee3(name) {
+        var masterRef;
+        return regenerator_default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return this.getBranch(name);
+
+              case 3:
+                return _context3.abrupt("return", _context3.sent);
+
+              case 6:
+                _context3.prev = 6;
+                _context3.t0 = _context3["catch"](0);
+                _context3.next = 10;
+                return this.getRef('master');
+
+              case 10:
+                masterRef = _context3.sent;
+                _context3.next = 13;
+                return this.createBranch(masterRef.object.sha, name);
+
+              case 13:
+                _context3.next = 15;
+                return this.getBranch(name);
+
+              case 15:
+                return _context3.abrupt("return", _context3.sent);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 6]]);
+      }));
+
+      function getOrCreateBranch(_x2) {
+        return _getOrCreateBranch.apply(this, arguments);
+      }
+
+      return getOrCreateBranch;
+    }()
+    /**
+     * Scope: public_repo
+     *
+     * @link https://developer.github.com/v3/repos/#create
+     *
+     * @param {string} name repository name
+     * @return {Promise<Octokit.ReposCreateForAuthenticatedUserResponse>}
+     */
+
+  }, {
+    key: "createRepo",
+    value: function createRepo(name) {
+      return this.client.repos.createForAuthenticatedUser({
+        name: name,
+        auto_init: true // first commit
+
+      }).then(function (_ref3) {
+        var data = _ref3.data;
+        return data;
+      });
+    }
+    /**
+     * @param {string} name repository name
+     * @return {Promise<Octokit.ReposGetResponse>}
+     */
+
+  }, {
+    key: "getRepo",
+    value: function getRepo(name) {
+      return this.client.repos.get({
+        owner: this.owner,
+        repo: name
+      }).then(function (_ref4) {
+        var data = _ref4.data;
+        return data;
+      });
+    }
+    /**
+     * @link https://developer.github.com/v3/git/refs/#create-a-reference
+     *
+     * @param {string} sha commit SHA from which to branch off
+     * @param {string} [branch] new branch name (default to Pages branch)
+     * @return {Promise<Octokit.GitCreateRefResponse>}
+     */
+
+  }, {
+    key: "createBranch",
+    value: function createBranch(sha) {
+      var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_PAGE_BRANCH;
+      return this.client.git.createRef({
+        owner: this.owner,
+        repo: this.repo,
+        ref: "refs/heads/".concat(branch),
+        sha: sha // original reference
+
+      }).then(function (_ref5) {
+        var data = _ref5.data;
+        return data;
+      });
+    }
+    /**
+     * @link https://developer.github.com/v3/repos/branches/#get-branch
+     *
+     * @param name
+     * @return {Promise<Octokit.ReposGetBranchResponse>}
+     */
+
+  }, {
+    key: "getBranch",
+    value: function getBranch(name) {
+      return this.client.repos.getBranch({
+        owner: this.owner,
+        repo: this.repo,
+        branch: name
+      }).then(function (_ref6) {
+        var data = _ref6.data;
+        return data;
+      });
+    }
+    /**
+     * Get SHA of currently referenced commit for a branch.
+     * Useful for getting a reference to create a new branch.
+     *
+     * @link https://developer.github.com/v3/git/refs/#get-a-single-reference
+     *
+     * @param {string} [branch] branch name (default to master)
+     * @return {Promise<Octokit.GitGetRefResponse>}
+     */
+
+  }, {
+    key: "getRef",
+    value: function getRef() {
+      var branch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'master';
+      return this.client.git.getRef({
+        owner: this.owner,
+        repo: this.repo,
+        ref: "heads/".concat(branch)
+      }).then(function (_ref7) {
+        var data = _ref7.data;
+        return data;
+      });
+    }
+    /**
+     * @param {string} [branch] branch on which to enable Pages (default to Pages branch)
+     * @return {Promise<Octokit.Response<Octokit.ReposEnablePagesSiteResponse>>}
+     */
+
+  }, {
+    key: "enablePages",
+    value: function enablePages() {
+      var branch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.branch;
+      return this.client.repos.enablePagesSite({
+        owner: this.owner,
+        repo: this.repo,
+        source: {
+          branch: branch
+        }
+      });
+    }
+    /**
+     * Force a Pages build.
+     *
+     * @return {Promise<Octokit.ReposRequestPageBuildResponse>}
+     */
+
+  }, {
+    key: "rebuildPages",
+    value: function rebuildPages() {
+      return this.client.repos.requestPageBuild({
+        owner: this.owner,
+        repo: this.repo
+      }).then(function (_ref8) {
+        var data = _ref8.data;
+        return data;
+      });
+    }
+    /**
+     * @return {Promise<string>}
+     */
+
+  }, {
+    key: "getPagesUrl",
+    value: function getPagesUrl() {
+      return this.client.repos.getPages({
+        owner: this.owner,
+        repo: this.repo
+      }).then(function (_ref9) {
+        var data = _ref9.data;
+        return data.html_url;
+      });
+    }
+    /**
+     * Add a single file with a commit.
+     *
+     * @param {string} content file content
+     * @param {string} path file path
+     * @param {string} message commit message
+     * @param {string} [branch] branch to commit to (default to Pages branch)
+     * @return {Promise<Octokit.ReposCreateOrUpdateFileResponse>}
+     */
+
+  }, {
+    key: "commitFile",
+    value: function commitFile(content, path, message) {
+      var branch = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : this.branch;
+      return this.client.repos.createOrUpdateFile({
+        owner: this.owner,
+        repo: this.repo,
+        path: path,
+        message: message,
+        content: content,
+        // base64
+        branch: branch
+      }).then(function (_ref10) {
+        var data = _ref10.data;
+        return data;
+      });
+    }
+    /**
+     * Create a file tree to commit.
+     *
+     * @link https://octokit.github.io/rest.js/#octokit-routes-git-create-tree
+     * @link https://developer.github.com/v3/git/trees/#create-a-tree
+     *
+     * @param {GitFile[]} files list of blobs
+     * @return {Promise<Octokit.GitCreateTreeResponse>}
+     */
+
+  }, {
+    key: "createTree",
+    value: function createTree(files) {
+      /**
+       * @typedef GitFile
+       * @property {string} path repository path
+       * @property {string} [content] file content, either this or sha
+       * @property {string} [sha] blob sha, either this or content
+       * @property {number} [mode] 100644 file, 040000 dir
+       * @property {string} [type] blob (file) or tree (dir)
+       */
+      return this.client.git.createTree({
+        owner: this.owner,
+        repo: this.repo,
+        tree: files
+      }).then(function (_ref11) {
+        var data = _ref11.data;
+        return data;
+      });
+    }
+    /**
+     * Create a file blob for a tree.
+     *
+     * @link https://developer.github.com/v3/git/blobs/#create-a-blob
+     *
+     * @param {string} content text or base64 blob content
+     * @param [encoding] blob encoding, either 'utf-8' or 'base64' (default to 'utf-8')
+     * @return {Promise<Octokit.GitCreateBlobResponse>}
+     */
+
+  }, {
+    key: "createBlob",
+    value: function createBlob(content) {
+      var encoding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ENC_UTF8;
+      return this.client.git.createBlob({
+        owner: this.owner,
+        repo: this.repo,
+        content: content,
+        encoding: encoding // either 'utf-8' or 'base64'
+
+      }).then(function (_ref12) {
+        var data = _ref12.data;
+        return data;
+      });
+    }
+    /**
+     * Commit a tree.
+     *
+     * @link https://octokit.github.io/rest.js/#octokit-routes-git-create-commit
+     * @link https://developer.github.com/v3/git/commits/#create-a-commit
+     *
+     * @param {string} message commit message
+     * @param {string} tree SHA of the tree to commit
+     * @param {string[]} [parents] array of parent commit SHA strings
+     * @return {Promise<Octokit.GitCreateCommitResponse>}
+     */
+
+  }, {
+    key: "createCommit",
+    value: function createCommit(message, tree) {
+      var parents = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+      return this.client.git.createCommit({
+        owner: this.owner,
+        repo: this.repo,
+        message: message,
+        tree: tree,
+        // SHA
+        parents: parents
+      }).then(function (_ref13) {
+        var data = _ref13.data;
+        return data;
+      });
+    }
+    /**
+     * Update a branch to reference a new commit.
+     *
+     * @link https://octokit.github.io/rest.js/#octokit-routes-git-update-ref
+     * @link https://developer.github.com/v3/git/refs/#update-a-reference
+     *
+     * @param {string} sha git commit SHA to reference
+     * @param {string} [branch] branch to update (default to Pages branch)
+     * @return {Promise<Octokit.GitUpdateRefResponse>}
+     */
+
+  }, {
+    key: "updateRef",
+    value: function updateRef(sha) {
+      var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.branch;
+      return this.client.git.updateRef({
+        owner: this.owner,
+        repo: this.repo,
+        ref: "heads/".concat(branch),
+        sha: sha,
+        force: true // ignore errors
+
+      }).then(function (_ref14) {
+        var data = _ref14.data;
+        return data;
+      });
+    }
+  }]);
+
+  return GithubProvider;
+}(provider_Provider);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
 var defineProperty = __webpack_require__(15);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
+
+// EXTERNAL MODULE: ./node_modules/jszip/lib/index.js
+var lib = __webpack_require__(39);
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./src/providers/zip.js
+
+
+
+
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function zip_createSuper(Derived) { return function () { var Super = getPrototypeOf_default()(Derived), result; if (zip_isNativeReflectConstruct()) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function zip_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+
+
+var ENC_BINARY = 'binary';
+var ZIP_TYPE_BASE64 = 'base64';
+var ZIP_TYPE_BINARY_STRING = 'binarystring';
+var ZIP_TYPE_ARRAY = 'array'; // array of bytes (0-255)
+
+var ZIP_TYPE_UINT8_ARRAY = 'uint8array';
+var ZIP_TYPE_ARRAY_BUFFER = 'arraybuffer';
+var ZIP_TYPE_BLOB = 'blob';
+var ZIP_TYPE_NODE_BUFFER = 'nodebuffer';
+var COMPRESS_DEFLATE = 'DEFLATE';
+var COMPRESS_STORE = 'STORE';
+var zip_ZipProvider = /*#__PURE__*/function (_BaseProvider) {
+  inherits_default()(ZipProvider, _BaseProvider);
+
+  var _super = zip_createSuper(ZipProvider);
+
+  function ZipProvider() {
+    classCallCheck_default()(this, ZipProvider);
+
+    return _super.apply(this, arguments);
+  }
+
+  createClass_default()(ZipProvider, [{
+    key: "addFile",
+
+    /**
+     * Add file to bundle.
+     *
+     * @param {string} path file path inside the zip
+     * @param {string|ArrayBuffer|Uint8Array|Buffer|Blob|Promise|Stream} content
+     * @param {string} [encoding] utf-8 or base64
+     */
+    value: function addFile(path, content) {
+      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ENC_UTF8;
+      this.files.push({
+        content: content,
+        encoding: encoding,
+        path: path
+      });
+    }
+    /**
+     * Creates a ZIP with all files.
+     *
+     * @param {string} [type] - output ZIP file format, default to base64 string
+     * @param {number} [compress] - compression level, default to 0
+     * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - ZIP file in chosen format
+     */
+
+  }, {
+    key: "serveFiles",
+    value: function () {
+      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+        var _this = this;
+
+        var _ref,
+            _ref$type,
+            type,
+            _ref$compress,
+            compress,
+            _args = arguments;
+
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _ref = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, _ref$type = _ref.type, type = _ref$type === void 0 ? ZIP_TYPE_BASE64 : _ref$type, _ref$compress = _ref.compress, compress = _ref$compress === void 0 ? 0 : _ref$compress;
+
+                get_default()(getPrototypeOf_default()(ZipProvider.prototype), "serveFiles", this).call(this);
+
+                this.zip = new lib_default.a();
+
+                if (!([ZIP_TYPE_ARRAY_BUFFER, ZIP_TYPE_UINT8_ARRAY, ZIP_TYPE_BLOB, ZIP_TYPE_NODE_BUFFER].indexOf(type) !== -1)) {
+                  _context.next = 6;
+                  break;
+                }
+
+                if (lib_default.a.support[type]) {
+                  _context.next = 6;
+                  break;
+                }
+
+                throw new Error("Output type not supported by browser: ".concat(type));
+
+              case 6:
+                this.files.forEach(function (file) {
+                  _this.zip.file(file.path, file.content, _objectSpread({
+                    base64: file.encoding === ENC_BASE64
+                  }, file.encoding === ENC_BINARY && {
+                    binary: true
+                  }));
+                });
+                return _context.abrupt("return", this.zip.generateAsync({
+                  type: type,
+                  compression: compress > 0 ? COMPRESS_DEFLATE : COMPRESS_STORE,
+                  compressionOptions: {
+                    level: compress // ignored if STORE
+
+                  }
+                }));
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function serveFiles() {
+        return _serveFiles.apply(this, arguments);
+      }
+
+      return serveFiles;
+    }()
+  }]);
+
+  return ZipProvider;
+}(provider_Provider);
+// CONCATENATED MODULE: ./src/providers/index.js
+
+
+
 
 // CONCATENATED MODULE: ./src/modules/marker/tools/matrix-encoders.js
 /**
@@ -32338,23 +33164,23 @@ var pattern_marker_generator_PatternMarkerGenerator = /*#__PURE__*/function () {
   return PatternMarkerGenerator;
 }();
 // EXTERNAL MODULE: ./src/modules/marker/templates/barcode.handlebars
-var barcode_handlebars = __webpack_require__(74);
+var barcode_handlebars = __webpack_require__(76);
 var barcode_handlebars_default = /*#__PURE__*/__webpack_require__.n(barcode_handlebars);
 
 // EXTERNAL MODULE: ./src/modules/marker/templates/pattern.3d.handlebars
-var pattern_3d_handlebars = __webpack_require__(75);
+var pattern_3d_handlebars = __webpack_require__(77);
 var pattern_3d_handlebars_default = /*#__PURE__*/__webpack_require__.n(pattern_3d_handlebars);
 
 // EXTERNAL MODULE: ./src/modules/marker/templates/pattern.image.handlebars
-var pattern_image_handlebars = __webpack_require__(76);
+var pattern_image_handlebars = __webpack_require__(78);
 var pattern_image_handlebars_default = /*#__PURE__*/__webpack_require__.n(pattern_image_handlebars);
 
 // EXTERNAL MODULE: ./src/modules/marker/templates/pattern.audio.handlebars
-var pattern_audio_handlebars = __webpack_require__(77);
+var pattern_audio_handlebars = __webpack_require__(79);
 var pattern_audio_handlebars_default = /*#__PURE__*/__webpack_require__.n(pattern_audio_handlebars);
 
 // EXTERNAL MODULE: ./src/modules/marker/templates/pattern.video.handlebars
-var pattern_video_handlebars = __webpack_require__(78);
+var pattern_video_handlebars = __webpack_require__(80);
 var pattern_video_handlebars_default = /*#__PURE__*/__webpack_require__.n(pattern_video_handlebars);
 
 // CONCATENATED MODULE: ./src/modules/marker/index.js
@@ -32446,893 +33272,170 @@ var marker_MarkerModule = /*#__PURE__*/function () {
     }()
   }, {
     key: "generateBarcodeHtml",
-    value: function generateBarcodeHtml(matrixType, markerValue, assetSrc) {
+    value: function generateBarcodeHtml(matrixType, markerValue, assetPath) {
       return barcode_handlebars_default()({
         matrixType: matrixType,
         markerValue: markerValue,
-        assetSrc: assetSrc
+        assetPath: assetPath
       });
     }
   }, {
     key: "generatePatternHtml",
-    value: function generatePatternHtml(assetType, pattSrc, assetSrc) {
+    value: function generatePatternHtml(assetType, assetPath) {
       return TEMPLATES[assetType]({
-        pattSrc: pattSrc,
-        assetSrc: assetSrc
+        assetPath: assetPath
       });
     }
   }]);
 
   return MarkerModule;
 }();
+// CONCATENATED MODULE: ./src/modules/package/Package.js
+
+
+
+
+
+
+var AR_BARCODE = 'barcode';
+var AR_PATTERN = 'pattern';
+var AR_LOCATION = 'location';
+var AR_NTF = 'ntf';
+var Package_Package = /*#__PURE__*/function () {
+  /**
+   * @param {Object} config
+   * @param {string} config.arType - one of barcode, pattern, location or ntf (see exported constants)
+   * @param {string} config.assetType - one of 3d, image, audio or video (see {@link MarkerModule} exported constants)
+   * @param {string|Blob} config.assetFile - the file to be show in AR
+   * @param {string} config.assetName - the file name, to be included in HTML template
+   * @param {string} [config.markerPatt] - the marker image patt file (required for pattern AR type)
+   * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
+   * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)
+   */
+  function Package(config) {
+    classCallCheck_default()(this, Package);
+
+    this.arType = config.arType;
+    this.assetType = config.assetType;
+    this.assetFile = config.assetFile;
+    this.assetName = config.assetName;
+    this.config = config;
+  }
+  /**
+   * @param {Object} config - see {@link ZipProvider#serveFiles} or {@link GithubProvider#serveFiles} for available parameters
+   * @param {string} config.packageType - either 'zip' or 'github'
+   * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - the package, see {@link ZipProvider#serveFiles} or {@link GithubProvider#serveFiles} for actual return value
+   */
+
+
+  createClass_default()(Package, [{
+    key: "serve",
+    value: function () {
+      var _serve = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(config) {
+        var provider, generatedHtml;
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                /** @type {Provider} */
+                provider = null; // init provider
+
+                _context.t0 = config.packageType;
+                _context.next = _context.t0 === 'zip' ? 4 : _context.t0 === 'github' ? 6 : 8;
+                break;
+
+              case 4:
+                provider = new zip_ZipProvider();
+                return _context.abrupt("break", 9);
+
+              case 6:
+                provider = new github_GithubProvider();
+                return _context.abrupt("break", 9);
+
+              case 8:
+                throw new Error("Unknown provider: ".concat(config.packageType));
+
+              case 9:
+                generatedHtml = ''; // generate HTML and add marker files, depending on chosen AR experience type
+
+                _context.t1 = this.arType;
+                _context.next = _context.t1 === AR_BARCODE ? 13 : _context.t1 === AR_PATTERN ? 19 : _context.t1 === AR_LOCATION ? 24 : _context.t1 === AR_NTF ? 25 : 26;
+                break;
+
+              case 13:
+                if (this.config.matrixType) {
+                  _context.next = 15;
+                  break;
+                }
+
+                throw new Error('Barcode-based AR needs a matrix type');
+
+              case 15:
+                if (this.config.markerValue) {
+                  _context.next = 17;
+                  break;
+                }
+
+                throw new Error('Barcode-based AR needs a marker value');
+
+              case 17:
+                generatedHtml = marker_MarkerModule.generateBarcodeHtml(this.config.matrixType, this.config.markerValue, "assets/".concat(this.assetName)); // barcode requires no marker file
+
+                return _context.abrupt("break", 27);
+
+              case 19:
+                generatedHtml = marker_MarkerModule.generatePatternHtml(this.assetType, "assets/".concat(this.assetName));
+
+                if (this.config.markerPatt) {
+                  _context.next = 22;
+                  break;
+                }
+
+                throw new Error('Pattern-based AR needs a marker.patt file');
+
+              case 22:
+                provider.addFile('assets/marker.patt', this.config.markerPatt);
+                return _context.abrupt("break", 27);
+
+              case 24:
+                throw new Error('Location template is not implemented');
+
+              case 25:
+                throw new Error('NTF template is not implemented');
+
+              case 26:
+                throw new Error("Unknown AR type: ".concat(this.arType));
+
+              case 27:
+                provider.addFile('index.html', generatedHtml);
+                provider.addFile("assets/".concat(this.assetName), this.assetFile);
+                return _context.abrupt("return", provider.serveFiles(config));
+
+              case 30:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function serve(_x) {
+        return _serve.apply(this, arguments);
+      }
+
+      return serve;
+    }()
+  }]);
+
+  return Package;
+}();
 // CONCATENATED MODULE: ./src/modules/nft/index.js
 
 var nft_NFTModule = function NFTModule() {
   classCallCheck_default()(this, NFTModule);
 };
-// CONCATENATED MODULE: ./src/providers/provider.js
-
-
-
-
-var ENC_UTF8 = 'utf-8';
-var ENC_BASE64 = 'base64';
-/**
- * @typedef ProviderFile
- * @property {string} path - file path relative to the container
- * @property {string} content - file content
- * @property {string} encoding - content encoding (utf-8, base64)
- */
-
-var provider_Provider = /*#__PURE__*/function () {
-  function Provider() {
-    classCallCheck_default()(this, Provider);
-
-    /** @type {Array<ProviderFile>} */
-    this.files = [];
-  }
-
-  createClass_default()(Provider, [{
-    key: "addFile",
-    value: function addFile(path, content) {
-      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-      this.files.push({
-        path: path,
-        content: content,
-        encoding: encoding
-      });
-    }
-  }, {
-    key: "clearFiles",
-    value: function clearFiles() {
-      this.files = [];
-    }
-  }, {
-    key: "serveFiles",
-    value: function () {
-      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                if (!(this.files.length === 0)) {
-                  _context.next = 2;
-                  break;
-                }
-
-                throw new Error('No files to serve');
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function serveFiles() {
-        return _serveFiles.apply(this, arguments);
-      }
-
-      return serveFiles;
-    }()
-  }]);
-
-  return Provider;
-}();
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/get.js
-var get = __webpack_require__(29);
-var get_default = /*#__PURE__*/__webpack_require__.n(get);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(30);
-var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(10);
-var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(31);
-var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
-
-// EXTERNAL MODULE: ./node_modules/@octokit/rest/index.js
-var rest = __webpack_require__(79);
-
-// CONCATENATED MODULE: ./src/providers/github.js
-
-
-
-
-
-
-
-
-
-function _createSuper(Derived) { return function () { var Super = getPrototypeOf_default()(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-
-
-/* eslint-disable no-unused-vars */
-
-var MODE_FILE = '100644';
-var MODE_EXEC = '100755';
-var MODE_SUBDIR = '040000';
-var MODE_SUBMOD = '160000';
-var MODE_SYMLINK = '120000';
-var TYPE_BLOB = 'blob';
-var TYPE_TREE = 'tree';
-var TYPE_COMMIT = 'commit';
-var DEFAULT_PAGE_BRANCH = 'gh-pages';
-
-var rndRepoName = function rndRepoName() {
-  var max = 999999;
-  var min = 100000;
-  return "arjs-studio-".concat(Math.floor(Math.random() * (max - min)) + min);
-};
-
-var github_GithubProvider = /*#__PURE__*/function (_BaseProvider) {
-  inherits_default()(GithubProvider, _BaseProvider);
-
-  var _super = _createSuper(GithubProvider);
-
-  function GithubProvider() {
-    var _this;
-
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        token = _ref.token,
-        _ref$repo = _ref.repo,
-        repo = _ref$repo === void 0 ? null : _ref$repo,
-        _ref$branch = _ref.branch,
-        branch = _ref$branch === void 0 ? null : _ref$branch,
-        _ref$owner = _ref.owner,
-        owner = _ref$owner === void 0 ? null : _ref$owner;
-
-    classCallCheck_default()(this, GithubProvider);
-
-    _this = _super.call(this);
-
-    if (!token) {
-      throw new Error('Missing required token parameter');
-    }
-
-    _this.owner = owner;
-    _this.repo = repo || rndRepoName();
-    _this.branch = branch || DEFAULT_PAGE_BRANCH;
-    _this.client = new rest["Octokit"]({
-      auth: token
-    });
-    return _this;
-  }
-
-  createClass_default()(GithubProvider, [{
-    key: "setOwnerName",
-    value: function setOwnerName(owner) {
-      this.owner = owner;
-    }
-    /**
-     * Add file to bundle.
-     *
-     * @param {string} path repository path
-     * @param {string} content
-     * @param {string} [encoding] utf-8 or base64
-     */
-
-  }, {
-    key: "addFile",
-    value: function addFile(path, content) {
-      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ENC_UTF8;
-      this.files.push({
-        content: content,
-        encoding: encoding,
-        path: path
-      });
-    }
-    /**
-     * Publish files creating a commit in a custom branch.
-     *
-     * @param {string|null} message commit message
-     * @param {string|null} [repo] repository name (default to random name)
-     * @param {string|null} [branch] branch name (default to 'gh-pages')
-     * @param {string|null} [owner] owner login name (automatically retrieved if null)
-     * @return {Promise<string|null>} Pages URL for this repository
-     */
-
-  }, {
-    key: "serveFiles",
-    value: function () {
-      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-        var _this2 = this;
-
-        var _ref2,
-            message,
-            _ref2$repo,
-            repo,
-            _ref2$branch,
-            branch,
-            _ref2$owner,
-            owner,
-            _owner,
-            ghBranch,
-            blobFiles,
-            tree,
-            commit,
-            _args = arguments;
-
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _ref2 = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, message = _ref2.message, _ref2$repo = _ref2.repo, repo = _ref2$repo === void 0 ? null : _ref2$repo, _ref2$branch = _ref2.branch, branch = _ref2$branch === void 0 ? null : _ref2$branch, _ref2$owner = _ref2.owner, owner = _ref2$owner === void 0 ? null : _ref2$owner;
-
-                get_default()(getPrototypeOf_default()(GithubProvider.prototype), "serveFiles", this).call(this);
-
-                this.owner = owner || this.owner;
-                this.repo = repo || this.repo || rndRepoName();
-                this.branch = branch || this.branch || DEFAULT_PAGE_BRANCH;
-
-                if (!(this.owner === null)) {
-                  _context.next = 10;
-                  break;
-                }
-
-                _context.next = 8;
-                return this.getOwner();
-
-              case 8:
-                _owner = _context.sent;
-                this.owner = _owner.login;
-
-              case 10:
-                _context.next = 12;
-                return this.getOrCreateRepo(this.repo);
-
-              case 12:
-                _context.next = 14;
-                return this.getOrCreateBranch(this.branch);
-
-              case 14:
-                ghBranch = _context.sent;
-                _context.next = 17;
-                return Promise.all(
-                /** @type {Array<GitFile>} */
-                this.files.map(function (file) {
-                  return _this2.createBlob(file.content, file.encoding).then(function (data) {
-                    return {
-                      path: file.path,
-                      sha: data.sha,
-                      mode: MODE_FILE,
-                      type: TYPE_BLOB
-                    };
-                  });
-                }));
-
-              case 17:
-                blobFiles = _context.sent;
-                _context.next = 20;
-                return this.createTree(blobFiles);
-
-              case 20:
-                tree = _context.sent;
-                _context.next = 23;
-                return this.createCommit(message, tree.sha, [ghBranch.commit.sha]);
-
-              case 23:
-                commit = _context.sent;
-                _context.next = 26;
-                return this.updateRef(commit.sha, this.branch);
-
-              case 26:
-                if (!(this.branch !== DEFAULT_PAGE_BRANCH)) {
-                  _context.next = 29;
-                  break;
-                }
-
-                _context.next = 29;
-                return this.enablePages(this.branch);
-
-              case 29:
-                _context.next = 31;
-                return this.rebuildPages();
-
-              case 31:
-                _context.next = 33;
-                return this.getPagesUrl();
-
-              case 33:
-                return _context.abrupt("return", _context.sent);
-
-              case 34:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function serveFiles() {
-        return _serveFiles.apply(this, arguments);
-      }
-
-      return serveFiles;
-    }()
-    /**
-     * @return {Promise<Octokit.UsersGetAuthenticatedResponse>}
-     */
-
-  }, {
-    key: "getOwner",
-    value: function getOwner() {
-      return this.client.users.getAuthenticated().then(function (_ref3) {
-        var data = _ref3.data;
-        return data;
-      });
-    }
-  }, {
-    key: "getOrCreateRepo",
-    value: function () {
-      var _getOrCreateRepo = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee2(name) {
-        return regenerator_default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return this.getRepo(name);
-
-              case 3:
-                return _context2.abrupt("return", _context2.sent);
-
-              case 6:
-                _context2.prev = 6;
-                _context2.t0 = _context2["catch"](0);
-                _context2.next = 10;
-                return this.createRepo(name);
-
-              case 10:
-                return _context2.abrupt("return", _context2.sent);
-
-              case 11:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[0, 6]]);
-      }));
-
-      function getOrCreateRepo(_x) {
-        return _getOrCreateRepo.apply(this, arguments);
-      }
-
-      return getOrCreateRepo;
-    }()
-  }, {
-    key: "getOrCreateBranch",
-    value: function () {
-      var _getOrCreateBranch = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee3(name) {
-        var masterRef;
-        return regenerator_default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
-                return this.getBranch(name);
-
-              case 3:
-                return _context3.abrupt("return", _context3.sent);
-
-              case 6:
-                _context3.prev = 6;
-                _context3.t0 = _context3["catch"](0);
-                _context3.next = 10;
-                return this.getRef('master');
-
-              case 10:
-                masterRef = _context3.sent;
-                _context3.next = 13;
-                return this.createBranch(masterRef.object.sha, name);
-
-              case 13:
-                _context3.next = 15;
-                return this.getBranch(name);
-
-              case 15:
-                return _context3.abrupt("return", _context3.sent);
-
-              case 16:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[0, 6]]);
-      }));
-
-      function getOrCreateBranch(_x2) {
-        return _getOrCreateBranch.apply(this, arguments);
-      }
-
-      return getOrCreateBranch;
-    }()
-    /**
-     * Scope: public_repo
-     *
-     * @link https://developer.github.com/v3/repos/#create
-     *
-     * @param {string} name repository name
-     * @return {Promise<Octokit.ReposCreateForAuthenticatedUserResponse>}
-     */
-
-  }, {
-    key: "createRepo",
-    value: function createRepo(name) {
-      return this.client.repos.createForAuthenticatedUser({
-        name: name,
-        auto_init: true // first commit
-
-      }).then(function (_ref4) {
-        var data = _ref4.data;
-        return data;
-      });
-    }
-  }, {
-    key: "setRepoName",
-    value: function setRepoName(repo) {
-      this.repo = repo;
-    }
-    /**
-     * @param {string} name repository name
-     * @return {Promise<Octokit.ReposGetResponse>}
-     */
-
-  }, {
-    key: "getRepo",
-    value: function getRepo(name) {
-      return this.client.repos.get({
-        owner: this.owner,
-        repo: name
-      }).then(function (_ref5) {
-        var data = _ref5.data;
-        return data;
-      });
-    }
-    /**
-     * @link https://developer.github.com/v3/git/refs/#create-a-reference
-     *
-     * @param {string} sha commit SHA from which to branch off
-     * @param {string} [branch] new branch name (default to Pages branch)
-     * @return {Promise<Octokit.GitCreateRefResponse>}
-     */
-
-  }, {
-    key: "createBranch",
-    value: function createBranch(sha) {
-      var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_PAGE_BRANCH;
-      return this.client.git.createRef({
-        owner: this.owner,
-        repo: this.repo,
-        ref: "refs/heads/".concat(branch),
-        sha: sha // original reference
-
-      }).then(function (_ref6) {
-        var data = _ref6.data;
-        return data;
-      });
-    }
-    /**
-     * @link https://developer.github.com/v3/repos/branches/#get-branch
-     *
-     * @param name
-     * @return {Promise<Octokit.ReposGetBranchResponse>}
-     */
-
-  }, {
-    key: "getBranch",
-    value: function getBranch(name) {
-      return this.client.repos.getBranch({
-        owner: this.owner,
-        repo: this.repo,
-        branch: name
-      }).then(function (_ref7) {
-        var data = _ref7.data;
-        return data;
-      });
-    }
-  }, {
-    key: "setBranchName",
-    value: function setBranchName(branch) {
-      this.branch = branch;
-    }
-    /**
-     * Get SHA of currently referenced commit for a branch.
-     * Useful for getting a reference to create a new branch.
-     *
-     * @link https://developer.github.com/v3/git/refs/#get-a-single-reference
-     *
-     * @param {string} [branch] branch name (default to master)
-     * @return {Promise<Octokit.GitGetRefResponse>}
-     */
-
-  }, {
-    key: "getRef",
-    value: function getRef() {
-      var branch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'master';
-      return this.client.git.getRef({
-        owner: this.owner,
-        repo: this.repo,
-        ref: "heads/".concat(branch)
-      }).then(function (_ref8) {
-        var data = _ref8.data;
-        return data;
-      });
-    }
-    /**
-     * @param {string} [branch] branch on which to enable Pages (default to Pages branch)
-     * @return {Promise<Octokit.Response<Octokit.ReposEnablePagesSiteResponse>>}
-     */
-
-  }, {
-    key: "enablePages",
-    value: function enablePages() {
-      var branch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.branch;
-      return this.client.repos.enablePagesSite({
-        owner: this.owner,
-        repo: this.repo,
-        source: {
-          branch: branch
-        }
-      });
-    }
-    /**
-     * Force a Pages build.
-     *
-     * @return {Promise<Octokit.ReposRequestPageBuildResponse>}
-     */
-
-  }, {
-    key: "rebuildPages",
-    value: function rebuildPages() {
-      return this.client.repos.requestPageBuild({
-        owner: this.owner,
-        repo: this.repo
-      }).then(function (_ref9) {
-        var data = _ref9.data;
-        return data;
-      });
-    }
-    /**
-     * @return {Promise<string>}
-     */
-
-  }, {
-    key: "getPagesUrl",
-    value: function getPagesUrl() {
-      return this.client.repos.getPages({
-        owner: this.owner,
-        repo: this.repo
-      }).then(function (_ref10) {
-        var data = _ref10.data;
-        return data.html_url;
-      });
-    }
-    /**
-     * Add a single file with a commit.
-     *
-     * @param {string} content file content
-     * @param {string} path file path
-     * @param {string} message commit message
-     * @param {string} [branch] branch to commit to (default to Pages branch)
-     * @return {Promise<Octokit.ReposCreateOrUpdateFileResponse>}
-     */
-
-  }, {
-    key: "commitFile",
-    value: function commitFile(content, path, message) {
-      var branch = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : this.branch;
-      return this.client.repos.createOrUpdateFile({
-        owner: this.owner,
-        repo: this.repo,
-        path: path,
-        message: message,
-        content: content,
-        // base64
-        branch: branch
-      }).then(function (_ref11) {
-        var data = _ref11.data;
-        return data;
-      });
-    }
-    /**
-     * Create a file tree to commit.
-     *
-     * @link https://octokit.github.io/rest.js/#octokit-routes-git-create-tree
-     * @link https://developer.github.com/v3/git/trees/#create-a-tree
-     *
-     * @param {GitFile[]} files list of blobs
-     * @return {Promise<Octokit.GitCreateTreeResponse>}
-     */
-
-  }, {
-    key: "createTree",
-    value: function createTree(files) {
-      /**
-       * @typedef GitFile
-       * @property {string} path repository path
-       * @property {string} [content] file content, either this or sha
-       * @property {string} [sha] blob sha, either this or content
-       * @property {number} [mode] 100644 file, 040000 dir
-       * @property {string} [type] blob (file) or tree (dir)
-       */
-      return this.client.git.createTree({
-        owner: this.owner,
-        repo: this.repo,
-        tree: files
-      }).then(function (_ref12) {
-        var data = _ref12.data;
-        return data;
-      });
-    }
-    /**
-     * Create a file blob for a tree.
-     *
-     * @link https://developer.github.com/v3/git/blobs/#create-a-blob
-     *
-     * @param {string} content text or base64 blob content
-     * @param [encoding] blob encoding, either 'utf-8' or 'base64' (default to 'utf-8')
-     * @return {Promise<Octokit.GitCreateBlobResponse>}
-     */
-
-  }, {
-    key: "createBlob",
-    value: function createBlob(content) {
-      var encoding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ENC_UTF8;
-      return this.client.git.createBlob({
-        owner: this.owner,
-        repo: this.repo,
-        content: content,
-        encoding: encoding // either 'utf-8' or 'base64'
-
-      }).then(function (_ref13) {
-        var data = _ref13.data;
-        return data;
-      });
-    }
-    /**
-     * Commit a tree.
-     *
-     * @link https://octokit.github.io/rest.js/#octokit-routes-git-create-commit
-     * @link https://developer.github.com/v3/git/commits/#create-a-commit
-     *
-     * @param {string} message commit message
-     * @param {string} tree SHA of the tree to commit
-     * @param {string[]} [parents] array of parent commit SHA strings
-     * @return {Promise<Octokit.GitCreateCommitResponse>}
-     */
-
-  }, {
-    key: "createCommit",
-    value: function createCommit(message, tree) {
-      var parents = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-      return this.client.git.createCommit({
-        owner: this.owner,
-        repo: this.repo,
-        message: message,
-        tree: tree,
-        // SHA
-        parents: parents
-      }).then(function (_ref14) {
-        var data = _ref14.data;
-        return data;
-      });
-    }
-    /**
-     * Update a branch to reference a new commit.
-     *
-     * @link https://octokit.github.io/rest.js/#octokit-routes-git-update-ref
-     * @link https://developer.github.com/v3/git/refs/#update-a-reference
-     *
-     * @param {string} sha git commit SHA to reference
-     * @param {string} [branch] branch to update (default to Pages branch)
-     * @return {Promise<Octokit.GitUpdateRefResponse>}
-     */
-
-  }, {
-    key: "updateRef",
-    value: function updateRef(sha) {
-      var branch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.branch;
-      return this.client.git.updateRef({
-        owner: this.owner,
-        repo: this.repo,
-        ref: "heads/".concat(branch),
-        sha: sha,
-        force: true // ignore errors
-
-      }).then(function (_ref15) {
-        var data = _ref15.data;
-        return data;
-      });
-    }
-  }]);
-
-  return GithubProvider;
-}(provider_Provider);
-// EXTERNAL MODULE: ./node_modules/jszip/lib/index.js
-var lib = __webpack_require__(39);
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-
-// CONCATENATED MODULE: ./src/providers/zip.js
-
-
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function zip_createSuper(Derived) { return function () { var Super = getPrototypeOf_default()(Derived), result; if (zip_isNativeReflectConstruct()) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
-
-function zip_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-
-
-var ENC_BINARY = 'binary';
-var ZIP_TYPE_BASE64 = 'base64';
-var ZIP_TYPE_BINARY_STRING = 'binarystring';
-var ZIP_TYPE_ARRAY = 'array'; // array of bytes (0-255)
-
-var ZIP_TYPE_UINT8_ARRAY = 'uint8array';
-var ZIP_TYPE_ARRAY_BUFFER = 'arraybuffer';
-var ZIP_TYPE_BLOB = 'blob';
-var ZIP_TYPE_NODE_BUFFER = 'nodebuffer';
-var COMPRESS_DEFLATE = 'DEFLATE';
-var COMPRESS_STORE = 'STORE';
-var zip_ZipProvider = /*#__PURE__*/function (_BaseProvider) {
-  inherits_default()(ZipProvider, _BaseProvider);
-
-  var _super = zip_createSuper(ZipProvider);
-
-  function ZipProvider() {
-    var _this;
-
-    classCallCheck_default()(this, ZipProvider);
-
-    _this = _super.call(this);
-    _this.zip = new lib_default.a();
-    return _this;
-  }
-  /**
-   * Add file to bundle.
-   *
-   * @param {string} path file path inside the zip
-   * @param {string|ArrayBuffer|Uint8Array|Buffer|Blob|Promise|Stream} content
-   * @param {string} [encoding] utf-8 or base64
-   */
-
-
-  createClass_default()(ZipProvider, [{
-    key: "addFile",
-    value: function addFile(path, content) {
-      var encoding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ENC_UTF8;
-      this.files.push({
-        content: content,
-        encoding: encoding,
-        path: path
-      });
-    }
-    /**
-     * Creates a ZIP with all files.
-     *
-     * @param {string} [type]
-     * @param {number} [compress]
-     * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>}
-     */
-
-  }, {
-    key: "serveFiles",
-    value: function () {
-      var _serveFiles = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-        var _this2 = this;
-
-        var _ref,
-            _ref$type,
-            type,
-            _ref$compress,
-            compress,
-            _args = arguments;
-
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _ref = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, _ref$type = _ref.type, type = _ref$type === void 0 ? ZIP_TYPE_BASE64 : _ref$type, _ref$compress = _ref.compress, compress = _ref$compress === void 0 ? 0 : _ref$compress;
-
-                get_default()(getPrototypeOf_default()(ZipProvider.prototype), "serveFiles", this).call(this);
-
-                if (!([ZIP_TYPE_ARRAY_BUFFER, ZIP_TYPE_UINT8_ARRAY, ZIP_TYPE_BLOB, ZIP_TYPE_NODE_BUFFER].indexOf(type) !== -1)) {
-                  _context.next = 5;
-                  break;
-                }
-
-                if (lib_default.a.support[type]) {
-                  _context.next = 5;
-                  break;
-                }
-
-                throw new Error("Output type not supported by browser: ".concat(type));
-
-              case 5:
-                this.files.forEach(function (file) {
-                  _this2.zip.file(file.path, file.content, _objectSpread({
-                    base64: file.encoding === ENC_BASE64
-                  }, file.encoding === ENC_BINARY && {
-                    binary: true
-                  }));
-                });
-                _context.next = 8;
-                return this.zip.generateAsync({
-                  type: type,
-                  compression: compress > 0 ? COMPRESS_DEFLATE : COMPRESS_STORE,
-                  compressionOptions: {
-                    level: compress // ignored if STORE
-
-                  }
-                });
-
-              case 8:
-                return _context.abrupt("return", _context.sent);
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function serveFiles() {
-        return _serveFiles.apply(this, arguments);
-      }
-
-      return serveFiles;
-    }()
-  }]);
-
-  return ZipProvider;
-}(provider_Provider);
-// CONCATENATED MODULE: ./src/providers/index.js
-
-
-
-
 // CONCATENATED MODULE: ./src/index.js
+
 
 
 
@@ -33845,7 +33948,7 @@ function is_plain_object_isPlainObject(o) {
 };
 
 // EXTERNAL MODULE: ./node_modules/node-fetch/browser.js
-var browser = __webpack_require__(80);
+var browser = __webpack_require__(75);
 var browser_default = /*#__PURE__*/__webpack_require__.n(browser);
 
 // EXTERNAL MODULE: ./node_modules/@octokit/request-error/dist-web/index.js
