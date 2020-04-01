@@ -15,12 +15,6 @@ const COMPRESS_DEFLATE = 'DEFLATE';
 const COMPRESS_STORE = 'STORE';
 
 export class ZipProvider extends BaseProvider {
-    constructor() {
-        super();
-
-        this.zip = new JSZip();
-    }
-
     /**
      * Add file to bundle.
      *
@@ -39,12 +33,14 @@ export class ZipProvider extends BaseProvider {
     /**
      * Creates a ZIP with all files.
      *
-     * @param {string} [type]
-     * @param {number} [compress]
-     * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>}
+     * @param {string} [type] - output ZIP file format, default to base64 string
+     * @param {number} [compress] - compression level, default to 0
+     * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - ZIP file in chosen format
      */
     async serveFiles({ type = ZIP_TYPE_BASE64, compress = 0 } = {}) {
         super.serveFiles();
+
+        this.zip = new JSZip();
 
         if ([ZIP_TYPE_ARRAY_BUFFER, ZIP_TYPE_UINT8_ARRAY, ZIP_TYPE_BLOB, ZIP_TYPE_NODE_BUFFER].indexOf(type) !== -1) {
             if (!JSZip.support[type]) {
@@ -59,7 +55,7 @@ export class ZipProvider extends BaseProvider {
             });
         });
 
-        return await this.zip.generateAsync({
+        return this.zip.generateAsync({
             type,
             compression: compress > 0 ? COMPRESS_DEFLATE : COMPRESS_STORE,
             compressionOptions: {
