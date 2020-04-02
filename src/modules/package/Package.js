@@ -1,5 +1,7 @@
 import { ZipProvider, GithubProvider } from '../../providers';
 import { MarkerModule } from '../marker';
+import { ENC_BASE64 } from '../../providers/provider';
+import { ASSET_3D } from '../marker/index'
 
 export const AR_BARCODE = 'barcode';
 export const AR_PATTERN = 'pattern';
@@ -31,23 +33,8 @@ export class Package {
      * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - the package, see {@link ZipProvider#serveFiles} or {@link GithubProvider#serveFiles} for actual return value
      */
     async serve(config) {
-        /** @type {Provider} */
-        let provider = null;
 
-        // init provider
-        switch (config.packageType) {
-            case 'zip':
-                provider = new ZipProvider();
-                break;
-
-            case 'github':
-                provider = new GithubProvider();
-                break;
-
-            default:
-                throw new Error(`Unknown provider: ${config.packageType}`);
-        }
-
+        let provider = this.initProvider(config);
         let generatedHtml = '';
 
         // generate HTML and add marker files, depending on chosen AR experience type
@@ -85,8 +72,36 @@ export class Package {
         }
 
         provider.addFile('index.html', generatedHtml);
-        provider.addFile(`assets/${this.assetName}`, this.assetFile);
-
+        this.addAssetToProvider(provider);
         return provider.serveFiles(config);
+    }
+
+    initProvider(config) {
+        /** @type {Provider} */
+        let provider = null;
+        console.log(config.packageType);
+
+        // init provider
+        switch (config.packageType) {
+            case 'zip':
+                provider = new ZipProvider();
+                break;
+
+            case 'github':
+                provider = new GithubProvider();
+                break;
+
+            default:
+                throw new Error(`Unknown provider: ${config.packageType}`);
+        }
+        return provider;
+    }
+
+    addAssetToProvider(provider) {
+        if (this.assetType === ASSET_3D) {
+            provider.addFile(`assets/${this.assetName}`, this.assetFile);
+        } else {
+            provider.addFile(`assets/${this.assetName}`, this.assetFile, ENC_BASE64);
+        }
     }
 }
