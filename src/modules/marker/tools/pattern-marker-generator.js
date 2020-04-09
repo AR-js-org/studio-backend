@@ -1,4 +1,4 @@
-import { loadImage } from './helpers.js';
+import { loadImage } from '../../../helpers.js';
 
 export class PatternMarkerGenerator {
     constructor(dataURI) {
