@@ -31934,6 +31934,33 @@ var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 var asyncToGenerator = __webpack_require__(4);
 var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
 
+// CONCATENATED MODULE: ./src/helpers.js
+var loadImage = function loadImage(dataURI) {
+  var image = new Image();
+  var p = new Promise(function (resolve, reject) {
+    image.addEventListener('load', function () {
+      resolve(image);
+    });
+    image.addEventListener('error', function () {
+      reject('Error loading image');
+    });
+  });
+  image.src = dataURI;
+  return p;
+}; // thanks to https://stackoverflow.com/a/9458996/2270403
+// this should be faster, if we ever have the need: https://gist.github.com/jonleighton/958841
+
+var arrayBufferToBase64 = function arrayBufferToBase64(buffer) {
+  var binary = [];
+  var bytes = new Uint8Array(buffer);
+  var len = bytes.byteLength;
+
+  for (var i = 0; i < len; i++) {
+    binary.push(String.fromCharCode(bytes[i]));
+  }
+
+  return btoa(binary.join(''));
+};
 // CONCATENATED MODULE: ./src/providers/provider.js
 
 
@@ -33025,20 +33052,6 @@ var barcode_marker_generator_BarcodeMarkerGenerator = /*#__PURE__*/function () {
 
   return BarcodeMarkerGenerator;
 }();
-// CONCATENATED MODULE: ./src/modules/marker/tools/helpers.js
-function loadImage(dataURI) {
-  var image = new Image();
-  var p = new Promise(function (resolve, reject) {
-    image.addEventListener('load', function () {
-      resolve(image);
-    });
-    image.addEventListener('error', function () {
-      reject('Error loading image');
-    });
-  });
-  image.src = dataURI;
-  return p;
-}
 // CONCATENATED MODULE: ./src/modules/marker/tools/pattern-marker-generator.js
 
 
@@ -33297,6 +33310,7 @@ var marker_MarkerModule = /*#__PURE__*/function () {
 
 
 
+
 var AR_BARCODE = 'barcode';
 var AR_PATTERN = 'pattern';
 var AR_LOCATION = 'location';
@@ -33337,81 +33351,63 @@ var Package_Package = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                /** @type {Provider} */
-                provider = null; // init provider
-
-                _context.t0 = config.packageType;
-                _context.next = _context.t0 === 'zip' ? 4 : _context.t0 === 'github' ? 6 : 8;
-                break;
-
-              case 4:
-                provider = new zip_ZipProvider();
-                return _context.abrupt("break", 9);
-
-              case 6:
-                provider = new github_GithubProvider();
-                return _context.abrupt("break", 9);
-
-              case 8:
-                throw new Error("Unknown provider: ".concat(config.packageType));
-
-              case 9:
+                provider = this.initProvider(config.packageType);
                 generatedHtml = ''; // generate HTML and add marker files, depending on chosen AR experience type
 
-                _context.t1 = this.arType;
-                _context.next = _context.t1 === AR_BARCODE ? 13 : _context.t1 === AR_PATTERN ? 19 : _context.t1 === AR_LOCATION ? 24 : _context.t1 === AR_NTF ? 25 : 26;
+                _context.t0 = this.arType;
+                _context.next = _context.t0 === AR_BARCODE ? 5 : _context.t0 === AR_PATTERN ? 11 : _context.t0 === AR_LOCATION ? 16 : _context.t0 === AR_NTF ? 17 : 18;
                 break;
 
-              case 13:
+              case 5:
                 if (this.config.matrixType) {
-                  _context.next = 15;
+                  _context.next = 7;
                   break;
                 }
 
                 throw new Error('Barcode-based AR needs a matrix type');
 
-              case 15:
+              case 7:
                 if (this.config.markerValue) {
-                  _context.next = 17;
+                  _context.next = 9;
                   break;
                 }
 
                 throw new Error('Barcode-based AR needs a marker value');
 
-              case 17:
+              case 9:
                 generatedHtml = marker_MarkerModule.generateBarcodeHtml(this.config.matrixType, this.config.markerValue, "assets/".concat(this.assetName)); // barcode requires no marker file
 
-                return _context.abrupt("break", 27);
+                return _context.abrupt("break", 19);
 
-              case 19:
+              case 11:
                 generatedHtml = marker_MarkerModule.generatePatternHtml(this.assetType, "assets/".concat(this.assetName));
 
                 if (this.config.markerPatt) {
-                  _context.next = 22;
+                  _context.next = 14;
                   break;
                 }
 
                 throw new Error('Pattern-based AR needs a marker.patt file');
 
-              case 22:
+              case 14:
                 provider.addFile('assets/marker.patt', this.config.markerPatt);
-                return _context.abrupt("break", 27);
+                return _context.abrupt("break", 19);
 
-              case 24:
+              case 16:
                 throw new Error('Location template is not implemented');
 
-              case 25:
+              case 17:
                 throw new Error('NTF template is not implemented');
 
-              case 26:
+              case 18:
                 throw new Error("Unknown AR type: ".concat(this.arType));
 
-              case 27:
+              case 19:
                 provider.addFile('index.html', generatedHtml);
-                provider.addFile("assets/".concat(this.assetName), this.assetFile);
+                this.addAssetToProvider(provider);
                 return _context.abrupt("return", provider.serveFiles(config));
 
-              case 30:
+              case 22:
               case "end":
                 return _context.stop();
             }
@@ -33425,6 +33421,64 @@ var Package_Package = /*#__PURE__*/function () {
 
       return serve;
     }()
+    /**
+     * @param {string} packageType - either 'zip' or 'github'
+     * @return {Provider}
+     */
+
+  }, {
+    key: "initProvider",
+    value: function initProvider(packageType) {
+      /** @type {Provider} */
+      var provider = null; // init provider
+
+      switch (packageType) {
+        case 'zip':
+          provider = new zip_ZipProvider();
+          break;
+
+        case 'github':
+          provider = new github_GithubProvider();
+          break;
+
+        default:
+          throw new Error("Unknown provider: ".concat(packageType));
+      }
+
+      return provider;
+    }
+  }, {
+    key: "addAssetToProvider",
+    value: function addAssetToProvider(provider) {
+      switch (this.assetType) {
+        case ASSET_3D:
+          provider.addFile("assets/".concat(this.assetName), this.assetFile);
+          break;
+
+        case ASSET_IMAGE:
+          provider.addFile("assets/".concat(this.assetName), this.assetFile, ENC_BASE64);
+          break;
+
+        case ASSET_AUDIO:
+        case ASSET_VIDEO:
+          if (provider instanceof zip_ZipProvider) {
+            provider.addFile("assets/".concat(this.assetName), this.assetFile, ENC_BINARY);
+          } else if (provider instanceof github_GithubProvider) {
+            if (!(this.assetFile instanceof ArrayBuffer)) {
+              throw new Error('Audio/video asset files for GitHub must be converted to ArrayBuffer');
+            } // GitHub API does not support binary files
+            // assetFile should be a base64-encoded string
+
+
+            provider.addFile("assets/".concat(this.assetName), arrayBufferToBase64(this.assetFile), ENC_BASE64);
+          }
+
+          break;
+
+        default:
+          throw new Error("Unknown asset type: ".concat(this.assetType));
+      }
+    }
   }]);
 
   return Package;
