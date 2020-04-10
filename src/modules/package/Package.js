@@ -1,5 +1,17 @@
-import { ZipProvider, GithubProvider } from '../../providers';
-import { MarkerModule } from '../marker';
+import { arrayBufferToBase64 } from '../../helpers.js';
+import {
+    ENC_BASE64,
+    ENC_BINARY,
+    ZipProvider,
+    GithubProvider,
+} from '../../providers';
+import {
+    ASSET_3D,
+    ASSET_IMAGE,
+    ASSET_AUDIO,
+    ASSET_VIDEO,
+    MarkerModule,
+} from '../marker';
 
 export const AR_BARCODE = 'barcode';
 export const AR_PATTERN = 'pattern';
@@ -31,23 +43,7 @@ export class Package {
      * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - the package, see {@link ZipProvider#serveFiles} or {@link GithubProvider#serveFiles} for actual return value
      */
     async serve(config) {
-        /** @type {Provider} */
-        let provider = null;
-
-        // init provider
-        switch (config.packageType) {
-            case 'zip':
-                provider = new ZipProvider();
-                break;
-
-            case 'github':
-                provider = new GithubProvider();
-                break;
-
-            default:
-                throw new Error(`Unknown provider: ${config.packageType}`);
-        }
-
+        const provider = this.initProvider(config.packageType);
         let generatedHtml = '';
 
         // generate HTML and add marker files, depending on chosen AR experience type
@@ -85,8 +81,61 @@ export class Package {
         }
 
         provider.addFile('index.html', generatedHtml);
-        provider.addFile(`assets/${this.assetName}`, this.assetFile);
-
+        this.addAssetToProvider(provider);
         return provider.serveFiles(config);
+    }
+
+    /**
+     * @param {string} packageType - either 'zip' or 'github'
+     * @return {Provider}
+     */
+    initProvider(packageType) {
+        /** @type {Provider} */
+        let provider = null;
+
+        // init provider
+        switch (packageType) {
+            case 'zip':
+                provider = new ZipProvider();
+                break;
+
+            case 'github':
+                provider = new GithubProvider();
+                break;
+
+            default:
+                throw new Error(`Unknown provider: ${packageType}`);
+        }
+        return provider;
+    }
+
+    addAssetToProvider(provider) {
+        switch (this.assetType) {
+            case ASSET_3D:
+                provider.addFile(`assets/${this.assetName}`, this.assetFile);
+                break;
+
+            case ASSET_IMAGE:
+                provider.addFile(`assets/${this.assetName}`, this.assetFile, ENC_BASE64);
+                break;
+
+            case ASSET_AUDIO:
+            case ASSET_VIDEO:
+                if (provider instanceof ZipProvider) {
+                    provider.addFile(`assets/${this.assetName}`, this.assetFile, ENC_BINARY);
+                } else if (provider instanceof GithubProvider) {
+                    if (!(this.assetFile instanceof ArrayBuffer)) {
+                        throw new Error('Audio/video asset files for GitHub must be converted to ArrayBuffer');
+                    }
+
+                    // GitHub API does not support binary files
+                    // assetFile should be a base64-encoded string
+                    provider.addFile(`assets/${this.assetName}`, arrayBufferToBase64(this.assetFile), ENC_BASE64);
+                }
+                break;
+
+            default:
+                throw new Error(`Unknown asset type: ${this.assetType}`);
+        }
     }
 }
