@@ -16880,47 +16880,48 @@ var github_GithubProvider = /*#__PURE__*/function (_BaseProvider) {
             switch (_context.prev = _context.next) {
               case 0:
                 _ref = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, token = _ref.token, _ref$message = _ref.message, message = _ref$message === void 0 ? DEFAULT_COMMIT_MESSAGE : _ref$message, _ref$repo = _ref.repo, repo = _ref$repo === void 0 ? null : _ref$repo, _ref$branch = _ref.branch, branch = _ref$branch === void 0 ? null : _ref$branch, _ref$owner = _ref.owner, owner = _ref$owner === void 0 ? null : _ref$owner;
+                _context.next = 3;
+                return get_default()(getPrototypeOf_default()(GithubProvider.prototype), "serveFiles", this).call(this);
 
-                get_default()(getPrototypeOf_default()(GithubProvider.prototype), "serveFiles", this).call(this);
-
+              case 3:
                 if (token) {
-                  _context.next = 4;
+                  _context.next = 5;
                   break;
                 }
 
                 throw new Error('Missing required token parameter');
 
-              case 4:
+              case 5:
                 this.client = new rest["Octokit"]({
                   auth: token
                 });
                 _context.t0 = owner;
 
                 if (_context.t0) {
-                  _context.next = 10;
+                  _context.next = 11;
                   break;
                 }
 
-                _context.next = 9;
+                _context.next = 10;
                 return this.getOwner();
 
-              case 9:
+              case 10:
                 _context.t0 = _context.sent;
 
-              case 10:
+              case 11:
                 this.owner = _context.t0;
                 this.repo = repo || rndRepoName();
                 this.branch = branch || DEFAULT_PAGE_BRANCH;
-                _context.next = 15;
+                _context.next = 16;
                 return this.getOrCreateRepo(this.repo);
 
-              case 15:
-                _context.next = 17;
+              case 16:
+                _context.next = 18;
                 return this.getOrCreateBranch(this.branch);
 
-              case 17:
+              case 18:
                 ghBranch = _context.sent;
-                _context.next = 20;
+                _context.next = 21;
                 return Promise.all(
                 /** @type {Array<GitFile>} */
                 this.files.map(function (file) {
@@ -16934,38 +16935,38 @@ var github_GithubProvider = /*#__PURE__*/function (_BaseProvider) {
                   });
                 }));
 
-              case 20:
+              case 21:
                 blobFiles = _context.sent;
-                _context.next = 23;
+                _context.next = 24;
                 return this.createTree(blobFiles);
 
-              case 23:
+              case 24:
                 tree = _context.sent;
-                _context.next = 26;
+                _context.next = 27;
                 return this.createCommit(message, tree.sha, [ghBranch.commit.sha]);
 
-              case 26:
+              case 27:
                 commit = _context.sent;
-                _context.next = 29;
+                _context.next = 30;
                 return this.updateRef(commit.sha, this.branch);
 
-              case 29:
+              case 30:
                 if (!(this.branch !== DEFAULT_PAGE_BRANCH)) {
-                  _context.next = 32;
+                  _context.next = 33;
                   break;
                 }
 
-                _context.next = 32;
+                _context.next = 33;
                 return this.enablePages(this.branch);
 
-              case 32:
-                _context.next = 34;
+              case 33:
+                _context.next = 35;
                 return this.rebuildPages();
 
-              case 34:
+              case 35:
                 return _context.abrupt("return", this.getPagesUrl());
 
-              case 35:
+              case 36:
               case "end":
                 return _context.stop();
             }
@@ -17464,24 +17465,25 @@ var zip_ZipProvider = /*#__PURE__*/function (_BaseProvider) {
             switch (_context.prev = _context.next) {
               case 0:
                 _ref = _args.length > 0 && _args[0] !== undefined ? _args[0] : {}, _ref$type = _ref.type, type = _ref$type === void 0 ? ZIP_TYPE_BASE64 : _ref$type, _ref$compress = _ref.compress, compress = _ref$compress === void 0 ? 0 : _ref$compress;
+                _context.next = 3;
+                return get_default()(getPrototypeOf_default()(ZipProvider.prototype), "serveFiles", this).call(this);
 
-                get_default()(getPrototypeOf_default()(ZipProvider.prototype), "serveFiles", this).call(this);
-
+              case 3:
                 this.zip = new jszip_min_default.a();
 
                 if (!([ZIP_TYPE_ARRAY_BUFFER, ZIP_TYPE_UINT8_ARRAY, ZIP_TYPE_BLOB, ZIP_TYPE_NODE_BUFFER].indexOf(type) !== -1)) {
-                  _context.next = 6;
+                  _context.next = 7;
                   break;
                 }
 
                 if (jszip_min_default.a.support[type]) {
-                  _context.next = 6;
+                  _context.next = 7;
                   break;
                 }
 
                 throw new Error("Output type not supported by browser: ".concat(type));
 
-              case 6:
+              case 7:
                 this.files.forEach(function (file) {
                   _this.zip.file(file.path, file.content, _objectSpread({
                     base64: file.encoding === ENC_BASE64
@@ -17498,7 +17500,7 @@ var zip_ZipProvider = /*#__PURE__*/function (_BaseProvider) {
                   }
                 }));
 
-              case 8:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -18179,9 +18181,6 @@ var Package_Package = /*#__PURE__*/function () {
     value: function addAssetToProvider(provider) {
       switch (this.assetType) {
         case ASSET_3D:
-          provider.addFile("assets/".concat(this.assetName), this.assetFile);
-          break;
-
         case ASSET_IMAGE:
           provider.addFile("assets/".concat(this.assetName), this.assetFile, ENC_BASE64);
           break;
