@@ -50,7 +50,7 @@ export class GithubProvider extends BaseProvider {
      * @return {Promise<string|null>} - Pages URL for this repository
      */
     async serveFiles({ token, message = DEFAULT_COMMIT_MESSAGE, repo = null, branch = null, owner = null } = {}) {
-        super.serveFiles();
+        await super.serveFiles();
 
         if (!token) {
             throw new Error('Missing required token parameter');
