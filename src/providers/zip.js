@@ -38,7 +38,7 @@ export class ZipProvider extends BaseProvider {
      * @return {Promise<string|Array<number>|Uint8Array|ArrayBuffer|Blob|Buffer>} - ZIP file in chosen format
      */
     async serveFiles({ type = ZIP_TYPE_BASE64, compress = 0 } = {}) {
-        super.serveFiles();
+        await super.serveFiles();
 
         this.zip = new JSZip();
 

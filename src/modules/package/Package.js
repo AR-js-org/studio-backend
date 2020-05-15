@@ -112,9 +112,6 @@ export class Package {
     addAssetToProvider(provider) {
         switch (this.assetType) {
             case ASSET_3D:
-                provider.addFile(`assets/${this.assetName}`, this.assetFile);
-                break;
-
             case ASSET_IMAGE:
                 provider.addFile(`assets/${this.assetName}`, this.assetFile, ENC_BASE64);
                 break;
