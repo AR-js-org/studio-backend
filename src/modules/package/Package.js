@@ -18,6 +18,13 @@ export const AR_PATTERN = 'pattern';
 export const AR_LOCATION = 'location';
 export const AR_NTF = 'ntf';
 
+/**
+ * @typedef AssetParam
+ * @property {boolean} isValid
+ * @property {Number} scale
+ * @property {{width: Number, height: Number, depth: Number}} size
+ */
+
 export class Package {
     /**
      * @param {Object} config
@@ -25,6 +32,7 @@ export class Package {
      * @param {string} config.assetType - one of 3d, image, audio or video (see {@link MarkerModule} exported constants)
      * @param {string|Blob} config.assetFile - the file to be show in AR
      * @param {string} config.assetName - the file name, to be included in HTML template
+     * @param {AssetParam} config.assetParam - scale and position of AR asset
      * @param {string} [config.markerPatt] - the marker image patt file (required for pattern AR type)
      * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
      * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)
@@ -34,6 +42,12 @@ export class Package {
         this.assetType = config.assetType;
         this.assetFile = config.assetFile;
         this.assetName = config.assetName;
+        this.assetParam = config.assetParam;
+        
+        if (!this.assetParam.isValid) {
+            throw new Error('Asset parameters are not valid');
+        }
+        
         this.config = config;
     }
 
@@ -61,7 +75,7 @@ export class Package {
                 break;
 
             case AR_PATTERN:
-                generatedHtml = MarkerModule.generatePatternHtml(this.assetType, `assets/${this.assetName}`);
+                generatedHtml = MarkerModule.generatePatternHtml(this.assetType, this.assetParam, `assets/${this.assetName}`);
 
                 if (!this.config.markerPatt) {
                     throw new Error('Pattern-based AR needs a marker.patt file');
