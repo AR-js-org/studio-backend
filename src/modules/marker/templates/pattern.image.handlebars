@@ -18,7 +18,10 @@
                 preset="custom"
                 url="assets/marker.patt"
             >
-                <a-image src="{{assetPath}}"></a-image>
+                <a-image
+                    src="{{assetPath}}"
+                    scale="{{assetParam.scale}} {{assetParam.scale}} {{assetParam.scale}}"
+                ></a-image>
             </a-marker>
 
             <a-entity camera></a-entity>

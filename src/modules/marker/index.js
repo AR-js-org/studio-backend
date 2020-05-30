@@ -39,8 +39,9 @@ export class MarkerModule {
         });
     }
 
-    static generatePatternHtml(assetType, assetPath) {
+    static generatePatternHtml(assetType, assetParam, assetPath) {
         return TEMPLATES[assetType]({
+            assetParam,
             assetPath,
         });
     }
