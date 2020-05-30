@@ -1988,7 +1988,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
 var Handlebars = __webpack_require__(11);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, helper, alias1=container.escapeExpression, alias2=container.lambda, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
@@ -1996,8 +1996,14 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
     };
 
   return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n        <script src=\"https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            renderer=\"logarithmicDepthBuffer: true;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-assets>\n                <a-asset-item\n                    id=\"animated-asset\"\n                    src=\""
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":20,"column":25},"end":{"line":20,"column":38}}}) : helper)))
-    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-entity\n                    animation-mixer=\"loop: repeat\"\n                    gltf-model=\"#animated-asset\"\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+    + alias1(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":20,"column":25},"end":{"line":20,"column":38}}}) : helper)))
+    + "\"\n                ></a-asset-item>\n            </a-assets>\n\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-entity\n                    scale=\""
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + "\"\n                    animation-mixer=\"loop: repeat\"\n                    gltf-model=\"#animated-asset\"\n                ></a-entity>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
 },"useData":true});
 
 /***/ }),
@@ -2007,16 +2013,22 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
 var Handlebars = __webpack_require__(11);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, helper, alias1=container.escapeExpression, alias2=container.lambda, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
         return undefined
     };
 
-  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-image src=\""
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":21,"column":30},"end":{"line":21,"column":43}}}) : helper)))
-    + "\"></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+  return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style=\"margin : 0px; overflow: hidden;\">\n        <a-scene\n            vr-mode-ui=\"enabled: false;\"\n            loading-screen=\"enabled: false;\"\n            arjs=\"trackingMethod: best; sourceType: webcam; debugUIEnabled: false;\"\n            embedded\n        >\n            <a-marker\n                id=\"animated-marker\"\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n            >\n                <a-image\n                    src=\""
+    + alias1(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":22,"column":25},"end":{"line":22,"column":38}}}) : helper)))
+    + "\"\n                    scale=\""
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + "\"\n                ></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
 },"useData":true});
 
 /***/ }),
@@ -2045,7 +2057,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
 var Handlebars = __webpack_require__(11);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, helper, alias1=container.escapeExpression, alias2=container.lambda, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
@@ -2053,8 +2065,14 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
     };
 
   return "<!doctype html>\n<html>\n    <head>\n        <script src=\"https://aframe.io/releases/0.9.2/aframe.min.js\"></script>\n        <script src=\"https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js\"></script>\n    </head>\n\n    <body style='margin : 0px; overflow: hidden;'>\n        <a-scene\n            vr-mode-ui=\"enabled: false\"\n            loading-screen=\"enabled: false;\"\n            arjs='sourceType: webcam; debugUIEnabled: false;'\n            embedded\n        >\n\n            <a-assets>\n                <video\n                    id=\"vid\"\n                    src=\""
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":19,"column":25},"end":{"line":19,"column":38}}}) : helper)))
-    + "\"\n                    preload=\"auto\"\n                    response-type=\"arraybuffer\"\n                    loop\n                    crossorigin\n                    webkit-playsinline\n                    autoplay\n                    muted\n                    playsinline\n                ></video>\n            </a-assets>\n\n            <a-marker\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n                videohandler\n                smooth=\"true\"\n                smoothCount=\"10\"\n                smoothTolerance=\"0.01\"\n                smoothThreshold=\"5\"\n            >\n                <a-video\n                    src=\"#vid\"\n                    position=\"0 0.1 0\"\n                    rotation=\"-90 0 0\"\n                ></a-video>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+    + alias1(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":19,"column":25},"end":{"line":19,"column":38}}}) : helper)))
+    + "\"\n                    preload=\"auto\"\n                    response-type=\"arraybuffer\"\n                    loop\n                    crossorigin\n                    webkit-playsinline\n                    autoplay\n                    muted\n                    playsinline\n                ></video>\n            </a-assets>\n\n            <a-marker\n                type=\"pattern\"\n                preset=\"custom\"\n                url=\"assets/marker.patt\"\n                videohandler\n                smooth=\"true\"\n                smoothCount=\"10\"\n                smoothTolerance=\"0.01\"\n                smoothThreshold=\"5\"\n            >\n                <a-video\n                    src=\"#vid\"\n                    scale=\""
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + " "
+    + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + "\"\n                    position=\"0 0.1 0\"\n                    rotation=\"-90 0 0\"\n                ></a-video>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
 },"useData":true});
 
 /***/ }),
@@ -18023,8 +18041,9 @@ var marker_MarkerModule = /*#__PURE__*/function () {
     }
   }, {
     key: "generatePatternHtml",
-    value: function generatePatternHtml(assetType, assetPath) {
+    value: function generatePatternHtml(assetType, assetParam, assetPath) {
       return TEMPLATES[assetType]({
+        assetParam: assetParam,
         assetPath: assetPath
       });
     }
@@ -18044,6 +18063,22 @@ var AR_BARCODE = 'barcode';
 var AR_PATTERN = 'pattern';
 var AR_LOCATION = 'location';
 var AR_NTF = 'ntf';
+/**
+ * @typedef AssetParam
+ * @property {boolean} isValid
+ * @property {Number} scale
+ * @property {{width: Number, height: Number, depth: Number}} size
+ */
+
+var defaultAssetParam = {
+  isValid: true,
+  scale: 1.0,
+  size: {
+    width: 1.0,
+    height: 1.0,
+    depth: 1.0
+  }
+};
 var Package_Package = /*#__PURE__*/function () {
   /**
    * @param {Object} config
@@ -18051,6 +18086,7 @@ var Package_Package = /*#__PURE__*/function () {
    * @param {string} config.assetType - one of 3d, image, audio or video (see {@link MarkerModule} exported constants)
    * @param {string|Blob} config.assetFile - the file to be show in AR
    * @param {string} config.assetName - the file name, to be included in HTML template
+   * @param {AssetParam} [config.assetParam] - scale and position of AR asset
    * @param {string} [config.markerPatt] - the marker image patt file (required for pattern AR type)
    * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
    * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)
@@ -18062,6 +18098,12 @@ var Package_Package = /*#__PURE__*/function () {
     this.assetType = config.assetType;
     this.assetFile = config.assetFile;
     this.assetName = config.assetName;
+    this.assetParam = config.assetParam || defaultAssetParam;
+
+    if (!this.assetParam.isValid) {
+      throw new Error('Asset parameters are not valid');
+    }
+
     this.config = config;
   }
   /**
@@ -18109,7 +18151,7 @@ var Package_Package = /*#__PURE__*/function () {
                 return _context.abrupt("break", 19);
 
               case 11:
-                generatedHtml = marker_MarkerModule.generatePatternHtml(this.assetType, "assets/".concat(this.assetName));
+                generatedHtml = marker_MarkerModule.generatePatternHtml(this.assetType, this.assetParam, "assets/".concat(this.assetName));
 
                 if (this.config.markerPatt) {
                   _context.next = 14;
