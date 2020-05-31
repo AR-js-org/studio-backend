@@ -1,4 +1,4 @@
-// Component that detects and emits events for touch gestures
+/* global AFRAME, THREE */
 
 AFRAME.registerComponent("gesture-detector", {
     schema: {
