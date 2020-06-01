@@ -1,6 +1,6 @@
-/* global AFRAME, THREE */
+/* global AFRAME */
 
-AFRAME.registerComponent("gesture-handler", {
+AFRAME.registerComponent('gesture-handler', {
     schema: {
         enabled: { default: true },
         rotationFactor: { default: 5 },
@@ -8,7 +8,7 @@ AFRAME.registerComponent("gesture-handler", {
         maxScale: { default: 8 },
     },
 
-    init: function() {
+    init() {
         this.handleScale = this.handleScale.bind(this);
         this.handleRotation = this.handleRotation.bind(this);
 
@@ -16,31 +16,31 @@ AFRAME.registerComponent("gesture-handler", {
         this.initialScale = this.el.object3D.scale.clone();
         this.scaleFactor = 1;
 
-        this.el.sceneEl.addEventListener("markerFound", (e) => {
+        this.el.sceneEl.addEventListener('markerFound', () => {
             this.isVisible = true;
         });
 
-        this.el.sceneEl.addEventListener("markerLost", (e) => {
+        this.el.sceneEl.addEventListener('markerLost', () => {
             this.isVisible = false;
         });
     },
 
-    update: function() {
+    update() {
         if (this.data.enabled) {
-            this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
-            this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
+            this.el.sceneEl.addEventListener('onefingermove', this.handleRotation);
+            this.el.sceneEl.addEventListener('twofingermove', this.handleScale);
         } else {
-            this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
-            this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
+            this.el.sceneEl.removeEventListener('onefingermove', this.handleRotation);
+            this.el.sceneEl.removeEventListener('twofingermove', this.handleScale);
         }
     },
 
-    remove: function() {
-        this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
-        this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
+    remove() {
+        this.el.sceneEl.removeEventListener('onefingermove', this.handleRotation);
+        this.el.sceneEl.removeEventListener('twofingermove', this.handleScale);
     },
 
-    handleRotation: function(event) {
+    handleRotation(event) {
         if (this.isVisible) {
             this.el.object3D.rotation.y +=
                 event.detail.positionChange.x * this.data.rotationFactor;
@@ -49,7 +49,7 @@ AFRAME.registerComponent("gesture-handler", {
         }
     },
 
-    handleScale: function(event) {
+    handleScale(event) {
         if (this.isVisible) {
             this.scaleFactor *=
                 1 + event.detail.spreadChange / event.detail.startSpread;

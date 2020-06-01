@@ -1,11 +1,11 @@
-/* global AFRAME, THREE */
+/* global AFRAME */
 
 AFRAME.registerComponent('gesture-detector', {
     schema: {
-        element: { default: '' }
+        element: { default: '' },
     },
 
-    init: function() {
+    init() {
         this.targetElement =
             this.data.element && document.querySelector(this.data.element);
 
@@ -14,7 +14,7 @@ AFRAME.registerComponent('gesture-detector', {
         }
 
         this.internalState = {
-            previousState: null
+            previousState: null,
         };
 
         this.emitGestureEvent = this.emitGestureEvent.bind(this);
@@ -26,7 +26,7 @@ AFRAME.registerComponent('gesture-detector', {
         this.targetElement.addEventListener('touchmove', this.emitGestureEvent);
     },
 
-    remove: function() {
+    remove() {
         this.targetElement.removeEventListener('touchstart', this.emitGestureEvent);
 
         this.targetElement.removeEventListener('touchend', this.emitGestureEvent);
@@ -50,7 +50,7 @@ AFRAME.registerComponent('gesture-detector', {
 
         if (gestureEnded) {
             const eventName =
-                this.getEventPrefix(previousState.touchCount) + 'fingerend';
+                `${this.getEventPrefix(previousState.touchCount)}fingerend`;
 
             this.el.emit(eventName, previousState);
 
@@ -65,7 +65,7 @@ AFRAME.registerComponent('gesture-detector', {
             currentState.startSpread = currentState.spread;
 
             const eventName =
-                this.getEventPrefix(currentState.touchCount) + 'fingerstart';
+                `${this.getEventPrefix(currentState.touchCount)}fingerstart`;
 
             this.el.emit(eventName, currentState);
 
@@ -77,8 +77,8 @@ AFRAME.registerComponent('gesture-detector', {
                 positionChange: {
                     x: currentState.position.x - previousState.position.x,
 
-                    y: currentState.position.y - previousState.position.y
-                }
+                    y: currentState.position.y - previousState.position.y,
+                },
             };
 
             if (currentState.spread) {
@@ -94,13 +94,13 @@ AFRAME.registerComponent('gesture-detector', {
             Object.assign(eventDetail, previousState);
 
             const eventName =
-                this.getEventPrefix(currentState.touchCount) + 'fingermove';
+                `${this.getEventPrefix(currentState.touchCount)}fingermove`;
 
             this.el.emit(eventName, eventDetail);
         }
     },
 
-    getTouchState: function(event) {
+    getTouchState(event) {
         if (event.touches.length === 0) {
             return null;
         }
@@ -114,7 +114,7 @@ AFRAME.registerComponent('gesture-detector', {
         }
 
         const touchState = {
-            touchCount: touchList.length
+            touchCount: touchList.length,
         };
 
         // Calculate center of all current touches
@@ -135,7 +135,7 @@ AFRAME.registerComponent('gesture-detector', {
 
         touchState.position = {
             x: centerPositionRawX * screenScale,
-            y: centerPositionRawY * screenScale
+            y: centerPositionRawY * screenScale,
         };
 
         // Calculate average spread of touches from the center point
@@ -163,5 +163,5 @@ AFRAME.registerComponent('gesture-detector', {
         const numberNames = ['one', 'two', 'three', 'many'];
 
         return numberNames[Math.min(touchCount, 4) - 1];
-    }
+    },
 });
