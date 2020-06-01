@@ -1,17 +1,8 @@
 ## GitHub Pages
 
-**new GithubProvider(config)**
+**new GithubProvider()**
 
-Accepts the following configuration:
-
-```js
-new GithubProvider({
-    token: 'authorization token', // required, can be a PAT or OAuth token
-    owner: 'username', // automatically retrieved by default
-    repo: 'name of the repository', // defaults to 'arjs-studio-NUMBERS'
-    branch: 'gh-pages' // automatically deploy to Pages by default
-});
-```
+The constructor, no configuration needed.
 
 **addFile(path, content, encoding)**
 
@@ -20,34 +11,37 @@ Accepted encodings are `utf-8` for textual files and `base64` for encoded images
 
 **serveFiles(config)**
 
-Commits files to the user's repository and returns a `Promise` that resolves to the URL
+Commit files to the user's repository and returns a `Promise` that resolves to the URL
 of the deployed Pages.
 
 ```js
 provider.serveFiles({
-    message: 'custom commit message',
-    owner: 'custom owner',
-    repo: 'custom repo',
-    branch: 'custom branch'
+    token: 'YOUR-TOKEN', // required, must be an OAuth2 token
+    message: 'custom commit message', // optional
+    owner: 'custom owner', // automatically retrieved by default
+    repo: 'custom repo', // defaults to 'arjs-studio-NUMBERS'
+    branch: 'gh-pages' // automatically deploy to Pages by default
 });
 ```
 
 **Example**
 
 First, create a Personal Access Token from [GitHub Developer Settings](https://github.com/settings/tokens)
-with scope `repo:publis_repo`.
+with scope `repo:public_repo`.
+
+In production you'll need to implement GitHub's OAuth Web Application flow ([see here](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow))
+to obtain a token from your users.
 
 Then use it to serve the project:
 
 ```js
 const { GithubProvider, ENC_BASE64 } = ARjsStudioBackend;
 
-const github = new GithubProvider({
-   token: 'YOUR-TOKEN'
-});
+const github = new GithubProvider();
 github.addFile('index.html', 'Hello World!');
 github.addFile('img/example.jpg', 'base64 encoded image ...', ENC_BASE64);
 const pagesUrl = await github.serveFiles({
+   token: 'YOUR-TOKEN',
    message: 'my awesome AR experience'
 });
 const branchName = github.branch; // store this
@@ -60,7 +54,7 @@ a Pages build.
 
 **new ZipProvider()**
 
-The constructor, no configuration is needed.
+The constructor, no configuration needed.
 
 **addFile(path, content, encoding)**
 
