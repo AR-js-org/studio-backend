@@ -16,15 +16,15 @@ The following static methods are available for the frontend side:
 
 - [x] Pattern Marker Generator (marker image + .patt file), given input image and custom parameters
 
-- [ ] Creation and Output for `a-scene` element of Marker Based app, with default parameters
+- [x] Creation and Output for `a-scene` element of Marker Based app, with default parameters
 
-- [ ] Creation and Output for `a-scene` element of Location Based app, with default parameters
+- [x] Creation and Output for `a-scene` element of Location Based app, with default parameters
 
 - [ ] Creation and Output for `a-scene` element of NFT Based app, with default parameters
 
-- [ ] Creation and Output of `a-marker` element, with custom parameters (pattern, barcode markers)
+- [x] Creation and Output of `a-marker` element, with custom parameters (pattern, barcode markers)
 
-- [ ] Creation and Output of `gps-entity-place` element, with custom parameters
+- [x] Creation and Output of `gps-entity-place` element, with custom parameters
 
 - [ ] Creation and Output of `a-nft` element, with custom parameters
 
@@ -54,7 +54,7 @@ Alternatively, you can use a CDN service like GitHack (replace `vX.Y.Z` with an 
 
 Modules are used to generate assets like marker and `.patt` files.
 
-See [modules docs](docs/modules.md) for detailed documentation and examples.
+See [modules docs](docs/modules.md) for a detailed documentation and examples.
 
 ## Providers
 
@@ -62,13 +62,20 @@ Providers are used to gather together the project assets and serve them in diffe
 A base `Provider` class can be found in `src/providers/Provider.js`, you can extend directly from it or use
 others this library provides.
 
-See [providers docs](docs/providers.md) for detailed documentation and examples.
+See [providers docs](docs/providers.md) for a detailed documentation and examples.
 
 ## HTML generation
 
 Modules also provide static functions to generate the content of `index.html` files for all kinds of AR.js applications.
 
-See [templates docs](docs/templates.md) for detailed documentation and examples.
+See [templates docs](docs/templates.md) for a detailed documentation and examples.
+
+## Package
+
+This class is a helper for generating the application package for the user. It provides an easy interface for the whole
+process, wrapping all modules/providers.
+
+See [package docs](docs/package.md) for a detailed documentation and examples.
 
 ## TODO
 

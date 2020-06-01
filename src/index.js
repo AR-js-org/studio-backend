@@ -12,6 +12,8 @@ import {
     AR_PATTERN,
     AR_LOCATION,
     AR_NTF,
+    PACKAGE_GITHUB,
+    PACKAGE_ZIP,
 } from './modules/package/Package';
 import {
     MATRIX_3X3_HAMMING_63,
@@ -54,6 +56,8 @@ export {
     AR_PATTERN,
     AR_LOCATION,
     AR_NTF,
+    PACKAGE_GITHUB,
+    PACKAGE_ZIP,
     Package,
     NFTModule,
     ENC_BASE64,

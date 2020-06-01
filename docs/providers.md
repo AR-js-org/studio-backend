@@ -24,12 +24,12 @@ provider.serveFiles({
 });
 ```
 
-**Example**
+### Example
 
 First, create a Personal Access Token from [GitHub Developer Settings](https://github.com/settings/tokens)
 with scope `repo:public_repo`.
 
-In production you'll need to implement GitHub's OAuth Web Application flow ([see here](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow))
+In production, you'll need to implement GitHub's OAuth Web Application flow ([see here](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow))
 to obtain a token from your users.
 
 Then use it to serve the project:
@@ -44,10 +44,10 @@ const pagesUrl = await github.serveFiles({
    token: 'YOUR-TOKEN',
    message: 'my awesome AR experience'
 });
-const branchName = github.branch; // store this
+const repoName = github.repo; // store this
 ```
 
-The provider will use the PAT to create repo, branch, set up Pages, commit all the files and trigger
+The provider will use the PAT to create the repository, branch, set up Pages, commit all the files and trigger
 a Pages build.
 
 ## Zip file
@@ -73,7 +73,7 @@ provider.serveFiles({
 });
 ```
 
-**Example**
+### Example
 
 ```js
 const image = 'base64 encoded image';
@@ -87,5 +87,5 @@ zip.addFile('readme.txt', 'Hello world!');
 zip.addFile('images/img.jpg', image, ENC_BASE64);
 const base64 = await zip.serveFiles({ compress: 9 });
 // trigger download
-window.location = `data:application/zip;base64,${base64}`
+window.location = `data:application/zip;base64,${base64}`;
 ```

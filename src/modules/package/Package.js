@@ -18,6 +18,9 @@ export const AR_PATTERN = 'pattern';
 export const AR_LOCATION = 'location';
 export const AR_NTF = 'ntf';
 
+export const PACKAGE_ZIP = 'zip';
+export const PACKAGE_GITHUB = 'github';
+
 /**
  * @typedef AssetParam
  * @property {boolean} isValid
@@ -40,11 +43,11 @@ export class Package {
     /**
      * @param {Object} config
      * @param {string} config.arType - one of barcode, pattern, location or ntf (see exported constants)
-     * @param {string} config.assetType - one of 3d, image, audio or video (see {@link MarkerModule} exported constants)
+     * @param {string} config.assetType - one of 3d, image, audio or video (see exported constants)
      * @param {string|Blob} config.assetFile - the file to be show in AR
      * @param {string} config.assetName - the file name, to be included in HTML template
      * @param {AssetParam} [config.assetParam] - scale and position of AR asset
-     * @param {string} [config.markerPatt] - the marker image patt file (required for pattern AR type)
+     * @param {string} [config.markerPatt] - the marker image patt file (required for pattern and location AR type)
      * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
      * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)
      */
@@ -117,11 +120,11 @@ export class Package {
 
         // init provider
         switch (packageType) {
-            case 'zip':
+            case PACKAGE_ZIP:
                 provider = new ZipProvider();
                 break;
 
-            case 'github':
+            case PACKAGE_GITHUB:
                 provider = new GithubProvider();
                 break;
 
