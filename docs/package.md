@@ -18,8 +18,12 @@ new Package({
             height: 1.0,
             depth: 1.0
         },
-        latitude: 12.345678, // required for location based AR
-        longitude: 12.345678 // required for location based AR
+        locations: [
+            {
+                latitude: 12.345678, // required for location based AR
+                longitude: 12.345678 // required for location based AR
+            }
+        ]
     },
     markerPatt: '...', // the content of the generated .patt file, as a string (required for pattern/location based AR)
     matrixType: '...', // see exported MATRIX_* constants (required for barcode based AR)

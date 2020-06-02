@@ -21,15 +21,17 @@
                     response-type="arraybuffer"
                 ></a-asset-item>
             </a-assets>
-
-            <a-entity
-                look-at="[gps-camera]"
-                id="sound-entity"
-                sound="src: #sound"
-                emitsevent
-                autoplay="false"
-                gps-entity-place="latitude: {{assetParam.latitude}}; longitude: {{assetParam.longitude}};"
-            ></a-entity>
+            
+            {{#each assetParam.locations}}
+                <a-entity
+                    look-at="[gps-camera]"
+                    id="sound-entity"
+                    sound="src: #sound"
+                    emitsevent
+                    autoplay="false"
+                    gps-entity-place="latitude: {{this.latitude}}; longitude: {{this.longitude}};"
+                ></a-entity>
+            {{/each}}
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>

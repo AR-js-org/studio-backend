@@ -23,13 +23,15 @@
                 ></a-asset-item>
             </a-assets>
 
-            <a-entity
-                look-at="[gps-camera]"
-                animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
-                scale="{{assetParam.scale}} {{assetParam.scale}} {{assetParam.scale}}"
-                gps-entity-place="latitude: {{assetParam.latitude}}; longitude: {{assetParam.longitude}};"
-            ></a-entity>
+            {{#each assetParam.locations}}
+                <a-entity
+                    look-at="[gps-camera]"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset"
+                    scale="{{../assetParam.scale}} {{../assetParam.scale}} {{../assetParam.scale}}"
+                    gps-entity-place="latitude: {{this.latitude}}; longitude: {{this.longitude}};"
+                ></a-entity>
+            {{/each}}
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>

@@ -26,8 +26,7 @@ export const PACKAGE_GITHUB = 'github';
  * @property {boolean} isValid
  * @property {Number} scale
  * @property {{width: Number, height: Number, depth: Number}} size
- * @property {Number} [latitude] - only for location-based
- * @property {Number} [longitude] - only for location-based
+ * @property {Array<{latitude: Number, longitude: Number}>} locations - an array of latitude/longitude locations, for location based AR
  */
 const defaultAssetParam = {
     isValid: true,
@@ -46,7 +45,7 @@ export class Package {
      * @param {string} config.assetType - one of 3d, image, audio or video (see exported constants)
      * @param {string|Blob} config.assetFile - the file to be show in AR
      * @param {string} config.assetName - the file name, to be included in HTML template
-     * @param {AssetParam} [config.assetParam] - scale and position of AR asset
+     * @param {AssetParam} [config.assetParam] - parameters of AR asset
      * @param {string} [config.markerPatt] - the marker image patt file (required for pattern and location AR type)
      * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
      * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)

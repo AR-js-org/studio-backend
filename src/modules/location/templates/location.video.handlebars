@@ -29,20 +29,22 @@
                 ></video>
             </a-assets>
 
-            <a-video
-                src="#vid"
-                position='0 0.1 0'
-                rotation="-90 0 0"
-                look-at="[gps-camera]"
-                videohandler
-                smooth="true"
-                smoothCount="10"
-                smoothTolerance="0.01"
-                smoothThreshold="5"
-                autoplay="false"
-                scale="{{assetParam.scale}} {{assetParam.scale}} {{assetParam.scale}}"
-                gps-entity-place="latitude: {{assetParam.latitude}}; longitude: {{assetParam.longitude}};"
-            ></a-video>
+            {{#each assetParam.locations}}
+                <a-video
+                    src="#vid"
+                    position='0 0.1 0'
+                    rotation="-90 0 0"
+                    look-at="[gps-camera]"
+                    videohandler
+                    smooth="true"
+                    smoothCount="10"
+                    smoothTolerance="0.01"
+                    smoothThreshold="5"
+                    autoplay="false"
+                    scale="{{../assetParam.scale}} {{../assetParam.scale}} {{../assetParam.scale}}"
+                    gps-entity-place="latitude: {{this.latitude}}; longitude: {{this.longitude}};"
+                ></a-video>
+            {{/each}}
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>

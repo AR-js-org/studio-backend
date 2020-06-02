@@ -3,7 +3,7 @@ import {
     ASSET_IMAGE,
     ASSET_AUDIO,
     ASSET_VIDEO,
-} from '../../index';
+} from '../package/Package';
 
 import location3dTemplate from './templates/location.3d.handlebars';
 import locationImageTemplate from './templates/location.image.handlebars';

@@ -3,7 +3,7 @@ import {
     ASSET_IMAGE,
     ASSET_AUDIO,
     ASSET_VIDEO,
-} from '../../index';
+} from '../package/Package';
 
 import { BarcodeMarkerGenerator } from './tools/barcode-marker-generator';
 import { PatternMarkerGenerator } from './tools/pattern-marker-generator';
