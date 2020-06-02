@@ -4,7 +4,7 @@ This module can generate both barcode and pattern markers.
 
 **MarkerModule.getBarcodeMarkerSVGDataURI(matrixTypeId, value)**
 
-This method is used to create a barcode image from a value.
+Use this method to create a barcode image from a value.
 Accepts a matrix type (see exported `MATRIX_*` constants) and a value and returns a data URI string,
 representing an SVG of the barcode marker.
 
@@ -21,16 +21,16 @@ Supported matrix types (values start from 0):
 
 **MarkerModule.getMarkerPattern(dataURI)**
 
-This method is used to create a `.patt` file from an image.
+Use this method to create a `.patt` file from an image.
 Accepts an image as a data URI string and returns a string for the `.patt` file.
 
 **MarkerModule.getFullMarkerImage(dataURI, ratio, size, color)**
 
-This method is used to create the marker image with border from an image.
+Use this method to create the marker image with border from an image.
 Accepts an image as a data URI string, size, ratio and border color for the marker and returns
 a data URI string representing the final marker image.
 
-**Example**
+### Example
 
 ```js
 const { MarkerModule, MATRIX_3X3_HAMMING_63 } = ARjsStudioBackend;

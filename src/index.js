@@ -1,20 +1,20 @@
 import 'regenerator-runtime/runtime';
 import { LocationModule } from './modules/location';
+import { MarkerModule } from './modules/marker';
+import { NFTModule } from './modules/nft';
 import {
     Package,
-    AR_BARCODE,
-    AR_PATTERN,
-    AR_LOCATION,
-    AR_NTF,
-} from './modules/package/Package';
-import {
-    MarkerModule,
     ASSET_3D,
     ASSET_IMAGE,
     ASSET_AUDIO,
     ASSET_VIDEO,
-} from './modules/marker';
-import { NFTModule } from './modules/nft';
+    AR_BARCODE,
+    AR_PATTERN,
+    AR_LOCATION,
+    AR_NTF,
+    PACKAGE_GITHUB,
+    PACKAGE_ZIP,
+} from './modules/package/Package';
 import {
     MATRIX_3X3_HAMMING_63,
     MATRIX_3X3_PARITY_65,
@@ -56,6 +56,8 @@ export {
     AR_PATTERN,
     AR_LOCATION,
     AR_NTF,
+    PACKAGE_GITHUB,
+    PACKAGE_ZIP,
     Package,
     NFTModule,
     ENC_BASE64,

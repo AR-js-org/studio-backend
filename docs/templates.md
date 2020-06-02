@@ -5,7 +5,7 @@
 Generate the `index.html` contents for AR.js applications using marker pattern.
 Accepts an asset type (see exported `ASSET_*` constants) and relative paths for `.patt` and asset files.
 
-**Example**
+### Example
 
 ```js
 const { MarkerModule, ASSET_AUDIO } = ARjsStudioBackend;
@@ -22,7 +22,7 @@ Generate the `index.html` contents for AR.js applications using marker barcode.
 Accepts a matrix type (see exported `MATRIX_*` constants), the barcode value represented by the marker and
 asset file.
 
-**Example**
+### Example
 
 ```js
 const { MarkerModule, MATRIX_3X3_HAMMING_63 } = ARjsStudioBackend;

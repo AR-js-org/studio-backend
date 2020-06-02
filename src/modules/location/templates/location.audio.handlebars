@@ -6,29 +6,29 @@
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
         <a-scene
-            renderer="logarithmicDepthBuffer: true;"
             embedded
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false;"
         >
             <a-assets>
                 <a-asset-item
-                    id="animated-asset"
+                    id="sound"
                     src="{{assetPath}}"
+                    response-type="arraybuffer"
                 ></a-asset-item>
             </a-assets>
-
+            
             {{#each assetParam.locations}}
                 <a-entity
                     look-at="[gps-camera]"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    scale="{{../assetParam.scale}} {{../assetParam.scale}} {{../assetParam.scale}}"
+                    id="sound-entity"
+                    sound="src: #sound"
+                    emitsevent
+                    autoplay="false"
                     gps-entity-place="latitude: {{this.latitude}}; longitude: {{this.longitude}};"
                 ></a-entity>
             {{/each}}

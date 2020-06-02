@@ -4,25 +4,29 @@ import {
     ENC_BINARY,
     ZipProvider,
     GithubProvider,
-} from '../../providers';
-import {
-    ASSET_3D,
-    ASSET_IMAGE,
-    ASSET_AUDIO,
-    ASSET_VIDEO,
     MarkerModule,
-} from '../marker';
+    LocationModule,
+} from '../../index';
+
+export const ASSET_3D = '3d';
+export const ASSET_IMAGE = 'image';
+export const ASSET_AUDIO = 'audio';
+export const ASSET_VIDEO = 'video';
 
 export const AR_BARCODE = 'barcode';
 export const AR_PATTERN = 'pattern';
 export const AR_LOCATION = 'location';
 export const AR_NTF = 'ntf';
 
+export const PACKAGE_ZIP = 'zip';
+export const PACKAGE_GITHUB = 'github';
+
 /**
  * @typedef AssetParam
  * @property {boolean} isValid
  * @property {Number} scale
  * @property {{width: Number, height: Number, depth: Number}} size
+ * @property {Array<{latitude: Number, longitude: Number}>} locations - an array of latitude/longitude locations, for location based AR
  */
 const defaultAssetParam = {
     isValid: true,
@@ -38,11 +42,11 @@ export class Package {
     /**
      * @param {Object} config
      * @param {string} config.arType - one of barcode, pattern, location or ntf (see exported constants)
-     * @param {string} config.assetType - one of 3d, image, audio or video (see {@link MarkerModule} exported constants)
+     * @param {string} config.assetType - one of 3d, image, audio or video (see exported constants)
      * @param {string|Blob} config.assetFile - the file to be show in AR
      * @param {string} config.assetName - the file name, to be included in HTML template
-     * @param {AssetParam} [config.assetParam] - scale and position of AR asset
-     * @param {string} [config.markerPatt] - the marker image patt file (required for pattern AR type)
+     * @param {AssetParam} [config.assetParam] - parameters of AR asset
+     * @param {string} [config.markerPatt] - the marker image patt file (required for pattern and location AR type)
      * @param {string} [config.matrixType] - the barcode matrix type (see {@link BarcodeMarkerGenerator} exported constants, required for barcode AR type)
      * @param {number} [config.markerValue] - the barcode value of the marker (required for barcode AR type)
      */
@@ -85,16 +89,13 @@ export class Package {
 
             case AR_PATTERN:
                 generatedHtml = MarkerModule.generatePatternHtml(this.assetType, this.assetParam, `assets/${this.assetName}`);
-
-                if (!this.config.markerPatt) {
-                    throw new Error('Pattern-based AR needs a marker.patt file');
-                }
-
-                provider.addFile('assets/marker.patt', this.config.markerPatt);
+                this.addMarkerToProvider(provider, this.config.markerPatt);
                 break;
 
             case AR_LOCATION:
-                throw new Error('Location template is not implemented');
+                generatedHtml = LocationModule.generateHtml(this.assetType, this.assetParam, `assets/${this.assetName}`);
+                this.addMarkerToProvider(provider, this.config.markerPatt);
+                break;
 
             case AR_NTF:
                 throw new Error('NTF template is not implemented');
@@ -118,11 +119,11 @@ export class Package {
 
         // init provider
         switch (packageType) {
-            case 'zip':
+            case PACKAGE_ZIP:
                 provider = new ZipProvider();
                 break;
 
-            case 'github':
+            case PACKAGE_GITHUB:
                 provider = new GithubProvider();
                 break;
 
@@ -157,5 +158,13 @@ export class Package {
             default:
                 throw new Error(`Unknown asset type: ${this.assetType}`);
         }
+    }
+    
+    addMarkerToProvider(provider, markerPatt) {
+        if (!markerPatt) {
+            throw new Error('Missing marker.patt file');
+        }
+
+        provider.addFile('assets/marker.patt', markerPatt);
     }
 }
