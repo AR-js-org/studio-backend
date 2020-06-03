@@ -11,7 +11,6 @@ new Package({
     assetFile: yourAssetFile, // read details after this code block
     assetName: 'model.gltf', // the AR asset filename, including the file extension
     assetParam: {
-        isValid: true, // whether the scale/size parameters are correct or not (if you don't know what this is, set to true)
         scale: 1.0, // scale of the asset
         size: { // sizes of the asset, unused
             width: 1.0,
@@ -88,7 +87,6 @@ const package = new Package({
     assetFile: base64Asset,
     assetName: file.name,
     assetParam: {
-        isValid: true,
         scale: 1.0
     },
     markerPatt: textPatt

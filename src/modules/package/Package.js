@@ -23,13 +23,11 @@ export const PACKAGE_GITHUB = 'github';
 
 /**
  * @typedef AssetParam
- * @property {boolean} isValid
  * @property {Number} scale
  * @property {{width: Number, height: Number, depth: Number}} size
  * @property {Array<{latitude: Number, longitude: Number}>} locations - an array of latitude/longitude locations, for location based AR
  */
 const defaultAssetParam = {
-    isValid: true,
     scale: 1.0,
     size: {
         width: 1.0,
@@ -56,11 +54,7 @@ export class Package {
         this.assetFile = config.assetFile;
         this.assetName = config.assetName;
         this.assetParam = config.assetParam || defaultAssetParam;
-        
-        if (!this.assetParam.isValid) {
-            throw new Error('Asset parameters are not valid');
-        }
-        
+
         this.config = config;
     }
 
