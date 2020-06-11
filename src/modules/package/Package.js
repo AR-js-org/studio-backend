@@ -83,12 +83,16 @@ export class Package {
 
             case AR_PATTERN:
                 generatedHtml = MarkerModule.generatePatternHtml(this.assetType, this.assetParam, `assets/${this.assetName}`);
-                this.addMarkerToProvider(provider, this.config.markerPatt);
+                
+                if (!this.config.markerPatt) {
+                    throw new Error('Missing marker.patt file');
+                }
+
+                provider.addFile('assets/marker.patt', this.config.markerPatt);
                 break;
 
             case AR_LOCATION:
                 generatedHtml = LocationModule.generateHtml(this.assetType, this.assetParam, `assets/${this.assetName}`);
-                this.addMarkerToProvider(provider, this.config.markerPatt);
                 break;
 
             case AR_NTF:
@@ -152,13 +156,5 @@ export class Package {
             default:
                 throw new Error(`Unknown asset type: ${this.assetType}`);
         }
-    }
-    
-    addMarkerToProvider(provider, markerPatt) {
-        if (!markerPatt) {
-            throw new Error('Missing marker.patt file');
-        }
-
-        provider.addFile('assets/marker.patt', markerPatt);
     }
 }
