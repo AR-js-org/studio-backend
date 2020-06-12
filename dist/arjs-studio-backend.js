@@ -1904,7 +1904,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
 var Handlebars = __webpack_require__(7);
 function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
-    var stack1, helper, alias1=container.escapeExpression, alias2=container.lambda, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
@@ -1912,17 +1912,17 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     };
 
   return "                <a-image\n                    src=\""
-    + alias1(((helper = (helper = lookupProperty(helpers,"assetPath") || (depth0 != null ? lookupProperty(depth0,"assetPath") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"assetPath","hash":{},"data":data,"loc":{"start":{"line":19,"column":25},"end":{"line":19,"column":38}}}) : helper)))
+    + alias2(alias1((depths[1] != null ? lookupProperty(depths[1],"assetPath") : depths[1]), depth0))
     + "\"\n                    look-at=\"[gps-camera]\"\n                    scale=\""
-    + alias1(alias2(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + alias2(alias1(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
     + " "
-    + alias1(alias2(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + alias2(alias1(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
     + " "
-    + alias1(alias2(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
+    + alias2(alias1(((stack1 = (depths[1] != null ? lookupProperty(depths[1],"assetParam") : depths[1])) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
     + "\"\n                    gps-entity-place=\"latitude: "
-    + alias1(alias2((depth0 != null ? lookupProperty(depth0,"latitude") : depth0), depth0))
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"latitude") : depth0), depth0))
     + "; longitude: "
-    + alias1(alias2((depth0 != null ? lookupProperty(depth0,"longitude") : depth0), depth0))
+    + alias2(alias1((depth0 != null ? lookupProperty(depth0,"longitude") : depth0), depth0))
     + ";\"\n                ></a-image>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
