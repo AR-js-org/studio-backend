@@ -16891,7 +16891,7 @@ var Package_Package = /*#__PURE__*/function () {
                 generatedHtml = ''; // generate HTML and add marker files, depending on chosen AR experience type
 
                 _context.t0 = this.arType;
-                _context.next = _context.t0 === AR_BARCODE ? 5 : _context.t0 === AR_PATTERN ? 11 : _context.t0 === AR_LOCATION ? 14 : _context.t0 === AR_NTF ? 17 : 18;
+                _context.next = _context.t0 === AR_BARCODE ? 5 : _context.t0 === AR_PATTERN ? 11 : _context.t0 === AR_LOCATION ? 16 : _context.t0 === AR_NTF ? 18 : 19;
                 break;
 
               case 5:
@@ -16913,30 +16913,38 @@ var Package_Package = /*#__PURE__*/function () {
               case 9:
                 generatedHtml = marker_MarkerModule.generateBarcodeHtml(this.config.matrixType, this.config.markerValue, "assets/".concat(this.assetName)); // barcode requires no marker file
 
-                return _context.abrupt("break", 19);
+                return _context.abrupt("break", 20);
 
               case 11:
                 generatedHtml = marker_MarkerModule.generatePatternHtml(this.assetType, this.assetParam, "assets/".concat(this.assetName));
-                this.addMarkerToProvider(provider, this.config.markerPatt);
-                return _context.abrupt("break", 19);
+
+                if (this.config.markerPatt) {
+                  _context.next = 14;
+                  break;
+                }
+
+                throw new Error('Missing marker.patt file');
 
               case 14:
-                generatedHtml = location_LocationModule.generateHtml(this.assetType, this.assetParam, "assets/".concat(this.assetName));
-                this.addMarkerToProvider(provider, this.config.markerPatt);
-                return _context.abrupt("break", 19);
+                provider.addFile('assets/marker.patt', this.config.markerPatt);
+                return _context.abrupt("break", 20);
 
-              case 17:
-                throw new Error('NTF template is not implemented');
+              case 16:
+                generatedHtml = location_LocationModule.generateHtml(this.assetType, this.assetParam, "assets/".concat(this.assetName));
+                return _context.abrupt("break", 20);
 
               case 18:
-                throw new Error("Unknown AR type: ".concat(this.arType));
+                throw new Error('NTF template is not implemented');
 
               case 19:
+                throw new Error("Unknown AR type: ".concat(this.arType));
+
+              case 20:
                 provider.addFile('index.html', generatedHtml);
                 this.addAssetToProvider(provider);
                 return _context.abrupt("return", provider.serveFiles(config));
 
-              case 22:
+              case 23:
               case "end":
                 return _context.stop();
             }
@@ -17004,15 +17012,6 @@ var Package_Package = /*#__PURE__*/function () {
         default:
           throw new Error("Unknown asset type: ".concat(this.assetType));
       }
-    }
-  }, {
-    key: "addMarkerToProvider",
-    value: function addMarkerToProvider(provider, markerPatt) {
-      if (!markerPatt) {
-        throw new Error('Missing marker.patt file');
-      }
-
-      provider.addFile('assets/marker.patt', markerPatt);
     }
   }]);
 
