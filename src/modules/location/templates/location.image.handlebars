@@ -16,7 +16,7 @@
         >
             {{#each assetParam.locations}}
                 <a-image
-                    src="{{assetPath}}"
+                    src="{{../assetPath}}"
                     look-at="[gps-camera]"
                     scale="{{../assetParam.scale}} {{../assetParam.scale}} {{../assetParam.scale}}"
                     gps-entity-place="latitude: {{this.latitude}}; longitude: {{this.longitude}};"
