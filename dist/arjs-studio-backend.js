@@ -2081,7 +2081,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[8,"
     + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
     + " "
     + alias1(alias2(((stack1 = (depth0 != null ? lookupProperty(depth0,"assetParam") : depth0)) != null ? lookupProperty(stack1,"scale") : stack1), depth0))
-    + "\"\n                    class=\"clickable\"\n                    gesture-handler\n                ></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
+    + "\"\n                    class=\"clickable\"\n                    rotation=\"-90 0 0\"\n                    gesture-handler\n                ></a-image>\n            </a-marker>\n\n            <a-entity camera></a-entity>\n        </a-scene>\n    </body>\n</html>\n";
 },"useData":true});
 
 /***/ }),
