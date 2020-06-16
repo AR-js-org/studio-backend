@@ -11,15 +11,15 @@
                     var marker = this.el;
                     this.vid = document.querySelector("#vid");
 
-                    marker.addEventListener('markerFound', () => {
+                    marker.addEventListener('markerFound', function () {
                         this.toggle = true;
                         this.vid.play();
-                    }).bind(this));
+                    }.bind(this));
 
-                    marker.addEventListener('markerLost', () => {
+                    marker.addEventListener('markerLost', function () {
                         this.toggle = false;
                         this.vid.pause();
-                    }).bind(this));
+                    }.bind(this));
                 },
             });
         </script>
