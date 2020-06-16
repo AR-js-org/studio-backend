@@ -12,12 +12,12 @@
                     marker.addEventListener('markerFound', () => {
                         this.toggle = true;
                         this.vid.play();
-                    }.bind(this));
+                    }).bind(this));
 
                     marker.addEventListener('markerLost', () => {
                         this.toggle = false;
                         this.vid.pause();
-                    }.bind(this));
+                    }).bind(this));
                 },
             });
         </script>
