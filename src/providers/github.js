@@ -111,7 +111,7 @@ export class GithubProvider extends BaseProvider {
             return await this.getBranch(name);
         } catch (e) {
             // console.warn('branch not found, creating');
-            const masterRef = await this.getRef('master');
+            const masterRef = await this.getRef('main');
             await this.createBranch(masterRef.object.sha, name);
             return await this.getBranch(name);
         }
