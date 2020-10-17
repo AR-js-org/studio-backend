@@ -17937,7 +17937,7 @@ var github_GithubProvider = /*#__PURE__*/function (_BaseProvider) {
                 _context3.prev = 6;
                 _context3.t0 = _context3["catch"](0);
                 _context3.next = 10;
-                return this.getRef('master');
+                return this.getRef('main');
 
               case 10:
                 masterRef = _context3.sent;
