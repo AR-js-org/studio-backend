@@ -27,7 +27,7 @@
     "eslint-plugin-mocha": "^6.2.2",
     "eslint-plugin-mocha-no-only": "^1.1.0",
     "esm": "^3.2.25",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "mocha": "^7.1.1",
     "terser-webpack-plugin": "^2.3.4",
