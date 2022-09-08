@@ -37,7 +37,7 @@
   "dependencies": {
     "@babel/runtime": "^7.8.4",
     "@octokit/rest": "^16.38.2",
-    "jszip": "^3.2.2",
+    "jszip": "^3.7.0",
     "regenerator-runtime": "^0.13.3"
   }
 }
